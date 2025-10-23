@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="create app, configure tailwind, create hero and header section, implements api" />
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="create app, configure tailwind, create hero and header section, implements api">
+      <change afterPath="$PROJECT_DIR$/src/components/AboutMe.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useInView.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/Title.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getAnimation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/getHomePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getHomePage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/boldBorderHeader.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/header/boldBorderHeader.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/shared/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/thinBorderHeader.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/header/thinBorderHeader.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,6 +94,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/header" />
+      <recent name="$PROJECT_DIR$/src/assets/shared" />
       <recent name="$PROJECT_DIR$/src/assets/hero" />
     </key>
   </component>
@@ -123,8 +145,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -156,6 +178,10 @@
       <workItem from="1760179154007" duration="11139000" />
       <workItem from="1760279579638" duration="12495000" />
       <workItem from="1760292154826" duration="14460000" />
+      <workItem from="1760308696394" duration="13000" />
+      <workItem from="1760346395702" duration="12309000" />
+      <workItem from="1760426149465" duration="6692000" />
+      <workItem from="1761234256369" duration="110000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />

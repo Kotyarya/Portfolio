@@ -77,12 +77,22 @@ module.exports = {
                     from: {transform: 'translateY(50px)', opacity: 0},
                     to: {transform: 'translateX(0)', opacity: 1},
                 },
+                'fade': {
+                    from: {opacity: 0},
+                    to: {opacity: 1},
+                },
+                'scale-in': {
+                    from: {transform: 'scale(0.5)', opacity: 0},
+                    to: {transform: 'scale(1)', opacity: 1},
+                },
             },
             animation: {
                 'slide-in-right': 'slide-in-right 1s ease-out both',
                 'slide-in-left': 'slide-in-left 1s ease-out both',
                 'slide-in-top': 'slide-in-top 1s ease-out both',
                 'slide-in-bottom': 'slide-in-bottom 1s ease-out both',
+                'fade': 'fade 1s ease-out both',
+                'scale-in': 'scale-in 0.5s ease-out both',
             }
         }
     },

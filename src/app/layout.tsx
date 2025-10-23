@@ -41,10 +41,12 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body
-            className={`${lora.variable} ${lato.variable} ${taviraj.variable} ${cinzel.variable} antialiased relative pb-200`}
+            className={`${lora.variable} ${lato.variable} ${taviraj.variable} ${cinzel.variable} antialiased relative`}
         >
         <Header/>
-        {children}
+        <main className='flex flex-col gap-36'>
+            {children}
+        </main>
         </body>
         </html>
     );
