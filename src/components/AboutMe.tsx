@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import type { IBlockImg } from '@/types/homeTypes';
+import type {IBlockImg} from '@/types/blocksDataTypes';
 import Image from 'next/image';
 import Title from '@/ui/Title';
-import { useInView } from '@/hooks/useInView';
-import { getAnimation } from '@/utils/getAnimation';
+import {useInView} from '@/hooks/useInView';
+import {getAnimation} from '@/utils/getAnimation';
 import Button from '@/ui/Button';
 
 interface AboutMeProps {
@@ -23,7 +23,7 @@ const AboutMe = ({aboutMe}: AboutMeProps) => {
                    className={getAnimation(isVisible, 'animate-slide-in-left')} ref={ref}/>
             <div className={getAnimation(isVisible, 'animate-slide-in-right')}>
                 <Title title={title} subtitle={subtitle} position='left'/>
-                <p className='text-sm font-lora font-regular w-[560px] mt-2'
+                <p className='text-sm font-lora font-regular w-[560px] mt-2 mb-20'
                    dangerouslySetInnerHTML={{__html: text}}/>
                 <Button text={"Read More"} size={'large'}/>
             </div>

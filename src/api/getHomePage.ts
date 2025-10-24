@@ -1,7 +1,7 @@
 import 'server-only';
-import { unstable_cache } from 'next/cache';
-import { baseAPI, type IApiResponse } from '@/api/http';
-import type { IBlock, IBlockImg } from '@/types/homeTypes';
+import {unstable_cache} from 'next/cache';
+import {baseAPI, type IApiResponse} from '@/api/http';
+import type {IBlock, IBlockImg} from '@/types/blocksDataTypes';
 
 
 export const getHomePage = unstable_cache(

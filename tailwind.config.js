@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./src/components/**/*.{js,ts,jsx,tsx}', './src/app/**/*.{js,ts,jsx,tsx}'],
+    content: ['./src/components/**/*.{js,ts,jsx,tsx}', './src/app/**/*.{js,ts,jsx,tsx}', './src/ui/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
             colors: {
@@ -24,6 +24,7 @@ module.exports = {
             },
             backgroundImage: {
                 "gold-gradient": "linear-gradient(180deg, #FFE998 0%, #57370D 100%)",
+                "black-gradient": "linear-gradient(180deg, #333433 0%, #181A19 100%)",
             },
             fontFamily: {
                 lora: ["var(--font-lora)", "serif"],
