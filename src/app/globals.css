@@ -26,3 +26,22 @@ mark {
     background: none;
     color: #AD9255;
 }
+
+@keyframes scroll-up {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        /* едем вверх на высоту ОДНОГО списка */
+        transform: translateY(calc(-1 * var(--scroll-distance)));
+    }
+}
+
+@keyframes scroll-down {
+    0% {
+        transform: translateY(calc(-1 * var(--scroll-distance)));
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

@@ -18,7 +18,7 @@ const Hero = ({hero}: HeroProps) => {
             <div className="absolute bottom-[-50px] left-1/2 -translate-x-1/2">
                 <div
                     className="w-[350px] h-[350px] absolute bottom-20 left-1/2 -translate-x-1/2 z-[-1] rounded-[50%] bg-[radial-gradient(circle,_#AD9255_0%,_rgba(115,115,115,0)_100%)] blur-[100px] animate-scale-in"></div>
-                <Image src={MyPhoto} alt="my photo" width={600} quality={90}
+                <Image src={MyPhoto} alt="my photo" width={600} priority={true}
                        className='z-10 animate-fade'/>
             </div>
             <div className="flex flex-col items-end">

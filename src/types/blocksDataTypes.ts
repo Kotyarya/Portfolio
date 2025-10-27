@@ -4,7 +4,7 @@ interface IBlock {
     text: string;
 }
 
-interface IBlockImg extends IBlock  {
+interface IBlockImg extends IBlock {
     imgId: string;
 }
 
@@ -19,14 +19,21 @@ interface IWhatsNextElement {
     subtasksList: [string];
 }
 
-interface IBlockWhatsNext extends IBlock  {
+interface IBlockWhatsNext extends IBlock {
     whatsNextList: [IWhatsNextElement];
 }
 
 
-
 interface IBlockCertificates extends IBlock {
     certificatesImgList: [string];
+}
+
+interface ISkill {
+    id: number;
+    name: string;
+    importance: number;
+    img: string;
+    text: string;
 }
 
 
@@ -36,5 +43,6 @@ export type {
     IBlockBeyondCode,
     IWhatsNextElement,
     IBlockWhatsNext,
-    IBlockCertificates
+    IBlockCertificates,
+    ISkill
 };
