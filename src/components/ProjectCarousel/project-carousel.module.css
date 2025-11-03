@@ -1,0 +1,139 @@
+/* project-carousel.module.css */
+.wrap {
+    position: relative;
+    padding: 56px 72px 88px;
+    width: 1124px;
+}
+
+.slide {
+    transition: transform .45s ease, opacity .45s ease, filter .45s ease;
+}
+
+/* ↓↓↓ ВАЖНО: сначала локальный класс, потом :global(...) */
+.wrap :global(.swiper-slide) {
+    opacity: 0;
+    filter: saturate(.99) blur(2px) !important;
+    transform-origin: center;
+}
+
+.wrap :global(.swiper-slide-prev),
+.wrap :global(.swiper-slide-next) {
+    opacity: .6 !important;
+    transform: scale(.9) !important;
+    pointer-events: none !important;
+}
+
+.wrap :global(.swiper-slide-active) {
+    opacity: 1;
+    filter: saturate(1) blur(0) !important;
+    transform: scale(1) !important;
+    z-index: 2;
+}
+
+/* Стрелки оставляем локальными */
+.arrow {
+    position: absolute;
+    top: 50%;
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: rotate(45deg) !important;
+    /* базовые переходы */
+    transition: border-color .2s ease, transform .2s ease, filter .2s ease;
+    isolation: isolate; /* чтобы ::before был ниже контента */
+    overflow: hidden; /* скругление работало для ::before */
+
+    /* по умолчанию угол градиента для next */
+    --grad-angle: 180deg;
+}
+
+/* Градиентный слой */
+.arrow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(var(--grad-angle), #FFE998 0%, #57370D 100%);
+    opacity: 0; /* скрыт */
+    transform: scale(.3); /* лёгкое выплывание */
+    transition: opacity .35s ease, transform .35s ease;
+    z-index: -1; /* под svg */
+    pointer-events: none;
+}
+
+.arrow:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Иконка-стрелка */
+.arrow svg {
+    fill: #AD9255;
+    transition: fill .2s ease, transform .2s ease;
+}
+
+/* При ховере меняем цвет и можно чуть крутить/скейлить */
+.arrow:hover svg {
+    fill: #181A19;
+}
+
+/* Позиции */
+.prev {
+    left: -70px;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: -70px;
+    transform: translateY(-50%);
+}
+
+/* Направления: контейнер НЕ вращаем, вращаем только svg */
+.prev svg {
+    transform: rotate(135deg);
+}
+
+/* влево */
+.next svg {
+    transform: rotate(-45deg);
+}
+
+/* вправо */
+
+/* Разный угол градиента для prev/next */
+.prev {
+    --grad-angle: 90deg;
+}
+
+/* как у тебя было */
+.next {
+    --grad-angle: 180deg;
+}
+
+
+/* Пагинация */
+.dots {
+    display: flex;
+    justify-content: center;
+}
+
+.dots :global(.swiper-pagination-bullet) {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    margin: 0 6px !important;
+    background: #AD9255;
+    opacity: .45;
+    transition: all .6s ease;
+}
+
+.dots :global(.swiper-pagination-bullet-active) {
+    width: 48px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #FFE998 0%, #57370D 100%);
+    opacity: 1;
+}
