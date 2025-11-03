@@ -4,16 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="refactoring">
-      <change afterPath="$PROJECT_DIR$/src/components/ColumnScroller.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SkillsPreview.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" afterDir="false" />
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="create SkillsPreview.tsx">
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/archive.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/done.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/time.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/project-carousel.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProjectsPreview.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/ProjectStatusLabel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ui/ProjectTagBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/getHomePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getHomePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hero.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/blocksDataTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/blocksDataTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Button.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +79,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "create-projects-preview-block",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
@@ -93,8 +102,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/assets/header" />
       <recent name="$PROJECT_DIR$/src/assets/shared" />
+      <recent name="$PROJECT_DIR$/src/components/ProjectCarousel" />
+      <recent name="$PROJECT_DIR$/src/assets/header" />
       <recent name="$PROJECT_DIR$/src/assets/hero" />
     </key>
   </component>
@@ -198,7 +208,10 @@
       <workItem from="1761246904230" duration="2543000" />
       <workItem from="1761299889873" duration="4183000" />
       <workItem from="1761334792973" duration="4567000" />
-      <workItem from="1761573456763" duration="15857000" />
+      <workItem from="1761573456763" duration="16066000" />
+      <workItem from="1761677529482" duration="53000" />
+      <workItem from="1761677591227" duration="1728000" />
+      <workItem from="1762071783191" duration="20998000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -240,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761596044760</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="create SkillsPreview.tsx">
+      <option name="closed" value="true" />
+      <created>1761596427517</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1761596427518</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,6 +283,7 @@
     <MESSAGE value="create app, configure tailwind, create hero and header section, implements api" />
     <MESSAGE value="create button ui component and about me section" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="create SkillsPreview.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="create SkillsPreview.tsx" />
   </component>
 </project>

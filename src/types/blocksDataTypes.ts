@@ -36,6 +36,27 @@ interface ISkill {
     text: string;
 }
 
+interface IProject {
+    id: number,
+    name: string,
+    githubLink: string,
+    link: string,
+    text: string,
+    importance: number,
+    img: string,
+    skills: {
+        name: string;
+        importance: number;
+    }[],
+    category: {
+        name: string
+    },
+    status: {
+        name: string,
+        img: string
+    }
+}
+
 
 export type {
     IBlock,
@@ -44,5 +65,6 @@ export type {
     IWhatsNextElement,
     IBlockWhatsNext,
     IBlockCertificates,
-    ISkill
+    ISkill,
+    IProject
 };
