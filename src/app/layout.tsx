@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
-import { Cinzel, Lato, Lora, Taviraj } from 'next/font/google';
+import type {Metadata} from 'next';
+import {Cinzel, Lato, Lora, Taviraj} from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
+import Footer from "@/components/Footer";
 
 
 const lora = Lora({
@@ -47,6 +48,7 @@ export default function RootLayout({
         <main className='flex flex-col gap-36'>
             {children}
         </main>
+        <Footer/>
         </body>
         </html>
     );
