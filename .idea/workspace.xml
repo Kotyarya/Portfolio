@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="refactoring">
-      <change afterPath="$PROJECT_DIR$/src/components/ContactMe.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/getProjectsPage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/projects/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/gitHub.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/instagram.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/shared/linkedIn.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Projects.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getHomePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getHomePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,17 +48,17 @@
     &quot;assignee&quot;: &quot;Kotyarya&quot;
   }
 }</component>
-  <component name="GitHubPullRequestState">{
-  &quot;prStates&quot;: [
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
     {
-      &quot;id&quot;: {
-        &quot;id&quot;: &quot;PR_kwDOPielpM6xNYxB&quot;,
-        &quot;number&quot;: 1
+      "id": {
+        "id": "PR_kwDOPielpM6xNYxB",
+        "number": 1
       },
-      &quot;lastSeen&quot;: 1762182625212
+      "lastSeen": 1762346129840
     }
   ]
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Kotyarya/Portfolio.git&quot;,
@@ -91,7 +97,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "create-contact-me-block",
+    "git-widget-placeholder": "Create-Footer",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
@@ -107,13 +113,14 @@
     "npm.start.executor": "Run",
     "npm.start:dev.executor": "Run",
     "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "editing.templates",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Users/kotyarya/Dev/portfolio/node_modules/typescript/lib",
     "two.files.diff.last.used.folder": "/Users/kotyarya/Dev/Portfolio-Server"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/projects" />
       <recent name="$PROJECT_DIR$/src/assets/shared" />
       <recent name="$PROJECT_DIR$/src/components/ProjectCarousel" />
       <recent name="$PROJECT_DIR$/src/assets/header" />
@@ -224,7 +231,7 @@
       <workItem from="1761677529482" duration="53000" />
       <workItem from="1761677591227" duration="1728000" />
       <workItem from="1762071783191" duration="20998000" />
-      <workItem from="1762345102530" duration="991000" />
+      <workItem from="1762345102530" duration="13103000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -282,7 +289,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762182709366</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="create ContactMe.tsx">
+      <option name="closed" value="true" />
+      <created>1762346163972</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762346163972</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refactoring">
+      <option name="closed" value="true" />
+      <created>1762346335209</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762346335209</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +327,7 @@
     <MESSAGE value="create app, configure tailwind, create hero and header section, implements api" />
     <MESSAGE value="create button ui component and about me section" />
     <MESSAGE value="create SkillsPreview.tsx" />
+    <MESSAGE value="create ContactMe.tsx" />
     <MESSAGE value="refactoring" />
     <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
