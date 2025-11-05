@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="create SkillsPreview.tsx">
-      <change afterPath="$PROJECT_DIR$/src/assets/shared/archive.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/shared/arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/shared/done.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/shared/time.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/project-carousel.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProjectsPreview.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/ProjectStatusLabel.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/ProjectTagBlock.tsx" afterDir="false" />
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="refactoring">
+      <change afterPath="$PROJECT_DIR$/src/components/ContactMe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/getHomePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getHomePage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/blocksDataTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/blocksDataTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Button.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,15 +33,40 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;assignee&quot;: &quot;Kotyarya&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;Kotyarya&quot;
   }
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOPielpM6xNYxB&quot;,
+        &quot;number&quot;: 1
+      },
+      &quot;lastSeen&quot;: 1762182625212
+    }
+  ]
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Kotyarya/Portfolio.git&quot;,
     &quot;accountId&quot;: &quot;2f414d96-ed99-4318-ac12-0adc12ac265a&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;Kotyarya&quot;,
+    &quot;repository&quot;: &quot;Portfolio&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -79,7 +91,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "create-projects-preview-block",
+    "git-widget-placeholder": "create-contact-me-block",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
@@ -108,7 +120,7 @@
       <recent name="$PROJECT_DIR$/src/assets/hero" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Next.js: server-side">
+  <component name="RunManager" selected="npm.start:dev">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -212,6 +224,7 @@
       <workItem from="1761677529482" duration="53000" />
       <workItem from="1761677591227" duration="1728000" />
       <workItem from="1762071783191" duration="20998000" />
+      <workItem from="1762345102530" duration="991000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -261,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761596427518</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactoring">
+      <option name="closed" value="true" />
+      <created>1762182709366</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762182709366</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,8 +303,8 @@
     <MESSAGE value="create app" />
     <MESSAGE value="create app, configure tailwind, create hero and header section, implements api" />
     <MESSAGE value="create button ui component and about me section" />
-    <MESSAGE value="refactoring" />
     <MESSAGE value="create SkillsPreview.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="create SkillsPreview.tsx" />
+    <MESSAGE value="refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
   </component>
 </project>
