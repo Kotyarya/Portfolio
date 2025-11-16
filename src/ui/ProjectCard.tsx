@@ -7,9 +7,10 @@ import ProjectStatusLabel from "@/ui/ProjectStatusLabel";
 
 interface ProjectCardProps {
     project: IProject;
+    onClick?: () => void;
 }
 
-const ProjectCard = ({project}: ProjectCardProps) => {
+const ProjectCard = ({project, onClick}: ProjectCardProps) => {
 
     const skillsArray = ["JavaScript", "React", "Node.js", "CSS", "HTML"]; // Example skills array
 
@@ -32,7 +33,7 @@ const ProjectCard = ({project}: ProjectCardProps) => {
                             );
                         })}
                     </div>
-                    <Button text={"View More"} size={"small"}/>
+                    <Button text={"View More"} size={"small"} onClick={onClick}/>
                 </div>
 
             </div>

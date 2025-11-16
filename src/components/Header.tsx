@@ -5,7 +5,7 @@ import logo from '../assets/shared/logo.svg';
 
 const Header = () => {
     return (
-        <header className="w-full flex justify-center sticky top-10 z-20 animate-slide-in-top">
+        <header className="w-full flex justify-center sticky top-10 z-999 animate-slide-in-top">
             <div
                 className="w-auto h-auto p-4 bg-[url('../assets/header/boldBorderHeader.svg')] bg-no-repeat bg-contain bg-center relative"
             >
