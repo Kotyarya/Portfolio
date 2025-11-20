@@ -26,23 +26,23 @@ interface ProjectsSectionProps {
     activeProject?: IProject;
 }
 
-export default function ProjectsSection({
-                                            projectsPreview,
-                                            filterOptions = {
-                                                projectCategories: [],
-                                                projectStatuses: [],
-                                                projectSkills: []
-                                            },
-                                            searchParams: {
-                                                q = "",
-                                                category = "",
-                                                status = "",
-                                                stacks = [],
-                                                projectId = undefined
-                                            },
-                                            projects,
-                                            activeProject,
-                                        }: ProjectsSectionProps) {
+export default function Projects({
+                                     projectsPreview,
+                                     filterOptions = {
+                                         projectCategories: [],
+                                         projectStatuses: [],
+                                         projectSkills: []
+                                     },
+                                     searchParams: {
+                                         q = "",
+                                         category = "",
+                                         status = "",
+                                         stacks = [],
+                                         projectId = undefined
+                                     },
+                                     projects,
+                                     activeProject,
+                                 }: ProjectsSectionProps) {
 
 
     const router = useRouter();
