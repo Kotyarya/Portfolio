@@ -86,6 +86,11 @@ module.exports = {
                     from: {transform: 'scale(0.5)', opacity: 0},
                     to: {transform: 'scale(1)', opacity: 1},
                 },
+                'float': {
+                    '0%, 100%': {transform: 'translateY(0)'},
+                    '50%': {transform: 'translateY(-10px)'}, // высота "левитации"
+                },
+
             },
             animation: {
                 'slide-in-right': 'slide-in-right 1s ease-out both',
@@ -94,6 +99,7 @@ module.exports = {
                 'slide-in-bottom': 'slide-in-bottom 1s ease-out both',
                 'fade': 'fade 1s ease-out both',
                 'scale-in': 'scale-in 0.5s ease-out both',
+                'float': 'float 3s ease-in-out infinite',
             }
         }
     },
