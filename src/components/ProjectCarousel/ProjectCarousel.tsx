@@ -10,30 +10,38 @@ import styles from "./project-carousel.module.css";
 import type {IProject} from "@/types/blocksDataTypes";
 import ProjectCard from "@/ui/ProjectCard";
 import {uid} from "uid";
+import Image from "next/image";
 
 type Props = {
-    projects: IProject[];
-    autoplayMs?: number;
-    loop?: boolean;
+    items: IProject[] | string[];
+    type: "projects" | "certificates";
 };
 
-export default function ProjectCarousel({
-                                            projects,
-                                            autoplayMs = 5000,
-                                            loop = true,
-                                        }: Props) {
+export default function Carousel({
+                                     items,
+                                     type
+                                 }: Props) {
     const prevRef = useRef<HTMLButtonElement | null>(null);
     const nextRef = useRef<HTMLButtonElement | null>(null);
+    let projects: IProject[] = [];
+    let displayedProjects: IProject[] = [];
+    let certificates: string[] = [];
+    if (type === "projects") {
+        projects = items as IProject[];
+        displayedProjects = [
+            ...projects.slice(0, 3),
+            ...projects.slice(0, 3),
+        ];
+    } else {
+        certificates = items as string[];
+    }
 
-    const displayedProjects = [
-        ...projects.slice(0, 3),
-        ...projects.slice(0, 3),
-    ];
-
+    const spaceBetween = type === "projects" ? -26 : -286;
 
     return (
         <div className="flex flex-col items-center">
-            <div className={styles.wrap} aria-roledescription="carousel">
+            <div className={`${styles.wrap} relative px-[72px] pt-[56px] pb-[88px] w-[1124px]`}
+                 aria-roledescription="carousel">
                 <button ref={prevRef} className={`${styles.arrow} ${styles.prev}`} aria-label="Previous slide">
                     <svg width="50" height="47" viewBox="0 0 50 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -62,14 +70,14 @@ export default function ProjectCarousel({
                     }}
                     centeredSlides
                     slidesPerView={3}
-                    spaceBetween={-26}
+                    spaceBetween={spaceBetween}
                     loop={true}
                     loopAdditionalSlides={0}
                     watchOverflow={false}
                     speed={450}
                     keyboard={{enabled: true}}
                     autoplay={false}
-                    pagination={{el: `.${styles.dots}`, clickable: true}}
+                    pagination={{el: `.${styles.dots}`, clickable: false}}
                     onSwiper={(swiper) => {
                         // @ts-ignore
                         swiper.params.navigation.prevEl = prevRef.current!;
@@ -79,15 +87,25 @@ export default function ProjectCarousel({
                         swiper.navigation.update();
                     }}
                 >
-                    {displayedProjects.map((p) => (
-                        <SwiperSlide key={p.id + uid(10)} className={styles.slide}>
-                            <ProjectCard project={p}/>
-                        </SwiperSlide>
-                    ))}
+                    {
+                        type === "projects"
+                            ? displayedProjects.map((p) => (
+                                <SwiperSlide key={p.id + uid(10)} className={styles.slide}>
+                                    <ProjectCard project={p}/>
+                                </SwiperSlide>
+                            ))
+                            : certificates
+                                ? certificates.map((p, index) => (
+                                    <SwiperSlide className={styles.slide} key={index}>
+                                        <Image src={"http://localhost:4000/media/" + p} alt={"Certificate"} width={600}
+                                               height={464}/>
+                                    </SwiperSlide>
+                                ))
+                                : null
+                    }
                 </Swiper>
             </div>
             <div className={styles.dots}/>
         </div>
-
     );
 }
