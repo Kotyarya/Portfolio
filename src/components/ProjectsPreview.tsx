@@ -18,7 +18,7 @@ const ProjectsPreview = ({projectsPreview, projects}: ProjectsPreviewProps) => {
             <Title title={title} subtitle={subtitle} position={"center"}/>
             <p className="w-[840px] text-white text-sm font-lora text-center mb-14">{text}</p>
             <Button text="View More" size="large"/>
-            <ProjectCarousel projects={projects} loop={true} autoplayMs={5000}/>
+            <ProjectCarousel items={projects} type={'projects'}/>
         </div>
     );
 };

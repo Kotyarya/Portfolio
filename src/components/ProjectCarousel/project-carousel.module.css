@@ -1,10 +1,3 @@
-/* project-carousel.module.css */
-.wrap {
-    position: relative;
-    padding: 56px 72px 88px;
-    width: 1124px;
-}
-
 .slide {
     transition: transform .45s ease, opacity .45s ease, filter .45s ease;
 }
