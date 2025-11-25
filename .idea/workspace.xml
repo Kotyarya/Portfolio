@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="Create Skills.tsx SkillModal.tsx">
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/c++Icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/certficate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/iosIcon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/toolsIcon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/getAboutMePage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/about-me/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Certificates.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/WhatsNext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ui/WhatsNextCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/types/pages-enum.types.ts" afterDir="false" />
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="Refactoring">
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/vCard.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/contact.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/sendContactMessage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/contact/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/contact/contact.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/contact/contact.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_11_2025,_11_32_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_11_2025__11_32__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/project-carousel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/project-carousel.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectsPreview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectsPreview.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Title.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Title.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +49,7 @@
     &quot;assignee&quot;: &quot;Kotyarya&quot;
   }
 }</component>
-  <component name="GitHubPullRequestState"><![CDATA[{}]]></component>
+  <component name="GitHubPullRequestState">{}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Kotyarya/Portfolio.git&quot;,
@@ -91,7 +88,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "Create-WhatsNext-and-My-Certificates-Blocks-and-AboutMe-Page",
+    "git-widget-placeholder": "Create-Contact-Me-Page-with-Contact-Form",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
@@ -226,7 +223,8 @@
       <workItem from="1761677591227" duration="1728000" />
       <workItem from="1762071783191" duration="20998000" />
       <workItem from="1762345102530" duration="13103000" />
-      <workItem from="1763640019439" duration="14243000" />
+      <workItem from="1763640019439" duration="14361000" />
+      <workItem from="1763811455015" duration="11048000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -308,7 +306,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763599332045</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Create WhatsNext.tsx Certificates.tsx and AboutMe Page">
+      <option name="closed" value="true" />
+      <created>1763762088625</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1763762088625</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1763762114014</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1763762114014</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,6 +347,8 @@
     <MESSAGE value="create ContactMe.tsx" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="Create Skills.tsx SkillModal.tsx" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Skills.tsx SkillModal.tsx" />
+    <MESSAGE value="Create WhatsNext.tsx Certificates.tsx and AboutMe Page" />
+    <MESSAGE value="Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>
 </project>

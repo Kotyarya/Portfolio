@@ -27,6 +27,10 @@ mark {
     color: #AD9255;
 }
 
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
 @keyframes scroll-up {
     0% {
         transform: translateY(0);
