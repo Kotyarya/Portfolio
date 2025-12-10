@@ -2,14 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../assets/shared/logo.svg';
+import Button from "@/ui/Button";
 
 const Header = () => {
     return (
         <header className="w-full flex justify-center sticky top-10 z-999 animate-slide-in-top">
             <div
-                className="w-auto h-auto p-4 bg-[url('../assets/header/boldBorderHeader.svg')] bg-no-repeat bg-contain bg-center relative"
+                className="w-auto h-auto p-5 bg-[url('../assets/header/boldBorderHeader.svg')] bg-no-repeat bg-contain bg-center relative"
             >
-                <div className="relative backdrop-blur-[8px] rounded-[26px]">
+                <div className="relative bg-[rgba(0,0,0,0)] backdrop-blur-[8px] rounded-[26px] p-2">
                     <div className="flex items-center gap-11 px-15 py-3 w-fit relative z-50 ">
                         <Link href="/" className="mr-12 shrink-0">
                             <Image src={logo} alt="logo" width={46} priority/>
@@ -22,6 +23,7 @@ const Header = () => {
                                 <li><Link href="/contact">Contact</Link></li>
                             </ul>
                         </nav>
+                        <Button text={"Download CV"} size={'medium'}/>
                     </div>
                 </div>
 

@@ -5,18 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="Refactoring">
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/vCard.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/actions/contact.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/sendContactMessage.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/contact/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Contact.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/contact/contact.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/contact/contact.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_11_2025,_11_32_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_11_2025__11_32__Changes_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/algorithmsSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/cicdSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/csharpSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/cssSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/figmaSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/gitSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/githubSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/githubactionsSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/htmlSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/javaSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/javascriptSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/mongodbSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/nestjsSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/nextjsSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/nodejsSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/postgresqlSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/postmanSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/prismaSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/reactSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/restapiSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/sassSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/scrumSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/seoSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/sqlSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/swiftSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/tailwindSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/typescriptSkill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/ue5Skill.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/uxuiSkill.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/static/gitHubSkill.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Skills.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Skills.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +113,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "Create-Contact-Me-Page-with-Contact-Form",
+    "git-widget-placeholder": "Create-Download-CV-button-in-Header",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
@@ -118,7 +143,7 @@
       <recent name="$PROJECT_DIR$/src/assets/header" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start:dev">
+  <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -224,7 +249,8 @@
       <workItem from="1762071783191" duration="20998000" />
       <workItem from="1762345102530" duration="13103000" />
       <workItem from="1763640019439" duration="14361000" />
-      <workItem from="1763811455015" duration="11048000" />
+      <workItem from="1763811455015" duration="14112000" />
+      <workItem from="1765395317610" duration="3662000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -322,7 +348,23 @@
       <option name="project" value="LOCAL" />
       <updated>1763762114014</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Create Contact.tsx">
+      <option name="closed" value="true" />
+      <created>1764068897438</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1764068897438</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refactoring">
+      <option name="closed" value="true" />
+      <created>1764068946989</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1764068946989</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +390,7 @@
     <MESSAGE value="refactoring" />
     <MESSAGE value="Create Skills.tsx SkillModal.tsx" />
     <MESSAGE value="Create WhatsNext.tsx Certificates.tsx and AboutMe Page" />
+    <MESSAGE value="Create Contact.tsx" />
     <MESSAGE value="Refactoring" />
     <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
   </component>

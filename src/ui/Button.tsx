@@ -3,7 +3,7 @@ import React from 'react';
 interface ButtonProps {
     onClick?: () => void;
     text: string;
-    size: 'small' | 'large';
+    size: 'small' | 'large' | 'medium';
     children?: React.ReactNode;
 }
 
@@ -11,9 +11,11 @@ const Button = ({size, onClick, text, children}: ButtonProps) => {
 
     const textStyle = size === 'small'
         ? 'text-[12px] leading-[36px]'
-        : 'text-[20px] leading-[48px]';
+        : size === 'medium'
+            ? 'text-[18px] leading-[46px]'
+            : 'text-[20px] leading-[48px]';
 
-    const buttonPadding = children ? "px-4" : size === 'small' ? 'px-6' : 'px-17.5';
+    const buttonPadding = children ? "px-4" : size === 'large' ? 'px-17.5' : 'px-6';
 
     const isHoverable = children ? "" : "group";
 

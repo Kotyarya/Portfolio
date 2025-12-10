@@ -11,7 +11,8 @@ const SkillBlock = ({skill}: SkillBlockProps) => {
     return (
         <div className="bg-gold-gradient flex items-center justify-center p-1 w-fit">
             <div className="w-[204px] h-[204px] bg-black-400 flex items-center justify-center">
-                <Image src={"http://localhost:4000/media/" + skill.img} alt={skill.name} width={116} height={116}/>
+                <Image src={"http://localhost:4000/media/" + skill.img} alt={skill.name} height={116} width={116}
+                       className='h-auto w-auto !max-w-31.5'/>
             </div>
         </div>
     );
