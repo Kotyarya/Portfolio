@@ -79,7 +79,8 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
                 </div>
                 <div className="flex flex-col items-center w-full">
                     {chunks.map((chunk, chunkIndex) => (
-                        <div className="relative w-[1255px] h-215" key={chunkIndex}>
+                        <div className={"relative w-[1255px] " + (chunk.length < 7 ? "h-100" : "h-215")}
+                             key={chunkIndex}>
                             {
                                 chunk.map((skill, index) => {
                                     const pattern = SKILLS_PATTERN[index];

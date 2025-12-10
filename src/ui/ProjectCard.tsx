@@ -12,7 +12,6 @@ interface ProjectCardProps {
 
 const ProjectCard = ({project, onClick}: ProjectCardProps) => {
 
-    const skillsArray = ["JavaScript", "React", "Node.js", "CSS", "HTML"]; // Example skills array
 
     return (
         <div className='bg-gold-gradient p-[5px] rounded-[6px]'>
@@ -27,9 +26,9 @@ const ProjectCard = ({project, onClick}: ProjectCardProps) => {
                     <p className="relative block w-[304px] h-[42px] overflow-hidden font-lato text-gold-800 text-4xs mb-8 before:content-[''] before:absolute before:inset-0 before:shadow-[inset_-7px_0_7.5px_0px_rgba(20,20,20,1)] before:pointer-events-none before:z-10 before:h-4 before:top-6">{project.text}</p>
                     <p className="font-lora text-gold-700 text-4xs mb-2.5">Tech Stacks :</p>
                     <div className="flex w-56 h-16 flex-wrap gap-2 overflow-hidden mb-5">
-                        {skillsArray.map((skill, i) => {
+                        {project.skills.map((skill, i) => {
                             return (
-                                <ProjectTagBlock name={skill} key={i}/>
+                                <ProjectTagBlock name={skill.name} key={i}/>
                             );
                         })}
                     </div>

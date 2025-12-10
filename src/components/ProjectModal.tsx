@@ -16,8 +16,6 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
     const {text, category, status, img, name, githubLink, skills, link} = activeProject || {};
 
-    const tempSkills = ["React", "TypeScript", "Next.js", "Tailwind CSS", "Next.js"];
-
     return (
         <>
             <div className="absolute w-full h-full bg-black opacity-80 z-999 top-0">
@@ -30,9 +28,9 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                         <h2 className="font-cinzel text-xl text-gold-primary font-bold">{name}</h2>
                         <p className="font-lora text-3xs text-white">{text}</p>
                         <p className="font-lora text-sm text-gold-700">Tech Stacks :</p>
-                        <div className="flex flex-wrap gap-3">
-                            {tempSkills?.map((skill, index) => (
-                                <ProjectTagBlock name={skill} key={index} isLarge={true}/>
+                        <div className="flex flex-wrap gap-3 h-23.5 overflow-hidden">
+                            {activeProject?.skills.map((skill, index) => (
+                                <ProjectTagBlock name={skill.name} key={index} isLarge={true}/>
                             ))}
                         </div>
                         <div className="flex gap-4">
