@@ -6,7 +6,7 @@ import ProjectCard from "@/ui/ProjectCard";
 import ProjectsFilters, {type FilterOptions} from "@/components/ProjectsFilter";
 import type {IProject} from "@/types/blocksDataTypes";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import ProjectModal from "@/components/ProjectModal";
+import ProjectModal from "@/components/ProjectModal/ProjectModal";
 
 interface ProjectsSectionProps {
     projectsPreview: {

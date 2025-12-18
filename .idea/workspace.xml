@@ -5,43 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="Refactoring">
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/algorithmsSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/cicdSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/csharpSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/cssSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/figmaSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/gitSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/githubSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/githubactionsSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/htmlSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/javaSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/javascriptSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/mongodbSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/nestjsSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/nextjsSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/nodejsSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/postgresqlSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/postmanSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/prismaSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/reactSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/restapiSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/sassSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/scrumSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/seoSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/sqlSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/swiftSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/tailwindSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/typescriptSkill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/ue5Skill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/uxuiSkill.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/static/gitHubSkill.svg" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Agile Project Management.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Capstone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Foundations of Project Management.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Google-Project-Management.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Project Execution.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Project Initiation.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/csPreview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/dapogsPreview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/gcapPreview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/macncPreview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/mwfIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/portfolioBackPreview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/portfolioPreview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Portfolio-Server/static/sbPreview.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/projects/projects.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/projects/projects.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/types/project-data.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/types/project-data.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/static/certficate.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/static/Project Planning.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Skills.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Skills.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/getProjects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getProjects.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SkillModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/blocksDataTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/blocksDataTypes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +102,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "Create-Download-CV-button-in-Header",
+    "git-widget-placeholder": "main",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
@@ -137,10 +126,10 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../Portfolio-Server/static" />
+      <recent name="$PROJECT_DIR$/src/components/ProjectModal" />
       <recent name="$PROJECT_DIR$/src/app/projects" />
       <recent name="$PROJECT_DIR$/src/assets/shared" />
       <recent name="$PROJECT_DIR$/src/components/ProjectCarousel" />
-      <recent name="$PROJECT_DIR$/src/assets/header" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">

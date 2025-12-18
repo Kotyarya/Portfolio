@@ -21,7 +21,7 @@ const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
                 <div className="bg-black flex flex-col items-center w-163 p-16 gap-5">
                     <Image src={"http://localhost:4000/media/" + img} alt={"ProjectImg"} width={128} height={128}
                            className="w-32 h-32"/>
-                    <h2 className="text-xl font-cinzel text-gold-primary font-bold">{name}</h2>
+                    <h2 className="text-xl font-cinzel text-center text-gold-primary font-bold">{name}</h2>
                     <p className="font-lora text-3xs text-white text-center">{text}</p>
                     <p className="font-lora text-base text-gold-primary text-center">See where I used it.</p>
                     <Button text={"View Projects"} size={'large'}/>

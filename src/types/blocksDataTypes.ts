@@ -43,7 +43,8 @@ interface IProject {
     link: string,
     text: string,
     importance: number,
-    img: string,
+    preview: string,
+    img: string[],
     skills: {
         name: string;
         importance: number;

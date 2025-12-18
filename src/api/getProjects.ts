@@ -12,8 +12,10 @@ type ProjectStatus = { name: string };
 const getProjectCached = unstable_cache(
     async (category: string, skills: string[], status: string, search: string) => {
         const skillsParam = skills.length
-            ? `&skills=${skills.join("&skills=")}&skills=`
+            ? `&skills=${skills.map(skill => encodeURIComponent(skill)).join("&skills=")}&skills=`
             : "";
+
+        console.log(skillsParam);
 
         const projects = await baseAPI
             .get<IApiResponse<IProject[]>>(
@@ -84,7 +86,7 @@ const getProjectsFilterParamCached = unstable_cache(
     },
     ['projects-filters'],
     {
-        revalidate: 3600,     // раз в час
+        revalidate: 5,     // раз в час
         tags: ['projects-filters'],
     }
 );

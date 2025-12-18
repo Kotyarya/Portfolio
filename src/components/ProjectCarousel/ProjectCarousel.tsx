@@ -11,6 +11,7 @@ import type {IProject} from "@/types/blocksDataTypes";
 import ProjectCard from "@/ui/ProjectCard";
 import {uid} from "uid";
 import Image from "next/image";
+import {useRouter} from "next/navigation";
 
 type Props = {
     items: IProject[] | string[];
@@ -23,20 +24,13 @@ export default function Carousel({
                                  }: Props) {
     const prevRef = useRef<HTMLButtonElement | null>(null);
     const nextRef = useRef<HTMLButtonElement | null>(null);
-    let projects: IProject[] = [];
-    let displayedProjects: IProject[] = [];
-    let certificates: string[] = [];
-    if (type === "projects") {
-        projects = items as IProject[];
-        displayedProjects = [
-            ...projects.slice(0, 3),
-            ...projects.slice(0, 3),
-        ];
-    } else {
-        certificates = items as string[];
-    }
 
     const spaceBetween = type === "projects" ? -26 : -286;
+    const router = useRouter();
+
+    const goToProject = (projectId: number) => {
+        router.push(`/projects?projectId=${projectId}`);
+    }
 
     return (
         <div className="flex flex-col items-center">
@@ -89,19 +83,17 @@ export default function Carousel({
                 >
                     {
                         type === "projects"
-                            ? displayedProjects.map((p) => (
+                            ? (items as IProject[]).map((p) => (
                                 <SwiperSlide key={p.id + uid(10)} className={styles.slide}>
-                                    <ProjectCard project={p}/>
+                                    <ProjectCard project={p} onClick={() => goToProject(p.id)}/>
                                 </SwiperSlide>
                             ))
-                            : certificates
-                                ? certificates.map((p, index) => (
-                                    <SwiperSlide className={styles.slide} key={index}>
-                                        <Image src={"http://localhost:4000/media/" + p} alt={"Certificate"} width={600}
-                                               height={464}/>
-                                    </SwiperSlide>
-                                ))
-                                : null
+                            : (items as string[]).map((p, index) => (
+                                <SwiperSlide className={styles.slide} key={index}>
+                                    <Image src={"http://localhost:4000/media/" + p} alt={"Certificate"} width={600}
+                                           height={464}/>
+                                </SwiperSlide>
+                            ))
                     }
                 </Swiper>
             </div>
