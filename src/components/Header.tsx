@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,7 +24,8 @@ const Header = () => {
                                 <li><Link href="/contact">Contact</Link></li>
                             </ul>
                         </nav>
-                        <Button text={"Download CV"} size={'medium'}/>
+                        <Button text={"Download CV"} size={'medium'}
+                                onClick={() => window.open("https://drive.google.com/file/d/1bPN_AVJLIXBwkJOPsgCQqzJcUHecONYX/view?usp=share_link", "_blank", "noopener,noreferrer")}/>
                     </div>
                 </div>
 

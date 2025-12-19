@@ -10,7 +10,7 @@ interface ProjectsSearchParams {
     category?: string;
     status?: string;
     stacks?: string | string[];
-    projectId?: number;
+    projectId?: string;
 }
 
 
@@ -19,7 +19,10 @@ export default async function Page({searchParams}: { searchParams: ProjectsSearc
     const params = await searchParams
     const {skills, skillsPreview, projectsPreview, contactMe} = await getProjectsPage();
     const filterOptions = await getProjectsFilterParam();
-    const {q = "", category = "", status = "", projectId} = params;
+    const rawProjectId = params.projectId;
+    const projectId = rawProjectId ? Number(rawProjectId) : undefined;
+    const validProjectId = Number.isFinite(projectId) ? projectId : undefined;
+    const {q = "", category = "", status = ""} = params;
 
     const stacks = Array.isArray(params.stacks)
         ? params.stacks
@@ -28,8 +31,8 @@ export default async function Page({searchParams}: { searchParams: ProjectsSearc
     const projects = await getProject(category, stacks, status, q);
 
     let project;
-    if (projectId) {
-        project = await getProjectById(projectId);
+    if (validProjectId) {
+        project = await getProjectById(validProjectId);
     } else {
         project = undefined;
     }
@@ -40,7 +43,7 @@ export default async function Page({searchParams}: { searchParams: ProjectsSearc
 
             <Projects projectsPreview={projectsPreview}
                       filterOptions={filterOptions} projects={projects}
-                      searchParams={{q, category, status, stacks, projectId}} activeProject={project}/>
+                      searchParams={{q, category, status, stacks, projectId: validProjectId}} activeProject={project}/>
             <SkillsPreview skills={skills} skillsPreview={skillsPreview}/>
             <ContactMe contactMe={contactMe}/>
         </>

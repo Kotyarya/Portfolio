@@ -8,7 +8,6 @@ interface CertificatesProps {
 }
 
 const Certificates = ({certificates}: CertificatesProps) => {
-    console.log(certificates.certificatesImgList);
 
     return (
         <div className="flex flex-col items-center justify-center w-full">

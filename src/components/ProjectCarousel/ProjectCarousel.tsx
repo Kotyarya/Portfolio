@@ -65,6 +65,7 @@ export default function Carousel({
                     centeredSlides
                     slidesPerView={3}
                     spaceBetween={spaceBetween}
+                    initialSlide={1}
                     loop={true}
                     loopAdditionalSlides={0}
                     watchOverflow={false}

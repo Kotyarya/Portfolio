@@ -17,7 +17,7 @@ const Footer = () => {
                 <ul className="text-xs font-lato text-gold-200 flex gap-6">
                     <li><Link href="/about-me">About Me</Link></li>
                     <li><Link href="/skills">Tech Stacks</Link></li>
-                    <li><Link href="/projects/Page">Projects</Link></li>
+                    <li><Link href="/projects">Projects</Link></li>
                     <li><Link href="/contact">Contact</Link></li>
                 </ul>
             </nav>
