@@ -1,8 +1,10 @@
+"use client";
 import React from 'react';
 import type {ISkill} from "@/types/blocksDataTypes";
 import Image from "next/image";
 import {X} from "lucide-react";
 import Button from "@/ui/Button";
+import {useRouter} from "next/navigation";
 
 interface SkillModalProps {
     activeSkill?: ISkill,
@@ -12,6 +14,8 @@ interface SkillModalProps {
 const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
 
     const {name, img, text} = activeSkill || {};
+
+    const router = useRouter();
 
     return (
         <div>
@@ -24,7 +28,8 @@ const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
                     <h2 className="text-xl font-cinzel text-center text-gold-primary font-bold">{name}</h2>
                     <p className="font-lora text-3xs text-white text-center">{text}</p>
                     <p className="font-lora text-base text-gold-primary text-center">See where I used it.</p>
-                    <Button text={"View Projects"} size={'large'}/>
+                    <Button text={"View Projects"} size={'large'}
+                            onClick={() => router.push(`/projects?stacks=${encodeURIComponent(activeSkill?.name || "")}`)}/>
                     <button
                         className='w-fit h-fit flex items-center justify-center text-gold-primary cursor-pointer absolute top-4.5 right-4.5'
                         onClick={closeModal}>

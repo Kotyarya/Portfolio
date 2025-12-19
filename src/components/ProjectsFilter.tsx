@@ -2,7 +2,7 @@
 
 import React from "react";
 import Select, {type ActionMeta, type MultiValue, type SingleValue, type StylesConfig} from "react-select";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {X} from "lucide-react";
 
 type Option = { label: string; value: string };
@@ -46,9 +46,17 @@ export default function ProjectsFilters({
     } : null);
     const [stacks, setStacks] = React.useState<Option[]>(initialStacks.map((s) => ({label: s, value: s})));
 
+    const urlSearchParams = useSearchParams();
+
     React.useEffect(() => {
         const t = setTimeout(() => {
-            const params = new URLSearchParams();
+            const params = new URLSearchParams(urlSearchParams.toString()); // ✅ сохраняем projectId
+
+            // сначала чистим только фильтровые ключи (чтобы удалялись когда пусто)
+            params.delete("q");
+            params.delete("category");
+            params.delete("status");
+            params.delete("stacks");
 
             if (query) params.set("q", query);
             if (category?.value) params.set("category", category.value);
@@ -56,11 +64,11 @@ export default function ProjectsFilters({
             if (stacks.length) params.set("stacks", stacks.map(s => s.value).join(","));
 
             const qs = params.toString();
-            router.push(qs ? `${pathname}?${qs}` : pathname, {scroll: false});
+            router.replace(qs ? `${pathname}?${qs}` : pathname, {scroll: false}); // replace лучше чем push
         }, 400);
 
         return () => clearTimeout(t);
-    }, [query, category, status, stacks, pathname, router]);
+    }, [query, category, status, stacks, pathname, router, urlSearchParams]);
 
     const onCategory = (v: SingleValue<Option>) => {
         setCategory(v ?? null);

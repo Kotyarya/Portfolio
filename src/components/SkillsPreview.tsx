@@ -5,6 +5,7 @@ import type {IBlock, ISkill} from "@/types/blocksDataTypes";
 import ColumnScroller from "@/components/ColumnScroller";
 import Title from '@/ui/Title';
 import Button from "@/ui/Button";
+import {useRouter} from "next/navigation";
 
 interface SkillsPreviewProps {
     skills: ISkill[];
@@ -44,12 +45,12 @@ const SkillsPreview = ({skills, skillsPreview}: SkillsPreviewProps) => {
         return cols;
     }, [skills, colsCount]);
 
-
+    const router = useRouter();
     return (
         <div className="flex flex-col items-center">
             <Title title={title} subtitle={subtitle} position={"center"}/>
             <p className="w-[840px] text-white text-sm font-lora text-center mb-14">{text}</p>
-            <Button text="View More" size="large"/>
+            <Button text="View More" size="large" onClick={() => router.push('/skills')}/>
             <div
                 className="flex justify-center bg-black-300 w-[100%] mt-14"
                 style={{
