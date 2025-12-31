@@ -26,7 +26,7 @@ const getProjectCached = unstable_cache(
     },
     ['projects-list'],
     {
-        revalidate: 60,
+        revalidate: 5,
         tags: ['projects'],
     }
 );
@@ -101,7 +101,7 @@ const getProjectByIdCached = unstable_cache(
     },
     ['project-by-id'],
     {
-        revalidate: 60,
+        revalidate: 5,
         tags: ['projects'],
     }
 );

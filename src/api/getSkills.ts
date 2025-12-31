@@ -12,7 +12,7 @@ const getSkillByIdCached = unstable_cache(
     },
     ['skill-by-id'],
     {
-        revalidate: 60,
+        revalidate: 5,
         tags: ['skill'],
     }
 );
