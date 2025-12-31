@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getProjects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getProjects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getSkills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getSkills.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SkillsPreview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillsPreview.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,7 +222,7 @@
       <workItem from="1766163216551" duration="5033000" />
       <workItem from="1766499716857" duration="53545000" />
       <workItem from="1767043536275" duration="30043000" />
-      <workItem from="1767146858224" duration="911000" />
+      <workItem from="1767146858224" duration="1534000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -382,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767146884001</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="refactoring">
+      <option name="closed" value="true" />
+      <created>1767147937175</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1767147937175</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

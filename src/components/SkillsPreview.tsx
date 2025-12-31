@@ -45,7 +45,7 @@ const SkillsPreview = ({skills, skillsPreview}: SkillsPreviewProps) => {
 
         skills.forEach((skill, index) => {
             const colIndex = index % colsCount;
-            // @ts-ignore
+            // @ts-expect-error TS2345
             cols[colIndex].push(skill);
         });
 

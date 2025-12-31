@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             {
                 protocol: 'http',
-                hostname: 'localhost',
-                port: '4000',
+                hostname: 'portfolio-server-0e3k.onrender.com',
+                port: '10000',
                 pathname: '/media/**',
             },
             {
@@ -17,9 +17,6 @@ const nextConfig: NextConfig = {
             }
         ]
     },
-    devServer: {
-        allowedDevOrigins: ['http://localhost:3000', "http:192.168.100.62:3000"],
-    }
 }
 
 export default nextConfig;

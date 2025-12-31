@@ -18,7 +18,7 @@ interface ProjectModalProps {
 
 const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
-    const {text, category, status, img, name, githubLink, skills, link, preview} = activeProject || {};
+    const {text, img, name, preview} = activeProject || {};
 
     return (
         <>

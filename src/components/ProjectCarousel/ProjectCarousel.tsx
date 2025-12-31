@@ -44,6 +44,7 @@ export default function Carousel({
         handleResize()
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const router = useRouter();
@@ -95,9 +96,9 @@ export default function Carousel({
                     autoplay={false}
                     pagination={{el: `.${styles.dots}`, clickable: false}}
                     onSwiper={(swiper) => {
-                        // @ts-ignore
+                        //@ts-expect-error // override navigation elements
                         swiper.params.navigation.prevEl = prevRef.current!;
-                        // @ts-ignore
+                        // @ts-expect-error // override navigation elements
                         swiper.params.navigation.nextEl = nextRef.current!;
                         swiper.navigation.init();
                         swiper.navigation.update();
