@@ -3,6 +3,7 @@ import Projects from "@/components/Projects";
 import SkillsPreview from "@/components/SkillsPreview";
 import ContactMe from "@/components/ContactMe";
 import {getProject, getProjectById, getProjectsFilterParam} from "@/api/getProjects";
+import type {Metadata} from "next";
 
 
 interface ProjectsSearchParams {
@@ -13,6 +14,12 @@ interface ProjectsSearchParams {
     projectId?: string;
 }
 
+
+export const metadata: Metadata = {
+    title: "Projects — Maksym Aksamitnyi",
+    description:
+        "Projects and works by Maksym Aksamitnyi. Personal, academic and commercial development projects.",
+};
 
 export default async function Page({searchParams}: { searchParams: ProjectsSearchParams }) {
 

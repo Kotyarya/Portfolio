@@ -5,6 +5,8 @@ import {useForm} from "react-hook-form";
 import type {ISendContactDto} from "@/api/sendContactMessage";
 import {contactAction} from "@/actions/contact";
 import Image from "next/image";
+import {useInView} from "@/hooks/useInView";
+import {getAnimation} from "@/utils/getAnimation";
 
 
 const Contact = () => {
@@ -28,14 +30,17 @@ const Contact = () => {
         }
     };
 
+    const {ref, isVisible} = useInView<HTMLDivElement>()
+
     return (
-        <div>
-            <div className="flex p-14.5 justify-between">
-                <div className="flex flex-col w-153">
-                    <h2 className="text-gold-primary text-6xl font-cinzel font-bold mb-8">
+        <div className="w-full" ref={ref}>
+            <div className="flex p-14.5 justify-between mt-20 wide:px-65 max-laptop:flex-col max-laptop:items-center">
+                <div
+                    className={"flex flex-col w-153 max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-left")}>
+                    <h2 className="text-gold-primary text-6xl max-ipad:text-4xl max-mobile:!text-xl font-cinzel font-bold mb-8 max-laptop:text-center">
                         Get in <span className="text-white">Touch</span> for Collaboration
                     </h2>
-                    <p className="text-white text-sm font-lora mb-16">
+                    <p className="text-white text-sm font-lora mb-16 max-laptop:hidden">
                         I’m open to freelance opportunities, long-term collaboration, or project-based work. Feel free
                         to send a message — I’ll get back to you as soon as possible.
                     </p>
@@ -43,7 +48,8 @@ const Contact = () => {
 
                     </div>
                 </div>
-                <div className="w-107 bg-black-200 px-8 py-13 rounded-[11px]">
+                <div
+                    className={"w-107 bg-black-200 px-8 py-13 rounded-[11px] max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-right")}>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col gap-6"
@@ -96,11 +102,13 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
-            <div className="bg-gold-gradient flex items-center justify-center p-11">
+            <div
+                className={"bg-gold-gradient flex items-center justify-center p-11 max-laptop:hidden " + getAnimation(isVisible, "animate-fade")}>
                 <div
                     className="bg-black-primary flex flex-col items-center py-10 px-19 gap-2 rounded-3xl w-fit h-fit">
                     <h2 className="text-3xl text-gold-primary font-cinzel font-bold">My vCard</h2>
-                    <Image src={"http://localhost:4000/media/vCard.svg"} alt={"vCard"} width={315} height={315}/>
+                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + "vCard.svg"} alt={"vCard"} width={315}
+                           height={315}/>
                 </div>
             </div>
         </div>

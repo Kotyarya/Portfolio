@@ -39,7 +39,7 @@ const ColumnScroller = ({skills, direction, delayOffsetSec}: ColumnScroller) => 
 
     return (
         <div
-            className="overflow-hidden relative"
+            className="overflow-hidden relative "
             style={{
                 height: VISIBLE_WINDOW_PX + 'px',
             }}

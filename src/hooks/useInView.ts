@@ -13,7 +13,7 @@ export function useInView<T extends HTMLElement>(
 
         const observer = new IntersectionObserver(
             ([entry]) => setIsVisible(entry.isIntersecting),
-            {threshold: 0.2, ...options}
+            {threshold: 0.01, ...options}
         );
 
         observer.observe(element);

@@ -20,7 +20,7 @@
     opacity: 1;
     filter: saturate(1) blur(0) !important;
     transform: scale(1) !important;
-    z-index: 2;
+    z-index: 3 !important;
 }
 
 /* Стрелки оставляем локальными */
@@ -76,13 +76,52 @@
 
 /* Позиции */
 .prev {
-    left: -70px;
+    left: 0;
     transform: translateY(-50%);
 }
 
 .next {
-    right: -70px;
+    right: 0;
     transform: translateY(-50%);
+}
+
+@media (max-width: 1193px) {
+    .prev,
+    .next {
+        display: none;
+    }
+}
+
+
+@media (min-width: 1194px) and (max-width: 1349px) {
+    .prev,
+    .next {
+        display: block;
+    }
+
+    .prev {
+        left: 0;
+    }
+
+    .next {
+        right: 0;
+    }
+}
+
+
+@media (min-width: 1350px) {
+    .prev,
+    .next {
+        display: block;
+    }
+
+    .prev {
+        left: -70px;
+    }
+
+    .next {
+        right: -70px;
+    }
 }
 
 /* Направления: контейнер НЕ вращаем, вращаем только svg */

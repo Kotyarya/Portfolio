@@ -4,19 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="Refactoring">
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="Button onClick Implemented">
+      <change afterPath="$PROJECT_DIR$/src/app/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/robots.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/hero/Ellipse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/hero/mobileHero.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Portfolio-Server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Portfolio-Server/src/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/getProjects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getProjects.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/about-me/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about-me/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/projects/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/projects/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/skills/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/skills/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/AboutMe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutMe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Certificates.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Certificates.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ColumnScroller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ColumnScroller.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contact.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contact.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ContactMe.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ContactMe.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hero.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/project-carousel.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/project-carousel.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ProjectsFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectsFilter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ProjectsPreview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectsPreview.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SkillModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Skills.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Skills.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SkillsPreview.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkillsPreview.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WhatsNext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WhatsNext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useInView.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useInView.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ProjectCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ProjectTagBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ProjectTagBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/SkillBlock.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Title.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Title.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/WhatsNextCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/WhatsNextCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +62,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/../Portfolio-Server" value="main" />
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Button-onClick-implements" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,41 +110,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "Button-onClick-implements",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "last_opened_file_path": "/Users/kotyarya/Dev/portfolio",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Run",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "npm.start.executor": "Run",
-    "npm.start:dev.executor": "Run",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "ts.external.directory.path": "/Users/kotyarya/Dev/portfolio/node_modules/typescript/lib",
-    "two.files.diff.last.used.folder": "/Users/kotyarya/Dev/Portfolio-Server"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kotyarya/Dev/portfolio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start:dev.executor&quot;: &quot;Run&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/kotyarya/Dev/portfolio/node_modules/typescript/lib&quot;,
+    &quot;two.files.diff.last.used.folder&quot;: &quot;/Users/kotyarya/Dev/Portfolio-Server&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app" />
+      <recent name="$PROJECT_DIR$/src/assets/hero" />
       <recent name="$PROJECT_DIR$/../Portfolio-Server/static" />
       <recent name="$PROJECT_DIR$/src/components/ProjectModal" />
       <recent name="$PROJECT_DIR$/src/app/projects" />
-      <recent name="$PROJECT_DIR$/src/assets/shared" />
-      <recent name="$PROJECT_DIR$/src/components/ProjectCarousel" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -226,7 +255,9 @@
       <workItem from="1763640019439" duration="14361000" />
       <workItem from="1763811455015" duration="14112000" />
       <workItem from="1765395317610" duration="3662000" />
-      <workItem from="1766163216551" duration="4719000" />
+      <workItem from="1766163216551" duration="5033000" />
+      <workItem from="1766499716857" duration="53545000" />
+      <workItem from="1767043536275" duration="29730000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -356,7 +387,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766070136525</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Button onClick Implemented">
+      <option name="closed" value="true" />
+      <created>1766183636649</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1766183636650</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +423,7 @@
     <MESSAGE value="Create WhatsNext.tsx Certificates.tsx and AboutMe Page" />
     <MESSAGE value="Create Contact.tsx" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="Button onClick Implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Button onClick Implemented" />
   </component>
 </project>

@@ -7,6 +7,8 @@ import ProjectsFilters, {type FilterOptions} from "@/components/ProjectsFilter";
 import type {IProject} from "@/types/blocksDataTypes";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import ProjectModal from "@/components/ProjectModal/ProjectModal";
+import {useInView} from "@/hooks/useInView";
+import {getAnimation} from "@/utils/getAnimation";
 
 interface ProjectsSectionProps {
     projectsPreview: {
@@ -49,6 +51,7 @@ export default function Projects({
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const [modalIsOpen, setModalIsOpen] = React.useState(false);
+    const {ref, isVisible} = useInView<HTMLDivElement>();
 
 
     React.useEffect(() => {
@@ -74,19 +77,25 @@ export default function Projects({
                     <ProjectModal activeProject={activeProject} closeModal={closeModal}/>
                 )
             }
-            <div className="flex flex-col items-center justify-center w-full">
-                <Title title={projectsPreview.title} subtitle={projectsPreview.subtitle} position="center"/>
-                <p className="max-w-[840px] text-white/90 text-sm font-lora text-center mb-10">{projectsPreview.text}</p>
-
-                <ProjectsFilters
-                    initialQuery={q}
-                    initialCategory={category}
-                    initialStatus={status}
-                    initialStacks={stacks}
-                    filterOptions={filterOptions}
-                />
-
-                <div className="grid grid-cols-[repeat(3,max-content)] gap-8 justify-center mt-10">
+            <div className="flex flex-col items-center justify-center w-full mt-20" ref={ref}>
+                <div
+                    className={"flex flex-col items-center justify-center " + getAnimation(isVisible, "animate-slide-in-bottom")}>
+                    <Title title={projectsPreview.title} subtitle={projectsPreview.subtitle} position="center"/>
+                    <p className="w-[90vw] text-2xs mobile:w-[530px] ipad:w-[693px] laptop:max-w-[840px] laptop:text-sm text-white font-lora text-center mb-10">{projectsPreview.text}</p>
+                </div>
+                <div className="z-10 max-ipad:hidden">
+                    <div className={getAnimation(isVisible, "animate-slide-in-bottom")}>
+                        <ProjectsFilters
+                            initialQuery={q}
+                            initialCategory={category}
+                            initialStatus={status}
+                            initialStacks={stacks}
+                            filterOptions={filterOptions}
+                        />
+                    </div>
+                </div>
+                <div
+                    className={"grid grid-cols-[repeat(3,max-content)] max-desk:grid-cols-[repeat(2,max-content)] max-ipad:!grid-cols-[repeat(1,max-content)] gap-8 max-ipad:!gap-10 max-laptop:gap-4 justify-center mt-10 " + getAnimation(isVisible, "animate-fade")}>
                     {projects.map((item: IProject) => (
                         <ProjectCard key={item.id} project={item} onClick={() => openModal(item.id)}/>
                     ))}

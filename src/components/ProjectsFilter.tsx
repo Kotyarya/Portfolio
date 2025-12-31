@@ -116,7 +116,7 @@ export default function ProjectsFilters({
         <div className="w-full flex items-center justify-center gap-6">
             {/* Category */}
             <div className="flex items-center gap-4.5">
-                <p className="text-gold-primary font-taviraj text-base">Category</p>
+                <p className="text-gold-primary font-taviraj text-base ">Category</p>
                 <Select<Option, false>
                     instanceId="proj-cat"
                     options={catOptions}
@@ -124,7 +124,7 @@ export default function ProjectsFilters({
                     onChange={onCategory}
                     placeholder="Category"
                     isClearable
-                    className="w-[170px] z-40 font-lato text-3xs"
+                    className="w-[170px] z-40 font-lato text-3xs "
                     classNamePrefix="rs"
                     styles={darkSelectStyles}
                 />
@@ -132,7 +132,7 @@ export default function ProjectsFilters({
 
             {/* Tech stacks (multi) */}
             <div className="flex items-center gap-4.5">
-                <p className="text-gold-primary font-taviraj text-base">Tech Stacks</p>
+                <p className="text-gold-primary font-taviraj text-base ">Tech Stacks</p>
                 <Select<Option, true>
                     instanceId="proj-stacks"
                     options={skillOptions}
@@ -148,8 +148,8 @@ export default function ProjectsFilters({
             </div>
 
             {/* Status */}
-            <div className="flex items-center gap-4.5">
-                <p className="text-gold-primary font-taviraj text-base">Status</p>
+            <div className="flex items-center gap-4.5 max-laptop:hidden">
+                <p className="text-gold-primary font-taviraj text-base ">Status</p>
                 <Select<Option, false>
                     instanceId="proj-status"
                     options={statusOptions}
@@ -164,7 +164,7 @@ export default function ProjectsFilters({
             </div>
 
             {/* Search */}
-            <div className="w-50">
+            <div className="w-50 max-desk:hidden">
                 <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}

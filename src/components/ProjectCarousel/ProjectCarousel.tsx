@@ -1,5 +1,5 @@
 "use client";
-import React, {useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, EffectCoverflow, Keyboard, Navigation, Pagination} from "swiper/modules";
 import "swiper/css";
@@ -18,14 +18,34 @@ type Props = {
     type: "projects" | "certificates";
 };
 
+const getSpaceBetween = (type: string, width: number) => {
+    if (type === "projects") {
+        if (width <= 1207) return -188.5
+        else return -26;
+    } else {
+        if (width <= 1207) return -386
+        return -286;
+    }
+}
+
 export default function Carousel({
                                      items,
                                      type
                                  }: Props) {
     const prevRef = useRef<HTMLButtonElement | null>(null);
     const nextRef = useRef<HTMLButtonElement | null>(null);
+    const [spaceBetween, setSpaceBetween] = useState<number>(getSpaceBetween(type, 0));
 
-    const spaceBetween = type === "projects" ? -26 : -286;
+    useEffect(() => {
+        const handleResize = () => {
+            setSpaceBetween(getSpaceBetween(type, window.innerWidth));
+        };
+
+        handleResize()
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const router = useRouter();
 
     const goToProject = (projectId: number) => {
@@ -34,8 +54,9 @@ export default function Carousel({
 
     return (
         <div className="flex flex-col items-center">
-            <div className={`${styles.wrap} relative px-[72px] pt-[56px] pb-[88px] w-[1124px]`}
-                 aria-roledescription="carousel">
+            <div
+                className={`${styles.wrap} relative px-[72px] max-mobile:px-0 pt-[56px] pb-[88px] w-[1124px] max-laptop:w-200`}
+                aria-roledescription="carousel">
                 <button ref={prevRef} className={`${styles.arrow} ${styles.prev}`} aria-label="Previous slide">
                     <svg width="50" height="47" viewBox="0 0 50 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path

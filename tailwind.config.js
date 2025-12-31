@@ -97,10 +97,25 @@ module.exports = {
                 'slide-in-left': 'slide-in-left 1s ease-out both',
                 'slide-in-top': 'slide-in-top 1s ease-out both',
                 'slide-in-bottom': 'slide-in-bottom 1s ease-out both',
-                'fade': 'fade 1s ease-out both',
+                'fade': 'fade 2s ease-out both',
                 'scale-in': 'scale-in 0.5s ease-out both',
                 'float': 'float 3s ease-in-out infinite',
             }
+        },
+        screens: {
+            "max-mobile": {max: "583px"},
+            mobile: "584px",
+
+            "max-ipad": {max: "833px"},
+            ipad: "834px",
+
+            "max-laptop": {max: "1193px"},
+            laptop: "1194px",
+
+            "max-desk": {max: "1349px"},
+            desk: "1350px",
+
+            wide: "1920px",
         }
     },
     plugins: [],

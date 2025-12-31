@@ -1,7 +1,13 @@
 import Contact from "@/components/Contact";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    title: "Contact Me — Maksym Aksamitnyi",
+    description:
+        "Contact Maksym Aksamitnyi for collaboration, freelance work or job opportunities.",
+};
 
 export default async function Page() {
-
 
     return (
         <>

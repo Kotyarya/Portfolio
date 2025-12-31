@@ -7,7 +7,6 @@ type ProjectSkill = { name: string; importance: number };
 type ProjectCategory = { name: string };
 type ProjectStatus = { name: string };
 
-// ==== 1) ВНУТРЕННЯЯ кешируемая версия getProject ====
 
 const getProjectCached = unstable_cache(
     async (category: string, skills: string[], status: string, search: string) => {
@@ -27,12 +26,11 @@ const getProjectCached = unstable_cache(
     },
     ['projects-list'],
     {
-        revalidate: 60,       // ICR: обновление раз в 60 сек
+        revalidate: 60,
         tags: ['projects'],
     }
 );
 
-// ==== 1) ПУБЛИЧНАЯ функция getProject (имя не меняем) ====
 
 export const getProject = async (
     category: string,
@@ -43,7 +41,6 @@ export const getProject = async (
     const hasSearch = search.trim().length > 0;
 
     if (hasSearch) {
-        // ❌ Поиск — без кэша, прямой запрос
         const skillsParam = skills.length
             ? `&skills=${skills.join("&skills=")}&skills=`
             : "";
@@ -57,12 +54,10 @@ export const getProject = async (
         return projects.data;
     }
 
-    // ✅ Без поиска — используем ICR-кеш
+
     return getProjectCached(category, skills, status, search);
 };
 
-
-// ==== 2) Фильтры (можно кешировать подольше) ====
 
 const getProjectsFilterParamCached = unstable_cache(
     async () => {
@@ -95,8 +90,6 @@ export const getProjectsFilterParam = async () => {
     return getProjectsFilterParamCached();
 };
 
-
-// ==== 3) Проект по id (тоже через ICR) ====
 
 const getProjectByIdCached = unstable_cache(
     async (id: number) => {

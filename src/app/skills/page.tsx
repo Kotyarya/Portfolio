@@ -3,11 +3,18 @@ import ProjectsPreview from "@/components/ProjectsPreview";
 import ContactMe from "@/components/ContactMe";
 import Skills from "@/components/Skills";
 import {getSkillById} from "@/api/getSkills";
+import type {Metadata} from "next";
 
 
 interface SkillsSearchParams {
     skillId?: number;
 }
+
+export const metadata: Metadata = {
+    title: "Skills — Maksym Aksamitnyi",
+    description:
+        "Technical skills of Maksym Aksamitnyi, including web development, frontend and backend technologies.",
+};
 
 export default async function Page({searchParams}: { searchParams: SkillsSearchParams }) {
 

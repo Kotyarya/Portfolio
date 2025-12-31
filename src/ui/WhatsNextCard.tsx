@@ -9,13 +9,15 @@ interface WhatsNextCardProps {
 
 const WhatsNextCard = ({whatsNextElement}: WhatsNextCardProps) => {
     return (
-        <div className="flex flex-col items-center bg-black-400 w-107 rounded-[8px]">
+        <div
+            className="flex flex-col items-center bg-black-400 w-107 h-161 max-mobile:w-80 max-mobile:h-auto rounded-[8px]">
             <div className="flex flex-col items-center gap-15 pt-19 pb-6.5">
-                <Image src={"http://localhost:4000/media/" + whatsNextElement.imgId} alt={whatsNextElement.title}
+                <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + whatsNextElement.imgId}
+                       alt={whatsNextElement.title}
                        width={261} height={127} className="w-auto h-32"/>
                 <h2 className="text-gold-primary text-xl font-cinzel text-center font-bold">{whatsNextElement.title}</h2>
             </div>
-            <div className="w-full flex flex-col gap-4.25 bg-black-primary p-10 rounded-b-[8px]">
+            <div className="w-full h-full flex flex-col gap-4.25 bg-black-primary p-10 max-mobile:p-6 rounded-b-[8px]">
                 {
                     whatsNextElement.subtasksList.map((subtask, index) => (
                         <div key={index} className="flex items-center gap-3.5">
