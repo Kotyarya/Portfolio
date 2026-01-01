@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="hotfix/Certificates Images">
-      <change afterPath="$PROJECT_DIR$/src/app/api/revalidate/route.ts" afterDir="false" />
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="feature/Revalidate API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getAboutMePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getAboutMePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getHomePage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getHomePage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getProjects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getProjects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getProjectsPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getProjectsPage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getSkills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getSkills.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/getSkillsPage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/getSkillsPage.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectModal/ProjectModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +233,7 @@
       <workItem from="1766163216551" duration="5033000" />
       <workItem from="1766499716857" duration="53545000" />
       <workItem from="1767043536275" duration="30043000" />
-      <workItem from="1767146858224" duration="11932000" />
+      <workItem from="1767146858224" duration="12296000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -466,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767287994296</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="feature/Revalidate API">
+      <option name="closed" value="true" />
+      <created>1767289956743</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1767289956743</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,6 +498,7 @@
     <MESSAGE value="Adaptive" />
     <MESSAGE value="refactoring" />
     <MESSAGE value="hotfix/Certificates Images" />
-    <option name="LAST_COMMIT_MESSAGE" value="hotfix/Certificates Images" />
+    <MESSAGE value="feature/Revalidate API" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature/Revalidate API" />
   </component>
 </project>
