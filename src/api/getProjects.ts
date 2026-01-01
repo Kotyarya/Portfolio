@@ -2,6 +2,7 @@ import 'server-only';
 import {unstable_cache} from 'next/cache';
 import {baseAPI, type IApiResponse} from "@/api/http";
 import type {IProject} from "@/types/blocksDataTypes";
+import {cache} from "react";
 
 type ProjectSkill = { name: string; importance: number };
 type ProjectCategory = { name: string };
@@ -14,7 +15,6 @@ const getProjectCached = unstable_cache(
             ? `&skills=${skills.map(skill => encodeURIComponent(skill)).join("&skills=")}&skills=`
             : "";
 
-        console.log(skillsParam);
 
         const projects = await baseAPI
             .get<IApiResponse<IProject[]>>(
@@ -26,7 +26,7 @@ const getProjectCached = unstable_cache(
     },
     ['projects-list'],
     {
-        revalidate: 5,
+        revalidate: 86400,
         tags: ['projects'],
     }
 );
@@ -81,8 +81,8 @@ const getProjectsFilterParamCached = unstable_cache(
     },
     ['projects-filters'],
     {
-        revalidate: 5,     // раз в час
-        tags: ['projects-filters'],
+        revalidate: 86400,
+        tags: ['projects', "projects:filters"],
     }
 );
 
@@ -91,20 +91,22 @@ export const getProjectsFilterParam = async () => {
 };
 
 
-const getProjectByIdCached = unstable_cache(
-    async (id: number) => {
-        const project = await baseAPI
-            .get<IApiResponse<IProject>>(`projects/${id}`)
-            .then(r => r.data);
+export const getProjectByIdCached = cache(async (id: number) => {
+    return unstable_cache(
+        async () => {
+            const project = await baseAPI
+                .get<IApiResponse<IProject>>(`projects/${id}`)
+                .then(r => r.data);
 
-        return project.data;
-    },
-    ['project-by-id'],
-    {
-        revalidate: 5,
-        tags: ['projects'],
-    }
-);
+            return project.data;
+        },
+        [`project:${id}`],
+        {
+            revalidate: 86400,
+            tags: ['projects', `project:${id}`],
+        }
+    )();
+});
 
 export const getProjectById = async (id: number) => {
     return getProjectByIdCached(id);

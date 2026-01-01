@@ -113,7 +113,8 @@ export default function Carousel({
                             ))
                             : (items as string[]).map((p, index) => (
                                 <SwiperSlide className={styles.slide} key={index}>
-                                    <Image src={"http://localhost:4000/media/" + p} alt={"Certificate"} width={600}
+                                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + p} alt={"Certificate"}
+                                           width={600}
                                            height={464}/>
                                 </SwiperSlide>
                             ))

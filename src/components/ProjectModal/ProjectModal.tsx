@@ -62,7 +62,8 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                         className="w-full h-full"
                                     >
                                         <SwiperSlide>
-                                            <Image src={"http://localhost:4000/media/" + preview} alt={"ProjectImg"}
+                                            <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview}
+                                                   alt={"ProjectImg"}
                                                    width={677}
                                                    height={508}
                                                    className="w-[677px] h-[508px] max-ipad:!h-67 max-ipad:!w-120 max-desk:w-[577px] object-cover"/>
@@ -71,7 +72,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                             img?.map((img, i) => {
                                                 return (
                                                     <SwiperSlide key={i}>
-                                                        <Image src={"http://localhost:4000/media/" + img}
+                                                        <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + img}
                                                                alt={"ProjectImg"} width={677}
                                                                height={508}
                                                                className="w-[677px] h-[508px] max-ipad:!h-67 max-desk:w-[577px] max-ipad:!w-120 object-cover"/>

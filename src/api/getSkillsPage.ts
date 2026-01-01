@@ -22,6 +22,6 @@ export const getSkillsPage = unstable_cache(
             contactMe: contactMe.data,
         }
     },
-    ['blocks'],
-    {revalidate: 5, tags: ['blocks']}
+    ['skills-page'],
+    {revalidate: 86400, tags: ['skills-page']}
 );
