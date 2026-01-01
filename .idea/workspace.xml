@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProjectCarousel/ProjectCarousel.tsx" afterDir="false" />
+    <list default="true" id="1f3b18fd-cdf9-423a-ae43-76e1ec89862b" name="Changes" comment="feature/Revalidate API">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +22,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/../Portfolio-Server" value="main" />
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Dev" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,7 +80,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "hotfix/Certificate-Image",
+    "git-widget-placeholder": "feature/Revalidate-API",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "last_opened_file_path": "/Users/kotyarya/Dev/portfol",
@@ -112,7 +111,7 @@
       <recent name="$PROJECT_DIR$/src/app/projects" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.build (1)">
+  <component name="RunManager" selected="npm.Next.js: server-side">
     <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
       <method v="2" />
     </configuration>
@@ -233,7 +232,7 @@
       <workItem from="1766163216551" duration="5033000" />
       <workItem from="1766499716857" duration="53545000" />
       <workItem from="1767043536275" duration="30043000" />
-      <workItem from="1767146858224" duration="10261000" />
+      <workItem from="1767146858224" duration="12319000" />
     </task>
     <task id="LOCAL-00001" summary="create app">
       <option name="closed" value="true" />
@@ -451,7 +450,31 @@
       <option name="project" value="LOCAL" />
       <updated>1767278873235</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="hotfix/Certificates Images">
+      <option name="closed" value="true" />
+      <created>1767287994296</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1767287994296</updated>
+    </task>
+    <task id="LOCAL-00029" summary="feature/Revalidate API">
+      <option name="closed" value="true" />
+      <created>1767289956743</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1767289956743</updated>
+    </task>
+    <task id="LOCAL-00030" summary="feature/Revalidate API">
+      <option name="closed" value="true" />
+      <created>1767290003396</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1767290003396</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,6 +504,8 @@
     <MESSAGE value="Button onClick Implemented" />
     <MESSAGE value="Adaptive" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="hotfix/Certificates Images" />
+    <MESSAGE value="feature/Revalidate API" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature/Revalidate API" />
   </component>
 </project>

@@ -20,6 +20,6 @@ export const getProjectsPage = unstable_cache(
             contactMe: contactMe.data,
         }
     },
-    ['blocks'],
-    {revalidate: 5, tags: ['blocks']}
+    ['projects-page'],
+    {revalidate: 86400, tags: ['projects-page']}
 );

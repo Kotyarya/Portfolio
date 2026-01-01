@@ -28,6 +28,6 @@ export const getAboutMePage = unstable_cache(
             whatsNext: whatsNext.data,
         }
     },
-    ['blocks'],
-    {revalidate: 5, tags: ['blocks']}
+    ['about-me-page'],
+    {revalidate: 86400, tags: ['about-me-page']}
 );
