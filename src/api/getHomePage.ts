@@ -26,6 +26,6 @@ export const getHomePage = unstable_cache(
             contactMe: contactMe.data,
         }
     },
-    ['blocks'],
-    {revalidate: 5, tags: ['blocks']}
+    ['home-page'],
+    {revalidate: 86400, tags: ['home-page']}
 );
