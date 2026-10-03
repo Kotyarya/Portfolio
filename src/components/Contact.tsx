@@ -8,6 +8,7 @@ import Image from "next/image";
 import {useInView} from "@/hooks/useInView";
 import {getAnimation} from "@/utils/getAnimation";
 import Link from "next/link";
+import {CONTACT_LIMITS, validateContactField} from '@/validation/contact';
 
 
 const Contact = () => {
@@ -62,13 +63,10 @@ const Contact = () => {
                                 id="name"
                                 placeholder="Jonh Smith"
                                 autoComplete="name"
-                                maxLength={100}
+                                maxLength={CONTACT_LIMITS.name}
                                 aria-invalid={errors.name ? "true" : "false"}
                                 aria-describedby={errors.name ? "name-error" : undefined}
-                                {...register("name", {
-                                    required: "Please enter your name",
-                                    maxLength: {value: 100, message: "Name is too long"},
-                                })}
+                                {...register("name", {validate: value => validateContactField('name', value)})}
                                 className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
                             />
                             {errors.name && <p id="name-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.name.message}</p>}
@@ -81,17 +79,10 @@ const Contact = () => {
                                 placeholder="johnsmith@gmail.com"
                                 type="email"
                                 autoComplete="email"
-                                maxLength={254}
+                                maxLength={CONTACT_LIMITS.email}
                                 aria-invalid={errors.email ? "true" : "false"}
                                 aria-describedby={errors.email ? "email-error" : undefined}
-                                {...register("email", {
-                                    required: "Please enter your email",
-                                    maxLength: {value: 254, message: "Email is too long"},
-                                    pattern: {
-                                        value: /\S+@\S+\.\S+/,
-                                        message: "Please enter a valid email",
-                                    },
-                                })}
+                                {...register("email", {validate: value => validateContactField('email', value)})}
                                 className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.email ? " border-red-900 placeholder:text-red-900" : "")}
                             />
                             {errors.email && <p id="email-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.email.message}</p>}
@@ -102,13 +93,10 @@ const Contact = () => {
                             <textarea
                                 id="message"
                                 placeholder="Type your message..."
-                                maxLength={5000}
+                                maxLength={CONTACT_LIMITS.message}
                                 aria-invalid={errors.message ? "true" : "false"}
                                 aria-describedby={errors.message ? "message-error" : undefined}
-                                {...register("message", {
-                                    required: "Please enter a message",
-                                    maxLength: {value: 5000, message: "Message is too long"},
-                                })}
+                                {...register("message", {validate: value => validateContactField('message', value)})}
                                 className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.message ? " border-red-900 placeholder:text-red-900" : "")}
                                 rows={4}
                             />

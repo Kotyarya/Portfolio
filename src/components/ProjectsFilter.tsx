@@ -4,6 +4,7 @@ import React from "react";
 import Select, {type ActionMeta, type MultiValue, type SingleValue, type StylesConfig} from "react-select";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {X} from "lucide-react";
+import {buildProjectsQuery} from '@/utils/projectQuery';
 
 type Option = { label: string; value: string };
 
@@ -50,21 +51,13 @@ export default function ProjectsFilters({
 
     React.useEffect(() => {
         const t = setTimeout(() => {
-            const params = new URLSearchParams(urlSearchParams.toString()); // ✅ сохраняем projectId
-
-            // сначала чистим только фильтровые ключи (чтобы удалялись когда пусто)
-            params.delete("q");
-            params.delete("category");
-            params.delete("status");
-            params.delete("stacks");
-
-            if (query) params.set("q", query);
-            if (category?.value) params.set("category", category.value);
-            if (status?.value) params.set("status", status.value);
-            if (stacks.length) params.set("stacks", stacks.map(s => s.value).join(","));
-
-            const qs = params.toString();
-            router.replace(qs ? `${pathname}?${qs}` : pathname, {scroll: false}); // replace лучше чем push
+            const queryString = buildProjectsQuery(urlSearchParams.toString(), {
+                query,
+                category: category?.value,
+                status: status?.value,
+                stacks: stacks.map(stack => stack.value),
+            });
+            router.replace(queryString ? `${pathname}?${queryString}` : pathname, {scroll: false});
         }, 400);
 
         return () => clearTimeout(t);
@@ -83,7 +76,7 @@ export default function ProjectsFilters({
     ) => {
         if (meta.action === "select-option") {
             const option = meta.option;
-            if (!option) return; // на всякий случай защита
+            if (!option) return;
 
             setStacks(prev => [
                 {label: option.label, value: option.value},

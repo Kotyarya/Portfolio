@@ -4,6 +4,7 @@ import SkillsPreview from "@/components/SkillsPreview";
 import ContactMe from "@/components/ContactMe";
 import {getProject, getProjectById, getProjectsFilterParam} from "@/api/getProjects";
 import type {Metadata} from "next";
+import {hasActiveSearchParams} from '@/utils/queryMetadata';
 
 
 interface ProjectsSearchParams {
@@ -24,7 +25,7 @@ const pageMetadata: Metadata = {
 
 export async function generateMetadata({searchParams}: {searchParams: Promise<ProjectsSearchParams>}): Promise<Metadata> {
     const params = await searchParams;
-    const hasQuery = Object.values(params).some(value => Array.isArray(value) ? value.length > 0 : Boolean(value));
+    const hasQuery = hasActiveSearchParams(params);
 
     return hasQuery
         ? {...pageMetadata, robots: {index: false, follow: true}}

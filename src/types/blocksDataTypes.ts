@@ -45,6 +45,7 @@ interface IProject {
         url: string,
     }[],
     link: string,
+    availabilityNote?: string,
     text: string,
     importance: number,
     preview: string,

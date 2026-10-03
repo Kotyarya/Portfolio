@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website - Frontend
 
-## Getting Started
+[![CI](https://github.com/Kotyarya/Portfolio/actions/workflows/ci.yml/badge.svg?branch=Dev)](https://github.com/Kotyarya/Portfolio/actions/workflows/ci.yml)
+[![Live](https://img.shields.io/badge/live-aksamitny.com-AD9255)](https://aksamitny.com)
 
-First, run the development server:
+Recruiter-focused portfolio for Maksym Aksamitnyi, built as the public interface of a full-stack content platform. It presents skills and evidence-based project case studies, provides an accessible contact flow, and includes server-rendered technical SEO.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Portfolio project preview](https://portfolio-server-0e3k.onrender.com/media/portfolioPreview.png)
+
+## Live links
+
+- [Production website](https://aksamitny.com)
+- [Portfolio case study](https://aksamitny.com/projects?projectId=13)
+- [Backend repository](https://github.com/Kotyarya/Portfolio-Server)
+
+## Architecture
+
+```text
+Browser
+  -> Next.js App Router on Vercel
+      -> server-only API client with x-api-key
+          -> NestJS API on Render
+              -> PostgreSQL through Prisma
+              -> media responses and contact email delivery
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The browser never receives the backend API key. Content is fetched in server components and cached with Next.js revalidation tags. Query-driven project filters and modals use clean canonical URLs and `noindex,follow` on query variants.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Semantic headings, accessible navigation and field-specific contact validation are treated as product requirements.
+- The strongest projects expose Problem, Role, Architecture, Decisions and Result instead of a generic technology list.
+- Responsive images use explicit `sizes`; desktop and mobile layouts do not duplicate semantic content.
+- Security headers are defined centrally in `next.config.ts`.
+- A local mock API keeps CI deterministic and prevents tests from using production data or secrets.
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 15 App Router, React 19 and TypeScript
+- Tailwind CSS 4
+- React Hook Form, React Select and Swiper
+- Vitest for critical frontend logic
+- Vercel for frontend delivery
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Local setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Requirements: Node.js 20 and npm.
 
-## Deploy on Vercel
+```bash
+git clone https://github.com/Kotyarya/Portfolio.git
+cd Portfolio
+npm ci
+cp .env.example .env
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000). The backend must be running and the frontend `SECRET_KEY` must match its `API_KEY`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_API_URL` | Base URL of the NestJS API |
+| `SECRET_KEY` | Server-only key sent to protected API endpoints |
+| `REVALIDATE_TOKEN` | Secret for the internal revalidation endpoint |
+
+Never commit real values. `.env.example` contains placeholders only.
+
+## Quality commands
+
+```bash
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
+
+GitHub Actions runs deterministic install, zero-warning lint, type checking, tests and a production build on pull requests and pushes to `Dev` or `main`.
+
+## Deployment
+
+Vercel deploys the frontend from GitHub and supplies production environment variables. The custom domain is [aksamitny.com](https://aksamitny.com). Backend deployment and environment details live in the [server README](https://github.com/Kotyarya/Portfolio-Server#readme).
