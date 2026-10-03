@@ -31,20 +31,17 @@ const Hero = () => {
                     sizes="(max-width: 833px) 90vw, (max-width: 1193px) 40vw, (max-width: 1919px) 36vw, 657px"
                     className="absolute bottom-0 left-1/2 -z-10 h-auto w-[110%] max-w-none -translate-x-1/2"
                 />
-                <Image
-                    src={MyPhoto}
-                    alt="Maksym Aksamitnyi, full-stack TypeScript developer"
-                    priority
-                    sizes="(max-width: 833px) 0px, (max-width: 1193px) 40vw, (max-width: 1919px) 36vw, 657px"
-                    className="hidden h-auto w-full animate-fade ipad:block"
-                />
-                <Image
-                    src={MyPhotoMobile}
-                    alt="Maksym Aksamitnyi, full-stack TypeScript developer"
-                    priority
-                    sizes="(max-width: 583px) 90vw, (max-width: 833px) 635px, 0px"
-                    className="h-auto w-full animate-fade ipad:hidden"
-                />
+                <picture className="block w-full animate-fade">
+                    <source media="(max-width: 833px)" srcSet={MyPhotoMobile.src}/>
+                    <Image
+                        src={MyPhoto}
+                        alt="Maksym Aksamitnyi, full-stack TypeScript developer"
+                        loading="eager"
+                        fetchPriority="high"
+                        sizes="(max-width: 833px) 90vw, (max-width: 1193px) 40vw, (max-width: 1919px) 36vw, 657px"
+                        className="h-auto w-full"
+                    />
+                </picture>
             </div>
 
             <div className="z-20 flex flex-col items-center text-center animate-slide-in-right ipad:items-end ipad:text-right">
