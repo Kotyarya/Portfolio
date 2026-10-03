@@ -1,22 +1,22 @@
 "use server";
 
 import {type ISendContactDto, sendContactMessage} from "@/api/sendContactMessage";
-import axios from "axios";
+import {ApiError} from '@/api/http';
 
 export async function contactAction(data: ISendContactDto) {
     try {
         await sendContactMessage(data);
         return {ok: true as const, message: "Message sent successfully."};
     } catch (error) {
-        if (axios.isAxiosError(error) && error.response?.status === 429) {
+        if (error instanceof ApiError && error.status === 429) {
             return {
                 ok: false as const,
                 message: "Too many messages. Please try again in 15 minutes.",
             };
         }
 
-        console.error("Contact form submission failed", axios.isAxiosError(error)
-            ? {code: error.code, status: error.response?.status}
+        console.error("Contact form submission failed", error instanceof ApiError
+            ? {name: error.name, status: error.status}
             : {name: error instanceof Error ? error.name : "UnknownError"});
         return {
             ok: false as const,
