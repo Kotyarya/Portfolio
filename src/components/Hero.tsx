@@ -3,9 +3,7 @@ import Button from '@/ui/Button';
 import MyPhoto from '../assets/hero/my-photo.png';
 import MyPhotoMobile from '../assets/hero/mobileHero.png';
 import Ellipse from '../assets/hero/ellipse.png';
-
-const CV_URL =
-    'https://drive.google.com/file/d/1bPN_AVJLIXBwkJOPsgCQqzJcUHecONYX/view?usp=share_link';
+import {CV_URL} from '@/config/site';
 
 const Hero = () => {
     return (
@@ -64,7 +62,7 @@ const Hero = () => {
                 </p>
                 <div className="mt-7 flex flex-wrap justify-center gap-3 ipad:justify-end">
                     <Button text="View Projects" size="small" href="/projects"/>
-                    <Button text="Open CV" size="small" href={CV_URL} target="_blank"/>
+                    <Button text="Open CV (PDF)" size="small" href={CV_URL} target="_blank"/>
                     <Button text="Contact" size="small" href="/contact"/>
                 </div>
             </div>

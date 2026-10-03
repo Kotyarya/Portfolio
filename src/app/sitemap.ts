@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             {path: '/skills', priority: 0.8},
             {path: '/projects', priority: 0.9},
             {path: '/contact', priority: 0.7},
+            {path: '/privacy', priority: 0.4},
         ].map(({path, priority}) => ({
             url: `${BASE_URL}${path}`,
             lastModified: LAST_CONTENT_UPDATE,

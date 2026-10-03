@@ -7,6 +7,7 @@ import {contactAction} from "@/actions/contact";
 import Image from "next/image";
 import {useInView} from "@/hooks/useInView";
 import {getAnimation} from "@/utils/getAnimation";
+import Link from "next/link";
 
 
 const Contact = () => {
@@ -52,19 +53,25 @@ const Contact = () => {
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                         className="flex flex-col gap-6"
+                        noValidate
+                        aria-busy={isSubmitting}
                     >
                         <div className="flex flex-col gap-1">
                             <label className="text-white text-3xs font-lato ml-3" htmlFor="name">Name</label>
                             <input
                                 id="name"
                                 placeholder="Jonh Smith"
+                                autoComplete="name"
                                 maxLength={100}
+                                aria-invalid={errors.name ? "true" : "false"}
+                                aria-describedby={errors.name ? "name-error" : undefined}
                                 {...register("name", {
                                     required: "Please enter your name",
                                     maxLength: {value: 100, message: "Name is too long"},
                                 })}
                                 className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
                             />
+                            {errors.name && <p id="name-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.name.message}</p>}
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -73,7 +80,10 @@ const Contact = () => {
                                 id="email"
                                 placeholder="johnsmith@gmail.com"
                                 type="email"
+                                autoComplete="email"
                                 maxLength={254}
+                                aria-invalid={errors.email ? "true" : "false"}
+                                aria-describedby={errors.email ? "email-error" : undefined}
                                 {...register("email", {
                                     required: "Please enter your email",
                                     maxLength: {value: 254, message: "Email is too long"},
@@ -82,8 +92,9 @@ const Contact = () => {
                                         message: "Please enter a valid email",
                                     },
                                 })}
-                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.email ? " border-red-900 placeholder:text-red-900" : "")}
                             />
+                            {errors.email && <p id="email-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.email.message}</p>}
                         </div>
 
                         <div className="flex flex-col gap-1">
@@ -92,19 +103,27 @@ const Contact = () => {
                                 id="message"
                                 placeholder="Type your message..."
                                 maxLength={5000}
+                                aria-invalid={errors.message ? "true" : "false"}
+                                aria-describedby={errors.message ? "message-error" : undefined}
                                 {...register("message", {
                                     required: "Please enter a message",
                                     maxLength: {value: 5000, message: "Message is too long"},
                                 })}
-                                className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.message ? " border-red-900 placeholder:text-red-900" : "")}
                                 rows={4}
                             />
+                            {errors.message && <p id="message-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.message.message}</p>}
                         </div>
+
+                        <p className="text-4xs leading-relaxed text-gold-200 font-lato">
+                            I use your details only to reply to this message. Do not include sensitive information.{' '}
+                            <Link href="/privacy" className="underline underline-offset-2">Privacy details</Link>
+                        </p>
 
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="mt-3 w-full bg-gold-gradient text-black-primary font-taviraj text-base py-2 rounded cursor-pointer"
+                            className="mt-3 w-full bg-gold-gradient text-black-primary font-taviraj text-base py-2 rounded cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {isSubmitting ? "Sending..." : "Send message"}
                         </button>
