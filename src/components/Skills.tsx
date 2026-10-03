@@ -30,7 +30,7 @@ const categories = [
     {
         name: 'Software & Game Development',
         description: 'Object-oriented desktop software and interactive game systems.',
-        matches: ['c#', 'windows forms', 'unreal', 'algorithm'],
+        matches: ['swift', 'swiftui', 'ios', 'c#', 'windows forms', 'unreal', 'algorithm'],
     },
     {
         name: 'Delivery & Collaboration',
