@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     title: "Projects — Maksym Aksamitnyi",
     description:
         "Projects and works by Maksym Aksamitnyi. Personal, academic and commercial development projects.",
+    alternates: {canonical: '/projects'},
 };
 
 export default async function Page({searchParams}: { searchParams: ProjectsSearchParams }) {

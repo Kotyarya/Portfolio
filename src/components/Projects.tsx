@@ -80,7 +80,7 @@ export default function Projects({
             <div className="flex flex-col items-center justify-center w-full mt-20" ref={ref}>
                 <div
                     className={"flex flex-col items-center justify-center " + getAnimation(isVisible, "animate-slide-in-bottom")}>
-                    <Title title={projectsPreview.title} subtitle={projectsPreview.subtitle} position="center"/>
+                    <Title title={projectsPreview.title} subtitle={projectsPreview.subtitle} position="center" headingLevel={1}/>
                     <p className="w-[90vw] text-2xs mobile:w-[530px] ipad:w-[693px] laptop:max-w-[840px] laptop:text-sm text-white font-lora text-center mb-10">{projectsPreview.text}</p>
                 </div>
                 <div className="z-10 max-ipad:hidden">
@@ -97,7 +97,7 @@ export default function Projects({
                 <div
                     className={"grid grid-cols-[repeat(3,max-content)] max-desk:grid-cols-[repeat(2,max-content)] max-ipad:!grid-cols-[repeat(1,max-content)] gap-8 max-ipad:!gap-10 max-laptop:gap-4 justify-center mt-10 " + getAnimation(isVisible, "animate-fade")}>
                     {projects.map((item: IProject) => (
-                        <ProjectCard key={item.id} project={item} onClick={() => openModal(item.id)}/>
+                        <ProjectCard key={item.id} project={item} headingLevel={2} onClick={() => openModal(item.id)}/>
                     ))}
                 </div>
             </div>

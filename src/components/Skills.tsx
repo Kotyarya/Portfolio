@@ -136,7 +136,7 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
                 <div
                     className={`absolute w-full h-full inset-0 z-200 pointer-events-none backdrop-blur-[8px] transition-all ${isBlur ? "opacity-100" : "opacity-0"}`}></div>
                 <div className={"flex flex-col items-center " + getAnimation(isVisible, "animate-slide-in-bottom")}>
-                    <Title title={skillsPreview.title} subtitle={skillsPreview.subtitle} position={"center"}/>
+                    <Title title={skillsPreview.title} subtitle={skillsPreview.subtitle} position="center" headingLevel={1}/>
                     <p className="w-[90vw] text-2xs mobile:w-[530px] ipad:w-[693px] laptop:w-[840px] laptop:text-sm text-white font-lora text-center">{skillsPreview.text}</p>
                 </div>
                 <div className={"flex flex-col items-center w-full "}>
