@@ -8,9 +8,7 @@ import {X} from "lucide-react";
 
 import logo from "../assets/shared/logo.svg";
 import Button from "@/ui/Button";
-
-const CV_URL =
-    "https://drive.google.com/file/d/1bPN_AVJLIXBwkJOPsgCQqzJcUHecONYX/view?usp=share_link";
+import {CV_URL} from "@/config/site";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -75,9 +73,10 @@ const Header = () => {
                                 </ul>
                                 <div className="mt-10 laptop:mt-0">
                                     <Button
-                                        text="Download CV"
+                                        text="Download CV (PDF)"
                                         size="medium"
-                                        onClick={() => window.open(CV_URL, "_blank", "noopener,noreferrer")}
+                                        href={CV_URL}
+                                        target="_blank"
                                     />
                                 </div>
                             </nav>

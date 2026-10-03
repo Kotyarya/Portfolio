@@ -15,14 +15,23 @@ interface ProjectsSearchParams {
 }
 
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
     title: "Projects — Maksym Aksamitnyi",
     description:
         "Projects and works by Maksym Aksamitnyi. Personal, academic and commercial development projects.",
     alternates: {canonical: '/projects'},
 };
 
-export default async function Page({searchParams}: { searchParams: ProjectsSearchParams }) {
+export async function generateMetadata({searchParams}: {searchParams: Promise<ProjectsSearchParams>}): Promise<Metadata> {
+    const params = await searchParams;
+    const hasQuery = Object.values(params).some(value => Array.isArray(value) ? value.length > 0 : Boolean(value));
+
+    return hasQuery
+        ? {...pageMetadata, robots: {index: false, follow: true}}
+        : pageMetadata;
+}
+
+export default async function Page({searchParams}: { searchParams: Promise<ProjectsSearchParams> }) {
 
     const params = await searchParams
     const {skills, skillsPreview, projectsPreview, contactMe} = await getProjectsPage();

@@ -15,7 +15,9 @@ export async function contactAction(data: ISendContactDto) {
             };
         }
 
-        console.error("Contact form submission failed", error);
+        console.error("Contact form submission failed", axios.isAxiosError(error)
+            ? {code: error.code, status: error.response?.status}
+            : {name: error instanceof Error ? error.name : "UnknownError"});
         return {
             ok: false as const,
             message: "The message could not be sent. Please try again later.",

@@ -25,6 +25,7 @@ const Footer = () => {
                     <li><Link href="/skills">Tech Stacks</Link></li>
                     <li><Link href="/projects">Projects</Link></li>
                     <li><Link href="/contact">Contact</Link></li>
+                    <li><Link href="/privacy">Privacy</Link></li>
                 </ul>
             </nav>
             <div

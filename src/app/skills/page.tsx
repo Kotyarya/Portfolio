@@ -10,14 +10,23 @@ interface SkillsSearchParams {
     skillId?: number;
 }
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
     title: "Skills — Maksym Aksamitnyi",
     description:
         "Technical skills of Maksym Aksamitnyi, including web development, frontend and backend technologies.",
     alternates: {canonical: '/skills'},
 };
 
-export default async function Page({searchParams}: { searchParams: SkillsSearchParams }) {
+export async function generateMetadata({searchParams}: {searchParams: Promise<SkillsSearchParams>}): Promise<Metadata> {
+    const params = await searchParams;
+    const hasQuery = Object.values(params).some(Boolean);
+
+    return hasQuery
+        ? {...pageMetadata, robots: {index: false, follow: true}}
+        : pageMetadata;
+}
+
+export default async function Page({searchParams}: { searchParams: Promise<SkillsSearchParams> }) {
 
     const {skills, skillsPreview, projectsPreview, projects, contactMe} = await getSkillsPage();
     const params = await searchParams;
