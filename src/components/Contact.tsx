@@ -10,6 +10,7 @@ import {getAnimation} from "@/utils/getAnimation";
 
 
 const Contact = () => {
+    const [submission, setSubmission] = React.useState<{ok: boolean; message: string} | null>(null);
 
     const {
         register,
@@ -19,14 +20,12 @@ const Contact = () => {
     } = useForm<ISendContactDto>();
 
     const onSubmit = async (data: ISendContactDto) => {
-        try {
-            const res = await contactAction(data);
-            console.log(res);
-            alert("Сообщение отправлено!");
+        setSubmission(null);
+        const result = await contactAction(data);
+        setSubmission(result);
+
+        if (result.ok) {
             reset();
-        } catch (e) {
-            console.error(e);
-            alert("Ошибка при отправке");
         }
     };
 
@@ -59,7 +58,11 @@ const Contact = () => {
                             <input
                                 id="name"
                                 placeholder="Jonh Smith"
-                                {...register("name", {required: "Please enter your name"})}
+                                maxLength={100}
+                                {...register("name", {
+                                    required: "Please enter your name",
+                                    maxLength: {value: 100, message: "Name is too long"},
+                                })}
                                 className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
                             />
                         </div>
@@ -70,11 +73,13 @@ const Contact = () => {
                                 id="email"
                                 placeholder="johnsmith@gmail.com"
                                 type="email"
+                                maxLength={254}
                                 {...register("email", {
-                                    required: "Введите email",
+                                    required: "Please enter your email",
+                                    maxLength: {value: 254, message: "Email is too long"},
                                     pattern: {
                                         value: /\S+@\S+\.\S+/,
-                                        message: "Некорректный email",
+                                        message: "Please enter a valid email",
                                     },
                                 })}
                                 className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
@@ -86,7 +91,11 @@ const Contact = () => {
                             <textarea
                                 id="message"
                                 placeholder="Type your message..."
-                                {...register("message", {required: "Введите сообщение"})}
+                                maxLength={5000}
+                                {...register("message", {
+                                    required: "Please enter a message",
+                                    maxLength: {value: 5000, message: "Message is too long"},
+                                })}
                                 className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
                                 rows={4}
                             />
@@ -99,6 +108,14 @@ const Contact = () => {
                         >
                             {isSubmitting ? "Sending..." : "Send message"}
                         </button>
+                        {submission && (
+                            <p
+                                role={submission.ok ? "status" : "alert"}
+                                className={`text-center font-lato text-4xs ${submission.ok ? "text-green-400" : "text-red-400"}`}
+                            >
+                                {submission.message}
+                            </p>
+                        )}
                     </form>
                 </div>
             </div>
