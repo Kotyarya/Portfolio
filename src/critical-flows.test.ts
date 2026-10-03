@@ -6,6 +6,7 @@ import {buildProjectsQuery, setProjectModalQuery} from '@/utils/projectQuery';
 import {hasActiveSearchParams} from '@/utils/queryMetadata';
 import {CONTACT_LIMITS, validateContactField} from '@/validation/contact';
 import {buildPageMetadata} from '@/utils/siteMetadata';
+import {getAnimation} from '@/utils/getAnimation';
 
 const project = (id: number, overrides: Partial<IProject> = {}): IProject => ({
     id,
@@ -81,5 +82,10 @@ describe('recruiter-facing critical flows', () => {
         expect(metadata.alternates).toEqual({canonical: '/projects'});
         expect(metadata.openGraph).toMatchObject({url: '/projects', title: 'Projects | Example'});
         expect(metadata.twitter).toMatchObject({card: 'summary_large_image', title: 'Projects | Example'});
+    });
+
+    it('keeps content visible before client-side animation logic runs', () => {
+        expect(getAnimation(false, 'animate-fade')).toBe('');
+        expect(getAnimation(true, 'animate-fade')).toBe('animate-fade');
     });
 });
