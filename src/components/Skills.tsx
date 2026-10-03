@@ -1,179 +1,130 @@
 "use client";
-import React, {useEffect} from 'react';
-import type {IBlock, ISkill} from "@/types/blocksDataTypes";
-import Title from "@/ui/Title";
-import SkillBlock from '@/ui/SkillBlock';
-import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import SkillModal from "@/components/SkillModal";
-import {useInView} from "@/hooks/useInView";
-import {getAnimation} from "@/utils/getAnimation";
+
+import React from 'react';
+import Image from 'next/image';
+import {usePathname, useRouter, useSearchParams} from 'next/navigation';
+import type {IBlock, ISkill} from '@/types/blocksDataTypes';
+import Title from '@/ui/Title';
+import SkillModal from '@/components/SkillModal';
+import {useInView} from '@/hooks/useInView';
+import {getAnimation} from '@/utils/getAnimation';
 
 interface SkillsProps {
-    skillsPreview: IBlock,
-    skills: ISkill[],
-    skillId?: number,
-    activeSkill?: ISkill,
+    skillsPreview: IBlock;
+    skills: ISkill[];
+    skillId?: number;
+    activeSkill?: ISkill;
 }
 
-const SKILLS_PATTERN: { top: number; left: number }[] = [
-    {top: 32, left: 0},
-    {top: 16, left: 349},
-    {top: 0, left: 794},
-    {top: 102, left: 1051},
-    {top: 189, left: 183},
-    {top: 189, left: 580},
-    {top: 283, left: 878},
-    {top: 403, left: 18},
-    {top: 421, left: 387},
-    {top: 478, left: 692},
-    {top: 528, left: 997},
-    {top: 630, left: 184},
-    {top: 656, left: 500},
-];
+const categories = [
+    {
+        name: 'Frontend',
+        description: 'Interfaces, rendering, responsive behavior and technical SEO.',
+        matches: ['react', 'next', 'typescript', 'javascript', 'html', 'css', 'tailwind', 'seo', 'ux', 'ui'],
+    },
+    {
+        name: 'Backend & Data',
+        description: 'APIs, application logic, persistence and data access.',
+        matches: ['nest', 'node', 'postgres', 'prisma', 'rest', 'sql', 'postman'],
+    },
+    {
+        name: 'Software & Game Development',
+        description: 'Object-oriented desktop software and interactive game systems.',
+        matches: ['c#', 'windows forms', 'unreal', 'algorithm'],
+    },
+    {
+        name: 'Delivery & Collaboration',
+        description: 'Source control, design handoff and project delivery tools.',
+        matches: ['git', 'github', 'figma', 'jira', 'trello', 'notion'],
+    },
+] as const;
 
-const SKILLS_PATTERN_BELOW_1350: { top: number; left: number }[] = [
-    {top: 16, left: 349},
-    {top: 0, left: 794},
-    {top: 189, left: 103},
-    {top: 189, left: 580},
-    {top: 283, left: 878},
-    {top: 421, left: 307},
-    {top: 478, left: 692},
-    {top: 630, left: 104},
-    {top: 656, left: 580},
-];
-
-const SKILLS_PATTERN_BELOW_1194: { top: number; left: number }[] = [
-    {top: 16, left: 349},
-    {top: 0, left: 754},
-    {top: 189, left: 253},
-    {top: 189, left: 580},
-    {top: 283, left: 778},
-    {top: 421, left: 307},
-    {top: 478, left: 692},
-    {top: 630, left: 254},
-    {top: 656, left: 580},
-];
-
-const SKILLS_PATTERN_BELOW_800: { top: number; left: number }[] = [
-    {top: 16, left: 349},
-    {top: 189, left: 580},
-    {top: 301, left: 327},
-    {top: 478, left: 652},
-    {top: 600, left: 364},
-    {top: 756, left: 615},
-];
-
-const SKILLS_PATTERN_BELOW_560: { top: number; left: number }[] = [
-    {top: 16, left: 419},
-    {top: 189, left: 570},
-    {top: 301, left: 439},
-    {top: 478, left: 560},
-    {top: 600, left: 429},
-    {top: 756, left: 570},
-];
-
-const getPattern = (width: number) => {
-    if (width >= 1364) return SKILLS_PATTERN;
-    if (width >= 1208) return SKILLS_PATTERN_BELOW_1350;
-    if (width >= 814) return SKILLS_PATTERN_BELOW_1194;
-    if (width >= 575) return SKILLS_PATTERN_BELOW_800;
-    return SKILLS_PATTERN_BELOW_560;
-}
-
-const chunkArray = <T, >(arr: T[], size: number): T[][] =>
-    Array.from({length: Math.ceil(arr.length / size)}, (_, i) =>
-        arr.slice(i * size, i * size + size)
-    );
+const categoryFor = (skill: ISkill) => {
+    const normalizedName = skill.name.toLowerCase();
+    return categories.find(category => category.matches.some(match => normalizedName.includes(match)))?.name
+        ?? 'Additional Skills';
+};
 
 const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
-
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const [chunks, setChunks] = React.useState<ISkill[][]>([]);
+    const {isVisible, ref} = useInView<HTMLDivElement>();
 
-    const [isBlur, setIsBlur] = React.useState(false);
-    const [modalIsOpen, setModalIsOpen] = React.useState(false);
+    const groupedSkills = React.useMemo(() => {
+        const groups = new Map<string, ISkill[]>();
 
-    useEffect(() => {
-        setModalIsOpen(!!skillId);
-    }, [skillId]);
-
-    useEffect(() => {
-        function handleResize() {
-            setChunks(chunkArray(skills, getPattern(window.innerWidth).length));
+        for (const skill of [...skills].sort((a, b) => b.importance - a.importance)) {
+            const category = categoryFor(skill);
+            groups.set(category, [...(groups.get(category) ?? []), skill]);
         }
 
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        return [
+            ...categories.map(category => ({
+                ...category,
+                skills: groups.get(category.name) ?? [],
+            })).filter(category => category.skills.length > 0),
+            ...(groups.has('Additional Skills') ? [{
+                name: 'Additional Skills',
+                description: 'Supporting technologies used across academic and personal projects.',
+                matches: [],
+                skills: groups.get('Additional Skills') ?? [],
+            }] : []),
+        ];
     }, [skills]);
 
-    const openModal = (skillId: number) => {
-        setIsBlur(false)
+    const openModal = (id: number) => {
         const params = new URLSearchParams(searchParams.toString());
-        params.set("skillId", skillId.toString());
+        params.set('skillId', id.toString());
         router.push(`${pathname}?${params.toString()}`, {scroll: false});
-    }
+    };
 
     const closeModal = () => {
         const params = new URLSearchParams(searchParams.toString());
-        params.delete("skillId");
-        router.push(`${pathname}?${params.toString()}`, {scroll: false});
-    }
-
-    const {isVisible, ref} = useInView<HTMLDivElement>()
+        params.delete('skillId');
+        const query = params.toString();
+        router.push(query ? `${pathname}?${query}` : pathname, {scroll: false});
+    };
 
     return (
         <>
-            {
-                modalIsOpen && skillId && (
-                    <SkillModal activeSkill={activeSkill} closeModal={closeModal}/>
-                )
-            }
-            <div className="flex flex-col items-center gap-10 mt-20" ref={ref}>
-                <div
-                    className={`absolute w-full h-full inset-0 z-200 pointer-events-none backdrop-blur-[8px] transition-all ${isBlur ? "opacity-100" : "opacity-0"}`}></div>
-                <div className={"flex flex-col items-center " + getAnimation(isVisible, "animate-slide-in-bottom")}>
-                    <Title title={skillsPreview.title} subtitle={skillsPreview.subtitle} position="center" headingLevel={1}/>
-                    <p className="w-[90vw] text-2xs mobile:w-[530px] ipad:w-[693px] laptop:w-[840px] laptop:text-sm text-white font-lora text-center">{skillsPreview.text}</p>
+            {skillId && <SkillModal activeSkill={activeSkill} closeModal={closeModal}/>}
+            <section className="mx-auto mt-20 flex w-[90vw] max-w-6xl flex-col items-center gap-12" ref={ref}>
+                <div className={`flex max-w-3xl flex-col items-center gap-5 text-center ${getAnimation(isVisible, 'animate-slide-in-bottom')}`}>
+                    <Title title={skillsPreview.title} subtitle={skillsPreview.subtitle} headingLevel={1}/>
+                    <p className="font-lora text-2xs leading-relaxed text-white laptop:text-sm">{skillsPreview.text}</p>
                 </div>
-                <div className={"flex flex-col items-center w-full "}>
-                    {chunks.map((chunk, chunkIndex) => (
-                        <div
-                            className={"relative w-[1255px] max-desk:w-[1190px] " + (chunk.length < 7 ? (getPattern(window.innerWidth) == SKILLS_PATTERN_BELOW_800 || getPattern(window.innerWidth) == SKILLS_PATTERN_BELOW_560 ? (chunk.length > 3 ? "h-215" : "h-100") : "h-100") : "h-215")}
-                            key={chunkIndex}>
-                            {
-                                chunk.map((skill, index) => {
-                                    const pattern = (getPattern(window.innerWidth))[index];
 
-                                    return <div
-                                        key={index}
-                                        className="absolute cursor-pointer animate-float transition duration-300 hover:animate-none hover:shadow-gold-small"
-                                        style={{
-                                            top: pattern.top,
-                                            left: pattern.left,
-                                            animationDelay: `${index * 0.15}s`,
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            setIsBlur(true);
-                                            e.currentTarget.style.zIndex = "999";
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            setIsBlur(false);
-                                            e.currentTarget.style.zIndex = "1";
-                                        }}
-                                        onClick={() => openModal(skill.id)}
-                                    >
-                                        <SkillBlock skill={skill}/>
-                                    </div>
-                                })
-                            }
-                        </div>
+                <div className="grid w-full gap-8 laptop:grid-cols-2">
+                    {groupedSkills.map(category => (
+                        <section key={category.name} className="rounded-lg border border-gold-500/35 bg-black-300 p-6">
+                            <h2 className="font-cinzel text-lg font-bold text-gold-primary">{category.name}</h2>
+                            <p className="mt-2 font-lora text-4xs leading-relaxed text-gold-200">{category.description}</p>
+                            <ul className="mt-6 grid gap-3 mobile:grid-cols-2">
+                                {category.skills.map(skill => (
+                                    <li key={skill.id}>
+                                        <button
+                                            type="button"
+                                            aria-haspopup="dialog"
+                                            onClick={() => openModal(skill.id)}
+                                            className="flex h-full w-full items-center gap-3 rounded border border-black-100 bg-black-primary p-3 text-left transition hover:border-gold-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-primary"
+                                        >
+                                            <Image
+                                                src={`${process.env.NEXT_PUBLIC_API_URL}/media/${skill.img}`}
+                                                alt=""
+                                                width={42}
+                                                height={42}
+                                                className="h-10 w-10 object-contain"
+                                            />
+                                            <span className="font-lato text-3xs text-white">{skill.name}</span>
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
                     ))}
                 </div>
-            </div>
+            </section>
         </>
     );
 };
