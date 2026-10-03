@@ -30,7 +30,7 @@ const AboutMe = ({aboutMe, headingLevel = 2}: AboutMeProps) => {
             </div>
             <Image
                 src={process.env.NEXT_PUBLIC_API_URL + "/media/" + imgId}
-                alt={title}
+                alt="Portrait of Maksym Aksamitnyi"
                 width={428}
                 height={572}
                 sizes="(max-width: 583px) 70vw, 428px"

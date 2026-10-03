@@ -5,6 +5,7 @@ import ContactMe from "@/components/ContactMe";
 import {getProject, getProjectById, getProjectsFilterParam} from "@/api/getProjects";
 import type {Metadata} from "next";
 import {hasActiveSearchParams} from '@/utils/queryMetadata';
+import {buildPageMetadata} from '@/utils/siteMetadata';
 
 
 interface ProjectsSearchParams {
@@ -16,12 +17,11 @@ interface ProjectsSearchParams {
 }
 
 
-const pageMetadata: Metadata = {
-    title: "Projects — Maksym Aksamitnyi",
-    description:
-        "Projects and works by Maksym Aksamitnyi. Personal, academic and commercial development projects.",
-    alternates: {canonical: '/projects'},
-};
+const pageMetadata: Metadata = buildPageMetadata({
+    title: 'Full-Stack Projects | Maksym Aksamitnyi',
+    description: 'Explore evidence-based case studies by Maksym Aksamitnyi covering Next.js, React, NestJS, PostgreSQL, C# and product delivery decisions.',
+    path: '/projects',
+});
 
 export async function generateMetadata({searchParams}: {searchParams: Promise<ProjectsSearchParams>}): Promise<Metadata> {
     const params = await searchParams;

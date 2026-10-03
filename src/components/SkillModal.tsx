@@ -38,7 +38,7 @@ const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
                     aria-modal="true"
                     aria-labelledby="skill-modal-title"
                     className="bg-black flex flex-col items-center w-163 max-ipad:w-100 max-ipad:h-[80vh] max-mobile:!w-[90vw] max-ipad:overflow-y-scroll no-scrollbar p-16 gap-5">
-                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + img} alt={"ProjectImg"} width={128}
+                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + img} alt={`${name} technology logo`} width={128}
                            height={128}
                            className="w-32 h-32"/>
                     <h2 id="skill-modal-title" className="text-xl font-cinzel text-center text-gold-primary font-bold">{name}</h2>

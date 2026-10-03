@@ -5,6 +5,7 @@ import sitemap from '@/app/sitemap';
 import {buildProjectsQuery, setProjectModalQuery} from '@/utils/projectQuery';
 import {hasActiveSearchParams} from '@/utils/queryMetadata';
 import {CONTACT_LIMITS, validateContactField} from '@/validation/contact';
+import {buildPageMetadata} from '@/utils/siteMetadata';
 
 const project = (id: number, overrides: Partial<IProject> = {}): IProject => ({
     id,
@@ -68,5 +69,17 @@ describe('recruiter-facing critical flows', () => {
         expect(validateContactField('email', 'not-an-email')).toBe('Please enter a valid email');
         expect(validateContactField('email', 'recruiter@example.com')).toBe(true);
         expect(validateContactField('message', 'x'.repeat(CONTACT_LIMITS.message + 1))).toBe('Message is too long');
+    });
+
+    it('keeps canonical, Open Graph and Twitter metadata aligned', () => {
+        const metadata = buildPageMetadata({
+            title: 'Projects | Example',
+            description: 'Evidence-based project case studies.',
+            path: '/projects',
+        });
+
+        expect(metadata.alternates).toEqual({canonical: '/projects'});
+        expect(metadata.openGraph).toMatchObject({url: '/projects', title: 'Projects | Example'});
+        expect(metadata.twitter).toMatchObject({card: 'summary_large_image', title: 'Projects | Example'});
     });
 });

@@ -20,7 +20,7 @@ const ProjectStatusLabel = ({status}: ProjectStatusLabelProps) => {
     return (
         <div className="bg-gold-gradient rounded-xs p-0.25">
             <div className="bg-black-primary flex items-center px-4 py-1">
-                <Image src={statusIcon} alt="icon" className="w-4 h-4 mr-2"/>
+                <Image src={statusIcon} alt="" aria-hidden="true" className="w-4 h-4 mr-2"/>
                 <p className="text-gold-primary font-lato text-4xs tracking-wider">{status}</p>
             </div>
 

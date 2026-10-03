@@ -1,11 +1,12 @@
 import type {Metadata} from 'next';
 import Link from 'next/link';
+import {buildPageMetadata} from '@/utils/siteMetadata';
 
-export const metadata: Metadata = {
-    title: 'Privacy — Maksym Aksamitnyi',
-    description: 'How contact form data is handled on aksamitny.com.',
-    alternates: {canonical: '/privacy'},
-};
+export const metadata: Metadata = buildPageMetadata({
+    title: 'Privacy Policy | Maksym Aksamitnyi',
+    description: 'How aksamitny.com handles contact form data, message retention and deletion requests.',
+    path: '/privacy',
+});
 
 export default function PrivacyPage() {
     return (
