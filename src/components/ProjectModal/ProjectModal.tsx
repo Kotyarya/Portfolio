@@ -18,7 +18,7 @@ interface ProjectModalProps {
 
 const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
-    const {text, img, name, preview, caseStudy, githubLinks, githubLink, link} = activeProject || {};
+    const {text, img, name, preview, caseStudy, githubLinks, githubLink, link, availabilityNote} = activeProject || {};
     const sourceLinks = githubLinks ?? (
         githubLink?.startsWith('http') ? [{label: 'Source', url: githubLink}] : []
     );
@@ -147,6 +147,9 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                 </Button>
                             ))}
                         </div>
+                        {availabilityNote && (
+                            <p className="font-lora text-4xs leading-relaxed text-gold-200">{availabilityNote}</p>
+                        )}
                     </div>
                     <button
                         className='w-fit h-fit flex items-center justify-center text-gold-primary cursor-pointer absolute z-1 top-4.5 right-4.5 p-1 rounded bg-black'

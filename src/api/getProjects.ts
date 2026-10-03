@@ -95,7 +95,7 @@ export const getProjectsFilterParam = async () => {
 export const getProjectByIdCached = cache(async (id: number) => {
     return unstable_cache(
         async () => {
-            if (id === 13) {
+            if (id === 13 || id === 14) {
                 const projects = await Promise.all([13, 14].map(projectId =>
                     baseAPI
                         .get<IApiResponse<IProject>>(`projects/${projectId}`)
@@ -109,7 +109,7 @@ export const getProjectByIdCached = cache(async (id: number) => {
                 .get<IApiResponse<IProject>>(`projects/${id}`)
                 .then(r => r.data);
 
-            return project.data;
+            return combinePortfolioCaseStudy([project.data])[0];
         },
         [`project:${id}`],
         {

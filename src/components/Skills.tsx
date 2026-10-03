@@ -108,7 +108,7 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    }, [skills]);
 
     const openModal = (skillId: number) => {
         setIsBlur(false)

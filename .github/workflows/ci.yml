@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [Dev, main]
+  push:
+    branches: [Dev, main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run lint -- --max-warnings=0
+      - run: npm run typecheck
+      - run: npm test
+      - name: Build with isolated mock API
+        run: |
+          node scripts/mock-api.mjs &
+          MOCK_API_PID=$!
+          trap 'kill "$MOCK_API_PID"' EXIT
+          NEXT_PUBLIC_API_URL=http://127.0.0.1:4010 SECRET_KEY=ci-secret npm run build

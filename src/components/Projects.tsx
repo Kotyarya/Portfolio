@@ -9,6 +9,7 @@ import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import ProjectModal from "@/components/ProjectModal/ProjectModal";
 import {useInView} from "@/hooks/useInView";
 import {getAnimation} from "@/utils/getAnimation";
+import {setProjectModalQuery} from '@/utils/projectQuery';
 
 interface ProjectsSectionProps {
     projectsPreview: {
@@ -59,15 +60,13 @@ export default function Projects({
     }, [projectId])
 
     const openModal = (projectId: number) => {
-        const params = new URLSearchParams(searchParams.toString());
-        params.set("projectId", projectId.toString());
-        router.push(`${pathname}?${params.toString()}`, {scroll: false});
+        const queryString = setProjectModalQuery(searchParams.toString(), projectId);
+        router.push(`${pathname}?${queryString}`, {scroll: false});
     }
 
     const closeModal = () => {
-        const params = new URLSearchParams(searchParams.toString());
-        params.delete("projectId");
-        router.push(`${pathname}?${params.toString()}`, {scroll: false});
+        const queryString = setProjectModalQuery(searchParams.toString());
+        router.push(queryString ? `${pathname}?${queryString}` : pathname, {scroll: false});
     }
 
     return (
