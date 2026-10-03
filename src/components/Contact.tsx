@@ -61,7 +61,7 @@ const Contact = () => {
                             <label className="text-white text-3xs font-lato ml-3" htmlFor="name">Name</label>
                             <input
                                 id="name"
-                                placeholder="Jonh Smith"
+                                placeholder="John Smith"
                                 autoComplete="name"
                                 maxLength={CONTACT_LIMITS.name}
                                 aria-invalid={errors.name ? "true" : "false"}
@@ -131,7 +131,7 @@ const Contact = () => {
                 <div
                     className="bg-black-primary flex flex-col items-center py-10 px-19 gap-2 rounded-3xl w-fit h-fit">
                     <h2 className="text-3xl text-gold-primary font-cinzel font-bold">My vCard</h2>
-                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + "vCard.svg"} alt={"vCard"} width={315}
+                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + "vCard.svg"} alt="QR code with Maksym Aksamitnyi contact details" width={315}
                            height={315}/>
                 </div>
             </div>

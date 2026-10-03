@@ -66,7 +66,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                     >
                                         <SwiperSlide>
                                             <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview}
-                                                   alt={"ProjectImg"}
+                                                   alt={`${name} project preview`}
                                                    width={677}
                                                    height={508}
                                                    className="w-[677px] h-[508px] max-ipad:!h-67 max-ipad:!w-120 max-desk:w-[577px] object-cover"/>
@@ -76,7 +76,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                                 return (
                                                     <SwiperSlide key={i}>
                                                         <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + img}
-                                                               alt={"ProjectImg"} width={677}
+                                                               alt={`${name} project screenshot ${i + 1}`} width={677}
                                                                height={508}
                                                                className="w-[677px] h-[508px] max-ipad:!h-67 max-desk:w-[577px] max-ipad:!w-120 object-cover"/>
                                                     </SwiperSlide>
@@ -85,7 +85,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                         }
                                     </Swiper>
                                 </div>
-                                : <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview} alt={"ProjectImg"}
+                                : <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview} alt={`${name} project preview`}
                                          width={677}
                                          height={508}
                                          className="w-[677px] h-[508px] max-ipad:!h-67 max-desk:w-[577px] max-ipad:!w-120 object-cover"/>
@@ -132,7 +132,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                         <div className="flex gap-4 max-laptop:mt-5 max-mobile:flex-wrap">
                             {link?.startsWith('http') && (
                                 <Button text="View Live" size="large" href={link} target="_blank">
-                                    <Image src={internetIcon} alt="Internet Logo" width={25} height={25}/>
+                                    <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25}/>
                                 </Button>
                             )}
                             {sourceLinks.map(source => (
@@ -143,7 +143,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                     href={source.url}
                                     target="_blank"
                                 >
-                                    <Image src={gitHubIcon} alt="GitHub Logo" width={25} height={25}/>
+                                    <Image src={gitHubIcon} alt="" aria-hidden="true" width={25} height={25}/>
                                 </Button>
                             ))}
                         </div>

@@ -21,7 +21,7 @@ const ProjectCard = ({project, onClick, headingLevel = 3}: ProjectCardProps) => 
                 <div className="absolute top-2 right-2">
                     <ProjectStatusLabel status={project.status.name}/>
                 </div>
-                <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + project.preview} alt={"ProjectImg"}
+                <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + project.preview} alt={`${project.name} project preview`}
                        width={334}
                        height={194}
                        className="w-[100%] h-[220px] object-cover"/>

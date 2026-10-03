@@ -5,18 +5,18 @@ import {getSkillById} from "@/api/getSkills";
 import type {Metadata} from "next";
 import {hasActiveSearchParams} from '@/utils/queryMetadata';
 import Link from 'next/link';
+import {buildPageMetadata} from '@/utils/siteMetadata';
 
 
 interface SkillsSearchParams {
     skillId?: number;
 }
 
-const pageMetadata: Metadata = {
-    title: "Skills — Maksym Aksamitnyi",
-    description:
-        "Technical skills of Maksym Aksamitnyi, including web development, frontend and backend technologies.",
-    alternates: {canonical: '/skills'},
-};
+const pageMetadata: Metadata = buildPageMetadata({
+    title: 'TypeScript, React & NestJS Skills | Maksym Aksamitnyi',
+    description: 'Review Maksym Aksamitnyi’s frontend, backend, database and software development skills, linked to practical project evidence.',
+    path: '/skills',
+});
 
 export async function generateMetadata({searchParams}: {searchParams: Promise<SkillsSearchParams>}): Promise<Metadata> {
     const params = await searchParams;

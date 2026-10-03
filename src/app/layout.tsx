@@ -3,6 +3,7 @@ import {Cinzel, Lato, Lora, Taviraj} from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from "@/components/Footer";
+import {buildPageMetadata} from '@/utils/siteMetadata';
 
 
 const lora = Lora({
@@ -32,10 +33,12 @@ const cinzel = Cinzel({
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://aksamitny.com'),
-    title: "Maksym Aksamitnyi — Portfolio",
-    description: "Maksym Aksamitnyi (Максим Аксамітний) personal portfolio.",
+    ...buildPageMetadata({
+        title: 'Maksym Aksamitnyi | Full-Stack TypeScript Developer',
+        description: 'Full-stack developer portfolio featuring production work with Next.js, React, NestJS and PostgreSQL, plus software and iOS learning projects.',
+        path: '/',
+    }),
     robots: {index: true, follow: true},
-    alternates: {canonical: '/'},
 };
 
 export default function RootLayout({
