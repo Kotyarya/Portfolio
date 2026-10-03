@@ -40,6 +40,10 @@ interface IProject {
     id: number,
     name: string,
     githubLink: string,
+    githubLinks?: {
+        label: string,
+        url: string,
+    }[],
     link: string,
     text: string,
     importance: number,
@@ -55,7 +59,14 @@ interface IProject {
     status: {
         name: string,
         img: string
-    }
+    },
+    caseStudy?: {
+        role: string,
+        challenge: string,
+        architecture: string,
+        decisions: string[],
+        result: string,
+    },
 }
 
 

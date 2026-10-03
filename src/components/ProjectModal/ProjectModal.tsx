@@ -18,7 +18,10 @@ interface ProjectModalProps {
 
 const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
-    const {text, img, name, preview} = activeProject || {};
+    const {text, img, name, preview, caseStudy, githubLinks, githubLink, link} = activeProject || {};
+    const sourceLinks = githubLinks ?? (
+        githubLink?.startsWith('http') ? [{label: 'Source', url: githubLink}] : []
+    );
 
     return (
         <>
@@ -92,6 +95,34 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                     <div className="flex flex-col w-109 max-mobile:w-full max-mobile:px-3 gap-6">
                         <h3 className="font-cinzel text-xl text-gold-primary font-bold">{name}</h3>
                         <p className="font-lora text-3xs text-white">{text}</p>
+                        {caseStudy && (
+                            <dl className="grid gap-3 font-lora text-4xs text-white">
+                                <div>
+                                    <dt className="text-gold-500">Role</dt>
+                                    <dd>{caseStudy.role}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Challenge</dt>
+                                    <dd>{caseStudy.challenge}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Architecture</dt>
+                                    <dd>{caseStudy.architecture}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Key decisions</dt>
+                                    <dd>
+                                        <ul className="list-disc space-y-1 pl-5">
+                                            {caseStudy.decisions.map(decision => <li key={decision}>{decision}</li>)}
+                                        </ul>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Result</dt>
+                                    <dd>{caseStudy.result}</dd>
+                                </div>
+                            </dl>
+                        )}
                         <p className="font-lora text-sm text-gold-700">Tech Stacks :</p>
                         <div className="flex flex-wrap gap-3 h-23.5 max-laptop:h-auto overflow-hidden">
                             {activeProject?.skills.map((skill, index) => (
@@ -99,16 +130,22 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                             ))}
                         </div>
                         <div className="flex gap-4 max-laptop:mt-5 max-mobile:flex-wrap">
-                            {
-                                activeProject?.link && <Button text={"View Projects"} size={'large'}>
+                            {link?.startsWith('http') && (
+                                <Button text="View Live" size="large" href={link} target="_blank">
                                     <Image src={internetIcon} alt="Internet Logo" width={25} height={25}/>
                                 </Button>
-                            }
-                            {
-                                activeProject?.githubLink && <Button text={"View on GitHub"} size={'large'}>
-                                    <Image src={gitHubIcon} alt="Github Logo" width={25} height={25}/>
+                            )}
+                            {sourceLinks.map(source => (
+                                <Button
+                                    key={source.url}
+                                    text={`${source.label} GitHub`}
+                                    size="large"
+                                    href={source.url}
+                                    target="_blank"
+                                >
+                                    <Image src={gitHubIcon} alt="GitHub Logo" width={25} height={25}/>
                                 </Button>
-                            }
+                            ))}
                         </div>
                     </div>
                     <button
