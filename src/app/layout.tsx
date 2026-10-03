@@ -3,7 +3,7 @@ import {Cinzel, Lato, Lora, Taviraj} from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from "@/components/Footer";
-import Script from "next/script";
+import {buildPageMetadata} from '@/utils/siteMetadata';
 
 
 const lora = Lora({
@@ -32,8 +32,12 @@ const cinzel = Cinzel({
 
 
 export const metadata: Metadata = {
-    title: "Maksym Aksamitnyi — Portfolio",
-    description: "Maksym Aksamitnyi (Максим Аксамітний) personal portfolio.",
+    metadataBase: new URL('https://aksamitny.com'),
+    ...buildPageMetadata({
+        title: 'Maksym Aksamitnyi | Full-Stack TypeScript Developer',
+        description: 'Full-stack developer portfolio featuring production work with Next.js, React, NestJS and PostgreSQL, plus software and iOS learning projects.',
+        path: '/',
+    }),
     robots: {index: true, follow: true},
 };
 
@@ -45,7 +49,7 @@ export default function RootLayout({
     return (
         <html className="max-ipad:" lang="en">
         <head>
-            <Script
+            <script
                 id="person-jsonld"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
@@ -57,12 +61,20 @@ export default function RootLayout({
                             "Максим Аксамітний",
                             "Maksym Aksamitnyy"
                         ],
-                        url: "https://YOUR-DOMAIN.COM",
+                        url: "https://aksamitny.com",
+                        jobTitle: "Full-Stack TypeScript Developer",
                         sameAs: [
-                            "https://github.com/USERNAME",
-                            "https://www.linkedin.com/in/USERNAME",
-                            "https://www.instagram.com/USERNAME"
-                        ]
+                            "https://github.com/Kotyarya",
+                            "https://www.linkedin.com/in/maksym-aksamitnyi-0b0967330/",
+                            "https://www.instagram.com/kotyarya_/"
+                        ],
+                        knowsAbout: [
+                            "TypeScript",
+                            "Next.js",
+                            "React",
+                            "NestJS",
+                            "PostgreSQL"
+                        ],
                     }),
                 }}
             />

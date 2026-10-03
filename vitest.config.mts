@@ -1,0 +1,22 @@
+import {defineConfig} from 'vitest/config';
+import {fileURLToPath} from 'node:url';
+
+export default defineConfig({
+    resolve: {
+        alias: {
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+        },
+    },
+    test: {
+        environment: 'node',
+        include: ['src/**/*.test.ts'],
+        coverage: {
+            include: [
+                'src/api/portfolioCaseStudy.ts',
+                'src/utils/projectQuery.ts',
+                'src/utils/queryMetadata.ts',
+                'src/validation/contact.ts',
+            ],
+        },
+    },
+});

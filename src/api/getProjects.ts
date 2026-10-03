@@ -3,6 +3,7 @@ import {unstable_cache} from 'next/cache';
 import {baseAPI, type IApiResponse} from "@/api/http";
 import type {IProject} from "@/types/blocksDataTypes";
 import {cache} from "react";
+import {combinePortfolioCaseStudy} from '@/api/portfolioCaseStudy';
 
 type ProjectSkill = { name: string; importance: number };
 type ProjectCategory = { name: string };
@@ -22,7 +23,7 @@ const getProjectCached = unstable_cache(
             )
             .then(r => r.data);
 
-        return projects.data;
+        return combinePortfolioCaseStudy(projects.data);
     },
     ['projects-list'],
     {
@@ -51,7 +52,7 @@ export const getProject = async (
             )
             .then(r => r.data);
 
-        return projects.data;
+        return combinePortfolioCaseStudy(projects.data);
     }
 
 
@@ -94,11 +95,21 @@ export const getProjectsFilterParam = async () => {
 export const getProjectByIdCached = cache(async (id: number) => {
     return unstable_cache(
         async () => {
+            if (id === 13 || id === 14) {
+                const projects = await Promise.all([13, 14].map(projectId =>
+                    baseAPI
+                        .get<IApiResponse<IProject>>(`projects/${projectId}`)
+                        .then(response => response.data.data)
+                ));
+
+                return combinePortfolioCaseStudy(projects)[0];
+            }
+
             const project = await baseAPI
                 .get<IApiResponse<IProject>>(`projects/${id}`)
                 .then(r => r.data);
 
-            return project.data;
+            return combinePortfolioCaseStudy([project.data])[0];
         },
         [`project:${id}`],
         {

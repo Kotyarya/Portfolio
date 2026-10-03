@@ -18,7 +18,10 @@ interface ProjectModalProps {
 
 const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
-    const {text, img, name, preview} = activeProject || {};
+    const {text, img, name, preview, caseStudy, githubLinks, githubLink, link, availabilityNote} = activeProject || {};
+    const sourceLinks = githubLinks ?? (
+        githubLink?.startsWith('http') ? [{label: 'Source', url: githubLink}] : []
+    );
 
     return (
         <>
@@ -63,7 +66,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                     >
                                         <SwiperSlide>
                                             <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview}
-                                                   alt={"ProjectImg"}
+                                                   alt={`${name} project preview`}
                                                    width={677}
                                                    height={508}
                                                    className="w-[677px] h-[508px] max-ipad:!h-67 max-ipad:!w-120 max-desk:w-[577px] object-cover"/>
@@ -73,7 +76,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                                 return (
                                                     <SwiperSlide key={i}>
                                                         <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + img}
-                                                               alt={"ProjectImg"} width={677}
+                                                               alt={`${name} project screenshot ${i + 1}`} width={677}
                                                                height={508}
                                                                className="w-[677px] h-[508px] max-ipad:!h-67 max-desk:w-[577px] max-ipad:!w-120 object-cover"/>
                                                     </SwiperSlide>
@@ -82,7 +85,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                         }
                                     </Swiper>
                                 </div>
-                                : <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview} alt={"ProjectImg"}
+                                : <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + preview} alt={`${name} project preview`}
                                          width={677}
                                          height={508}
                                          className="w-[677px] h-[508px] max-ipad:!h-67 max-desk:w-[577px] max-ipad:!w-120 object-cover"/>
@@ -90,8 +93,36 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
                     </div>
                     <div className="flex flex-col w-109 max-mobile:w-full max-mobile:px-3 gap-6">
-                        <h3 className="font-cinzel text-xl text-gold-primary font-bold">{name}</h3>
+                        <h2 className="font-cinzel text-xl text-gold-primary font-bold">{name}</h2>
                         <p className="font-lora text-3xs text-white">{text}</p>
+                        {caseStudy && (
+                            <dl className="grid gap-3 font-lora text-4xs text-white">
+                                <div>
+                                    <dt className="text-gold-500">Role</dt>
+                                    <dd>{caseStudy.role}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Challenge</dt>
+                                    <dd>{caseStudy.challenge}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Architecture</dt>
+                                    <dd>{caseStudy.architecture}</dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Key decisions</dt>
+                                    <dd>
+                                        <ul className="list-disc space-y-1 pl-5">
+                                            {caseStudy.decisions.map(decision => <li key={decision}>{decision}</li>)}
+                                        </ul>
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className="text-gold-500">Result</dt>
+                                    <dd>{caseStudy.result}</dd>
+                                </div>
+                            </dl>
+                        )}
                         <p className="font-lora text-sm text-gold-700">Tech Stacks :</p>
                         <div className="flex flex-wrap gap-3 h-23.5 max-laptop:h-auto overflow-hidden">
                             {activeProject?.skills.map((skill, index) => (
@@ -99,17 +130,26 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                             ))}
                         </div>
                         <div className="flex gap-4 max-laptop:mt-5 max-mobile:flex-wrap">
-                            {
-                                activeProject?.link && <Button text={"View Projects"} size={'large'}>
-                                    <Image src={internetIcon} alt="Internet Logo" width={25} height={25}/>
+                            {link?.startsWith('http') && (
+                                <Button text="View Live" size="large" href={link} target="_blank">
+                                    <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25}/>
                                 </Button>
-                            }
-                            {
-                                activeProject?.githubLink && <Button text={"View on GitHub"} size={'large'}>
-                                    <Image src={gitHubIcon} alt="Github Logo" width={25} height={25}/>
+                            )}
+                            {sourceLinks.map(source => (
+                                <Button
+                                    key={source.url}
+                                    text={`${source.label} GitHub`}
+                                    size="large"
+                                    href={source.url}
+                                    target="_blank"
+                                >
+                                    <Image src={gitHubIcon} alt="" aria-hidden="true" width={25} height={25}/>
                                 </Button>
-                            }
+                            ))}
                         </div>
+                        {availabilityNote && (
+                            <p className="font-lora text-4xs leading-relaxed text-gold-200">{availabilityNote}</p>
+                        )}
                     </div>
                     <button
                         className='w-fit h-fit flex items-center justify-center text-gold-primary cursor-pointer absolute z-1 top-4.5 right-4.5 p-1 rounded bg-black'

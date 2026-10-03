@@ -2,6 +2,7 @@ import 'server-only';
 import {unstable_cache} from 'next/cache';
 import {baseAPI, type IApiResponse} from '@/api/http';
 import type {IBlock, IBlockCertificates, IBlockImg, IBlockWhatsNext, IProject, ISkill} from '@/types/blocksDataTypes';
+import {withCurrentAboutMe} from '@/content/aboutMe';
 
 
 export const getAboutMePage = unstable_cache(
@@ -18,7 +19,7 @@ export const getAboutMePage = unstable_cache(
         ]);
 
         return {
-            aboutMe: aboutMe.data,
+            aboutMe: withCurrentAboutMe(aboutMe.data),
             skills: skills.data,
             skillsPreview: skillsPreview.data,
             projects: projects.data,

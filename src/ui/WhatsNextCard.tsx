@@ -15,7 +15,7 @@ const WhatsNextCard = ({whatsNextElement}: WhatsNextCardProps) => {
                 <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + whatsNextElement.imgId}
                        alt={whatsNextElement.title}
                        width={261} height={127} className="w-auto h-32"/>
-                <h2 className="text-gold-primary text-xl font-cinzel text-center font-bold">{whatsNextElement.title}</h2>
+                <h3 className="text-gold-primary text-xl font-cinzel text-center font-bold">{whatsNextElement.title}</h3>
             </div>
             <div className="w-full h-full flex flex-col gap-4.25 bg-black-primary p-10 max-mobile:p-6 rounded-b-[8px]">
                 {

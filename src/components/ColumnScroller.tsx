@@ -65,6 +65,7 @@ const ColumnScroller = ({skills, direction, delayOffsetSec}: ColumnScroller) => 
                     ))}
                 </div>
                 <div
+                    aria-hidden="true"
                     style={{
                         display: 'flex',
                         flexDirection: 'column',

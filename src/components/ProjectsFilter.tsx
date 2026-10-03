@@ -4,6 +4,7 @@ import React from "react";
 import Select, {type ActionMeta, type MultiValue, type SingleValue, type StylesConfig} from "react-select";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
 import {X} from "lucide-react";
+import {buildProjectsQuery} from '@/utils/projectQuery';
 
 type Option = { label: string; value: string };
 
@@ -50,21 +51,13 @@ export default function ProjectsFilters({
 
     React.useEffect(() => {
         const t = setTimeout(() => {
-            const params = new URLSearchParams(urlSearchParams.toString()); // ✅ сохраняем projectId
-
-            // сначала чистим только фильтровые ключи (чтобы удалялись когда пусто)
-            params.delete("q");
-            params.delete("category");
-            params.delete("status");
-            params.delete("stacks");
-
-            if (query) params.set("q", query);
-            if (category?.value) params.set("category", category.value);
-            if (status?.value) params.set("status", status.value);
-            if (stacks.length) params.set("stacks", stacks.map(s => s.value).join(","));
-
-            const qs = params.toString();
-            router.replace(qs ? `${pathname}?${qs}` : pathname, {scroll: false}); // replace лучше чем push
+            const queryString = buildProjectsQuery(urlSearchParams.toString(), {
+                query,
+                category: category?.value,
+                status: status?.value,
+                stacks: stacks.map(stack => stack.value),
+            });
+            router.replace(queryString ? `${pathname}?${queryString}` : pathname, {scroll: false});
         }, 400);
 
         return () => clearTimeout(t);
@@ -83,7 +76,7 @@ export default function ProjectsFilters({
     ) => {
         if (meta.action === "select-option") {
             const option = meta.option;
-            if (!option) return; // на всякий случай защита
+            if (!option) return;
 
             setStacks(prev => [
                 {label: option.label, value: option.value},
@@ -116,13 +109,14 @@ export default function ProjectsFilters({
         <div className="w-full flex items-center justify-center gap-6">
             {/* Category */}
             <div className="flex items-center gap-4.5">
-                <p className="text-gold-primary font-taviraj text-base ">Category</p>
+                <label htmlFor="proj-cat" className="text-gold-primary font-taviraj text-base">Category</label>
                 <Select<Option, false>
                     instanceId="proj-cat"
+                    inputId="proj-cat"
                     options={catOptions}
                     value={category}
                     onChange={onCategory}
-                    placeholder="Category"
+                    placeholder="All"
                     isClearable
                     className="w-[170px] z-40 font-lato text-3xs "
                     classNamePrefix="rs"
@@ -132,13 +126,14 @@ export default function ProjectsFilters({
 
             {/* Tech stacks (multi) */}
             <div className="flex items-center gap-4.5">
-                <p className="text-gold-primary font-taviraj text-base ">Tech Stacks</p>
+                <label htmlFor="proj-stacks" className="text-gold-primary font-taviraj text-base">Technologies</label>
                 <Select<Option, true>
                     instanceId="proj-stacks"
+                    inputId="proj-stacks"
                     options={skillOptions}
                     value={stacks}
                     onChange={onStacks}
-                    placeholder="Tech stacks"
+                    placeholder="All"
                     isSearchable={false}
                     isMulti
                     className="w-[250px] max-h-9.5 z-40 font-lato text-3xs"
@@ -149,13 +144,14 @@ export default function ProjectsFilters({
 
             {/* Status */}
             <div className="flex items-center gap-4.5 max-laptop:hidden">
-                <p className="text-gold-primary font-taviraj text-base ">Status</p>
+                <label htmlFor="proj-status" className="text-gold-primary font-taviraj text-base">Status</label>
                 <Select<Option, false>
                     instanceId="proj-status"
+                    inputId="proj-status"
                     options={statusOptions}
                     value={status}
                     onChange={onStatus}
-                    placeholder="Status"
+                    placeholder="All"
                     isClearable
                     className="w-[180px] z-40 font-lato text-3xs"
                     classNamePrefix="rs"
@@ -165,7 +161,9 @@ export default function ProjectsFilters({
 
             {/* Search */}
             <div className="w-50 max-desk:hidden">
+                <label htmlFor="project-search" className="sr-only">Search projects</label>
                 <input
+                    id="project-search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Search…"
@@ -175,6 +173,8 @@ export default function ProjectsFilters({
 
             {/* Reset */}
             <button
+                type="button"
+                aria-label="Clear all project filters"
                 onClick={clearAll}
                 className="h-[38px] w-[38px] flex items-center justify-center text-gold-primary cursor-pointer"
             >
