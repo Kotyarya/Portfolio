@@ -36,9 +36,9 @@ const Contact = () => {
             <div className="flex p-14.5 justify-between mt-20 wide:px-65 max-laptop:flex-col max-laptop:items-center">
                 <div
                     className={"flex flex-col w-153 max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-left")}>
-                    <h2 className="text-gold-primary text-6xl max-ipad:text-4xl max-mobile:!text-xl font-cinzel font-bold mb-8 max-laptop:text-center">
+                    <h1 className="text-gold-primary text-6xl max-ipad:text-4xl max-mobile:!text-xl font-cinzel font-bold mb-8 max-laptop:text-center">
                         Get in <span className="text-white">Touch</span> for Collaboration
-                    </h2>
+                    </h1>
                     <p className="text-white text-sm font-lora mb-16 max-laptop:hidden">
                         I’m open to freelance opportunities, long-term collaboration, or project-based work. Feel free
                         to send a message — I’ll get back to you as soon as possible.

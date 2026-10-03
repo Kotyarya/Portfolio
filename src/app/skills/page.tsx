@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: "Skills — Maksym Aksamitnyi",
     description:
         "Technical skills of Maksym Aksamitnyi, including web development, frontend and backend technologies.",
+    alternates: {canonical: '/skills'},
 };
 
 export default async function Page({searchParams}: { searchParams: SkillsSearchParams }) {

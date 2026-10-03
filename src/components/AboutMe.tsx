@@ -10,10 +10,11 @@ import Button from '@/ui/Button';
 import {useRouter} from "next/navigation";
 
 interface AboutMeProps {
-    aboutMe: IBlockImg
+    aboutMe: IBlockImg;
+    headingLevel?: 1 | 2;
 }
 
-const AboutMe = ({aboutMe}: AboutMeProps) => {
+const AboutMe = ({aboutMe, headingLevel = 2}: AboutMeProps) => {
 
     const {text, title, subtitle, imgId} = aboutMe;
     const {ref, isVisible} = useInView<HTMLDivElement>()
@@ -25,7 +26,7 @@ const AboutMe = ({aboutMe}: AboutMeProps) => {
             ref={ref}
         >
             <div className="laptop:col-start-2 laptop:row-start-1 laptop:justify-self-start">
-                <Title title={title} subtitle={subtitle} position="left"/>
+                <Title title={title} subtitle={subtitle} position="left" headingLevel={headingLevel}/>
             </div>
             <Image
                 src={process.env.NEXT_PUBLIC_API_URL + "/media/" + imgId}

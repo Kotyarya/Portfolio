@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     title: "About Me — Maksym Aksamitnyi",
     description:
         "About Maksym Aksamitnyi (Максим Аксамітний), software developer and creator of this portfolio.",
+    alternates: {canonical: '/about-me'},
 };
 
 export default async function Page() {
@@ -28,7 +29,7 @@ export default async function Page() {
 
     return (
         <>
-            <AboutMe aboutMe={aboutMe}/>
+            <AboutMe aboutMe={aboutMe} headingLevel={1}/>
             <WhatsNext whatsNext={whatsNext}/>
             <Certificates certificates={certificates}/>
             <SkillsPreview skills={skills} skillsPreview={skillsPreview}/>

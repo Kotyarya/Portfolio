@@ -93,7 +93,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
                     </div>
                     <div className="flex flex-col w-109 max-mobile:w-full max-mobile:px-3 gap-6">
-                        <h3 className="font-cinzel text-xl text-gold-primary font-bold">{name}</h3>
+                        <h2 className="font-cinzel text-xl text-gold-primary font-bold">{name}</h2>
                         <p className="font-lora text-3xs text-white">{text}</p>
                         {caseStudy && (
                             <dl className="grid gap-3 font-lora text-4xs text-white">
