@@ -6,6 +6,7 @@ import {combinePortfolioCaseStudy} from '@/api/portfolioCaseStudy';
 import {withCurrentAboutMe} from '@/content/aboutMe';
 
 interface HomePagePayload {
+    hero: IBlock;
     aboutMe: IBlockImg;
     skills: ISkill[];
     skillsPreview: IBlock;
@@ -18,9 +19,10 @@ interface HomePagePayload {
 export const getHomePage = unstable_cache(
     async () => {
         const response = await baseAPI.get<IApiResponse<HomePagePayload>>('home').then(r => r.data);
-        const {contactMe, projects, projectsPreview, skillsPreview, skills, aboutMe} = response.data;
+        const {hero, contactMe, projects, projectsPreview, skillsPreview, skills, aboutMe} = response.data;
 
         return {
+            hero,
             aboutMe: withCurrentAboutMe(aboutMe),
             skills,
             skillsPreview,
