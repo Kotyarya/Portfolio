@@ -7,12 +7,12 @@ import ContactMe from "@/components/ContactMe";
 
 export default async function Home() {
 
-    const {aboutMe, skills, skillsPreview, projectsPreview, projects, contactMe} = await getHomePage();
+    const {hero, aboutMe, skills, skillsPreview, projectsPreview, projects, contactMe} = await getHomePage();
 
 
     return (
         <>
-            <Hero/>
+            <Hero hero={hero}/>
             <AboutMe aboutMe={aboutMe}/>
             <SkillsPreview skills={skills} skillsPreview={skillsPreview}/>
             <ProjectsPreview projects={projects} projectsPreview={projectsPreview}/>
