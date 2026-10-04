@@ -1,10 +1,10 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
 import {usePathname, useRouter, useSearchParams} from 'next/navigation';
 import type {IBlock, ISkill} from '@/types/blocksDataTypes';
 import Title from '@/ui/Title';
+import SkillBlock from '@/ui/SkillBlock';
 import SkillModal from '@/components/SkillModal';
 import {useInView} from '@/hooks/useInView';
 import {getAnimation} from '@/utils/getAnimation';
@@ -20,23 +20,31 @@ const categories = [
     {
         name: 'Frontend',
         description: 'Interfaces, rendering, responsive behavior and technical SEO.',
-        matches: ['react', 'next', 'typescript', 'javascript', 'html', 'css', 'tailwind', 'seo', 'ux', 'ui'],
+        matches: ['react', 'next', 'typescript', 'javascript', 'html', 'css', 'tailwind', 'sass', 'seo', 'ux', 'ui'],
     },
     {
         name: 'Backend & Data',
         description: 'APIs, application logic, persistence and data access.',
-        matches: ['nest', 'node', 'postgres', 'prisma', 'rest', 'sql', 'postman'],
+        matches: ['nest', 'node', 'postgres', 'mongo', 'prisma', 'rest', 'sql', 'postman'],
     },
     {
         name: 'Software & Game Development',
         description: 'Object-oriented desktop software and interactive game systems.',
-        matches: ['swift', 'swiftui', 'ios', 'c#', 'windows forms', 'unreal', 'algorithm'],
+        matches: ['swift', 'swiftui', 'ios', 'java', 'c#', 'windows forms', 'unreal', 'algorithm'],
     },
     {
         name: 'Delivery & Collaboration',
-        description: 'Source control, design handoff and project delivery tools.',
-        matches: ['git', 'github', 'figma', 'jira', 'trello', 'notion'],
+        description: 'Source control, automation, design handoff and project delivery tools.',
+        matches: ['git', 'github', 'ci/cd', 'figma', 'jira', 'trello', 'notion', 'scrum'],
     },
+] as const;
+
+const FLOAT_OFFSETS = [
+    'pt-0',
+    'pt-0 mobile:pt-10',
+    'pt-0 ipad:pt-3',
+    'pt-0 mobile:pt-5 laptop:pt-14',
+    'pt-0 ipad:pt-8',
 ] as const;
 
 const categoryFor = (skill: ISkill) => {
@@ -45,11 +53,14 @@ const categoryFor = (skill: ISkill) => {
         ?? 'Additional Skills';
 };
 
+const categoryId = (name: string) => `skills-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+
 const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const {isVisible, ref} = useInView<HTMLDivElement>();
+    const [isBlurred, setIsBlurred] = React.useState(false);
 
     const groupedSkills = React.useMemo(() => {
         const groups = new Map<string, ISkill[]>();
@@ -74,6 +85,7 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
     }, [skills]);
 
     const openModal = (id: number) => {
+        setIsBlurred(false);
         const params = new URLSearchParams(searchParams.toString());
         params.set('skillId', id.toString());
         router.push(`${pathname}?${params.toString()}`, {scroll: false});
@@ -89,40 +101,65 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
     return (
         <>
             {skillId && <SkillModal activeSkill={activeSkill} closeModal={closeModal}/>}
-            <section className="mx-auto mt-20 flex w-[90vw] max-w-6xl flex-col items-center gap-12" ref={ref}>
-                <div className={`flex max-w-3xl flex-col items-center gap-5 text-center ${getAnimation(isVisible, 'animate-slide-in-bottom')}`}>
+
+            <div
+                aria-hidden="true"
+                className={`pointer-events-none fixed inset-0 z-40 bg-black/15 backdrop-blur-[6px] transition-opacity duration-300 ${isBlurred ? 'opacity-100' : 'opacity-0'}`}
+            />
+
+            <section className="relative mx-auto mt-20 flex w-[92vw] max-w-[1350px] flex-col items-center" ref={ref}>
+                <div className={`flex max-w-4xl flex-col items-center gap-5 text-center ${getAnimation(isVisible, 'animate-slide-in-bottom')}`}>
                     <Title title={skillsPreview.title} subtitle={skillsPreview.subtitle} headingLevel={1}/>
                     <p className="font-lora text-2xs leading-relaxed text-white laptop:text-sm">{skillsPreview.text}</p>
                 </div>
 
-                <div className="grid w-full gap-8 laptop:grid-cols-2">
-                    {groupedSkills.map(category => (
-                        <section key={category.name} className="rounded-lg border border-gold-500/35 bg-black-300 p-6">
-                            <h2 className="font-cinzel text-lg font-bold text-gold-primary">{category.name}</h2>
-                            <p className="mt-2 font-lora text-4xs leading-relaxed text-gold-200">{category.description}</p>
-                            <ul className="mt-6 grid gap-3 mobile:grid-cols-2">
-                                {category.skills.map(skill => (
-                                    <li key={skill.id}>
-                                        <button
-                                            type="button"
-                                            aria-haspopup="dialog"
-                                            onClick={() => openModal(skill.id)}
-                                            className="flex h-full w-full items-center gap-3 rounded border border-black-100 bg-black-primary p-3 text-left transition hover:border-gold-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-primary"
+                <div className="mt-20 flex w-full flex-col gap-24 max-mobile:gap-16">
+                    {groupedSkills.map((category, categoryIndex) => {
+                        const headingId = categoryId(category.name);
+
+                        return (
+                            <section key={category.name} aria-labelledby={headingId} className="relative w-full">
+                                <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+                                    <p className="font-taviraj text-5xs uppercase tracking-[3px] text-gold-500">
+                                        0{categoryIndex + 1}
+                                    </p>
+                                    <h2 id={headingId} className="mt-2 font-cinzel text-xl font-bold text-gold-primary mobile:text-2xl">
+                                        {category.name}
+                                    </h2>
+                                    <p className="mt-3 max-w-2xl font-lora text-4xs leading-relaxed text-gold-200 mobile:text-3xs">
+                                        {category.description}
+                                    </p>
+                                </div>
+
+                                <ul className="mt-8 grid w-full grid-cols-1 gap-x-8 gap-y-3 mobile:grid-cols-2 ipad:grid-cols-3 laptop:grid-cols-4 desk:grid-cols-5">
+                                    {category.skills.map((skill, index) => (
+                                        <li
+                                            key={skill.id}
+                                            className={`flex min-h-[270px] items-start justify-center ${FLOAT_OFFSETS[index % FLOAT_OFFSETS.length]}`}
                                         >
-                                            <Image
-                                                src={`${process.env.NEXT_PUBLIC_API_URL}/media/${skill.img}`}
-                                                alt=""
-                                                width={42}
-                                                height={42}
-                                                className="h-10 w-10 object-contain"
-                                            />
-                                            <span className="font-lato text-3xs text-white">{skill.name}</span>
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </section>
-                    ))}
+                                            <button
+                                                type="button"
+                                                aria-haspopup="dialog"
+                                                aria-label={`Open ${skill.name} details`}
+                                                onClick={() => openModal(skill.id)}
+                                                onMouseEnter={() => setIsBlurred(true)}
+                                                onMouseLeave={() => setIsBlurred(false)}
+                                                onFocus={() => setIsBlurred(true)}
+                                                onBlur={() => setIsBlurred(false)}
+                                                className="group relative z-50 flex animate-float flex-col items-center transition duration-300 hover:animate-none hover:shadow-gold-small focus-visible:animate-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-primary"
+                                                style={{animationDelay: `${(index + categoryIndex) * 0.15}s`}}
+                                            >
+                                                <SkillBlock skill={skill}/>
+                                                <span className="mt-3 max-w-[204px] font-cinzel text-4xs text-gold-200 transition-colors group-hover:text-gold-primary group-focus-visible:text-gold-primary">
+                                                    {skill.name}
+                                                </span>
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        );
+                    })}
                 </div>
             </section>
         </>
