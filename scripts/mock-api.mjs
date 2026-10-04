@@ -2,6 +2,7 @@ import {createServer} from 'node:http';
 
 const block = {title: 'Portfolio', subtitle: 'Evidence', text: 'Recruiter-facing portfolio content'};
 const home = {
+    hero: block,
     aboutMe: {...block, imgId: 'about.png'},
     skills: [],
     skillsPreview: block,
