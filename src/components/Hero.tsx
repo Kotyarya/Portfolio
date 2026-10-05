@@ -3,7 +3,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import type {IBlock} from "@/types/blocksDataTypes";
 import Image from "next/image";
-import MyPhoto from "../assets/hero/my-photo-hq.webp";
+import MyPhoto from "../assets/hero/my-photo.png";
 import MyPhotoMobile from "../assets/hero/mobileHero.png";
 import Ellipse from "../assets/hero/ellipse.png";
 
