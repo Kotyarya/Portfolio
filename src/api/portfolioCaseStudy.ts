@@ -21,7 +21,11 @@ const evidenceCaseStudies: Record<number, Partial<IProject>> = {
     },
     11: {
         text: 'A finished 2D Unreal Engine 5 action game structured around three clans, level progression, combat and skill upgrades.',
-        availabilityNote: 'Public build and source are not currently available. The published project screenshot is the available evidence.',
+        externalLinks: [{
+            label: 'View Windows Build',
+            url: 'https://github.com/Kotyarya/Cats-Samurai-Whiskers-of-War',
+        }],
+        availabilityNote: 'A packaged Windows build and project documentation are public. Unreal Engine source files are not published.',
         caseStudy: {
             role: 'Personal game project — game concept, UX/UI and Unreal Engine 5 implementation.',
             challenge: 'Give a compact 2D action game meaningful replay value through distinct clan choices and character progression.',
@@ -31,8 +35,16 @@ const evidenceCaseStudies: Record<number, Partial<IProject>> = {
                 'Connected upgrades to level progression so combat growth remains visible.',
                 'Kept the visual theme and interaction design consistent through a shared Figma direction.',
             ],
-            result: 'Finished portfolio game with its progression model and visual result documented; no public build or source is currently published.',
+            result: 'Finished portfolio game with a public packaged Windows build and project documentation; Unreal Engine source files are not published.',
         },
+    },
+    8: {
+        githubLink: 'https://github.com/Kotyarya/Drawing-and-Presentation-of-Geometric-Solids',
+        availabilityNote: 'Source code is public on GitHub. A hosted live demo is not applicable to this Windows Forms desktop application.',
+    },
+    7: {
+        githubLink: 'https://github.com/Kotyarya/Hermetization--Inheritance-and-Polymorphism-on-the-example-of-the-presentation-of-geometric-figures',
+        availabilityNote: 'Source code is public on GitHub. A hosted live demo is not applicable to this Windows Forms desktop application.',
     },
     6: {
         text: 'A finished university C# desktop application for matrix and complex-number operations with guarded input and dynamic action states.',
@@ -58,8 +70,12 @@ const addEvidenceCaseStudy = (project: IProject): IProject => {
     return {
         ...project,
         ...evidence,
-        link: project.link?.startsWith('http') ? project.link : '',
-        githubLink: project.githubLink?.startsWith('http') ? project.githubLink : '',
+        link: evidence.link?.startsWith('http')
+            ? evidence.link
+            : project.link?.startsWith('http') ? project.link : '',
+        githubLink: evidence.githubLink?.startsWith('http')
+            ? evidence.githubLink
+            : project.githubLink?.startsWith('http') ? project.githubLink : '',
     };
 };
 

@@ -55,6 +55,8 @@ describe('recruiter-facing critical flows', () => {
             project(14, {name: 'Portfolio backend', githubLink: 'https://github.com/Kotyarya/Portfolio-Server'}),
             project(12, {githubLink: 'link'}),
             project(11, {githubLink: 'link'}),
+            project(8),
+            project(7),
             project(6, {githubLink: 'https://github.com/Kotyarya/Matrix-and-Complex-Numbers-Calculator'}),
         ]);
         const caseStudies = projects.filter(item => item.caseStudy);
@@ -62,6 +64,9 @@ describe('recruiter-facing critical flows', () => {
         expect(caseStudies).toHaveLength(4);
         expect(caseStudies.every(item => item.caseStudy?.role && item.caseStudy.decisions.length >= 3)).toBe(true);
         expect(projects.find(item => item.id === 12)?.githubLink).toBe('');
+        expect(projects.find(item => item.id === 11)?.externalLinks?.[0]?.label).toBe('View Windows Build');
+        expect(projects.find(item => item.id === 8)?.githubLink).toContain('Drawing-and-Presentation');
+        expect(projects.find(item => item.id === 7)?.githubLink).toContain('Hermetization--Inheritance');
         expect(projects.find(item => item.id === 6)?.availabilityNote).toContain('public on GitHub');
     });
 
