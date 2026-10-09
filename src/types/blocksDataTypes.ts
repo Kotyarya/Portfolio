@@ -44,6 +44,10 @@ interface IProject {
         label: string,
         url: string,
     }[],
+    externalLinks?: {
+        label: string,
+        url: string,
+    }[],
     link: string,
     availabilityNote?: string,
     text: string,

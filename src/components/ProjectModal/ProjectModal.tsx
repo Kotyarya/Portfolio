@@ -34,7 +34,18 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
     if (!activeProject) return null;
 
-    const {text, img, name, preview, caseStudy, githubLinks, githubLink, link, availabilityNote} = activeProject;
+    const {
+        text,
+        img,
+        name,
+        preview,
+        caseStudy,
+        githubLinks,
+        githubLink,
+        externalLinks = [],
+        link,
+        availabilityNote,
+    } = activeProject;
     const sourceLinks = githubLinks ?? (
         githubLink?.startsWith('http') ? [{label: 'Source', url: githubLink}] : []
     );
@@ -166,6 +177,17 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                             target="_blank"
                                         >
                                             <Image src={gitHubIcon} alt="" aria-hidden="true" width={25} height={25}/>
+                                        </Button>
+                                    ))}
+                                    {externalLinks.filter(item => item.url.startsWith('http')).map(item => (
+                                        <Button
+                                            key={item.url}
+                                            text={item.label}
+                                            size="large"
+                                            href={item.url}
+                                            target="_blank"
+                                        >
+                                            <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25}/>
                                         </Button>
                                     ))}
                                 </div>
