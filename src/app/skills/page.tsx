@@ -9,7 +9,7 @@ import {buildPageMetadata} from '@/utils/siteMetadata';
 
 
 interface SkillsSearchParams {
-    skillId?: number;
+    skillId?: string;
 }
 
 const pageMetadata: Metadata = buildPageMetadata({
@@ -32,7 +32,9 @@ export default async function Page({searchParams}: { searchParams: Promise<Skill
     const {skills, skillsPreview, contactMe} = await getSkillsPage();
     const params = await searchParams;
 
-    const {skillId} = params;
+    const rawSkillId = params.skillId;
+    const parsedSkillId = rawSkillId ? Number(rawSkillId) : undefined;
+    const skillId = Number.isFinite(parsedSkillId) ? parsedSkillId : undefined;
 
     let skill;
 
