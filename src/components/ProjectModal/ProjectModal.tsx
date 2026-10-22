@@ -10,6 +10,7 @@ import {Mousewheel, Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import {getProjectImageSource} from '@/utils/projectImage';
 
 interface ProjectModalProps {
     activeProject?: IProject;
@@ -52,11 +53,11 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
 
     const projectImage = (image: string, alt: string) => (
         <Image
-            src={`${process.env.NEXT_PUBLIC_API_URL}/media/${image}`}
+            src={getProjectImageSource(image)}
             alt={alt}
             width={677}
             height={508}
-            className="h-full w-full object-cover"
+            className={`h-full w-full bg-black-primary ${activeProject.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
         />
     );
 

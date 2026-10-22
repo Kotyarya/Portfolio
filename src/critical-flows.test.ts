@@ -49,7 +49,7 @@ describe('recruiter-facing critical flows', () => {
         expect(setProjectModalQuery(filtered, 6)).toContain('projectId=6');
     });
 
-    it('builds four evidence-based case studies with honest availability', () => {
+    it('builds recruiter-ready case studies with honest availability', () => {
         const projects = combinePortfolioCaseStudy([
             project(13, {name: 'Portfolio frontend', githubLink: 'https://github.com/Kotyarya/Portfolio'}),
             project(14, {name: 'Portfolio backend', githubLink: 'https://github.com/Kotyarya/Portfolio-Server'}),
@@ -61,13 +61,23 @@ describe('recruiter-facing critical flows', () => {
         ]);
         const caseStudies = projects.filter(item => item.caseStudy);
 
-        expect(caseStudies).toHaveLength(4);
+        expect(caseStudies).toHaveLength(6);
         expect(caseStudies.every(item => item.caseStudy?.role && item.caseStudy.decisions.length >= 3)).toBe(true);
+        expect(projects.find(item => item.name.startsWith('GameSpot'))?.githubLink).toContain('GameSpot');
+        expect(projects.find(item => item.name.startsWith('CreateX'))?.link).toContain('vercel.app');
         expect(projects.find(item => item.id === 12)?.githubLink).toBe('');
         expect(projects.find(item => item.id === 11)?.externalLinks?.[0]?.label).toBe('View Windows Build');
         expect(projects.find(item => item.id === 8)?.githubLink).toContain('Drawing-and-Presentation');
         expect(projects.find(item => item.id === 7)?.githubLink).toContain('Hermetization--Inheritance');
         expect(projects.find(item => item.id === 6)?.availabilityNote).toContain('public on GitHub');
+    });
+
+    it('applies project filters to the featured recruiter projects', () => {
+        const swiftProjects = combinePortfolioCaseStudy([], {skills: ['SwiftUI']});
+        const createXSearch = combinePortfolioCaseStudy([], {search: 'online school'});
+
+        expect(swiftProjects.map(item => item.name)).toEqual(['GameSpot — iOS Sports Community']);
+        expect(createXSearch.map(item => item.name)).toEqual(['CreateX — Full-Stack Online School']);
     });
 
     it('matches contact validation to backend field limits', () => {

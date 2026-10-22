@@ -54,6 +54,7 @@ interface IProject {
     importance: number,
     preview: string,
     img: string[],
+    imageFit?: 'cover' | 'contain',
     skills: {
         name: string;
         importance: number;
