@@ -29,7 +29,7 @@ const getProjectCached = unstable_cache(
 
         return combinePortfolioCaseStudy(projects.data, {category, skills, status, search});
     },
-    ['projects-list'],
+    ['projects-list-recruiter-v1'],
     {
         revalidate: 86400,
         tags: ['projects'],
@@ -97,7 +97,7 @@ const getProjectsFilterParamCached = unstable_cache(
             ]),
         };
     },
-    ['projects-filters'],
+    ['projects-filters-recruiter-v1'],
     {
         revalidate: 86400,
         tags: ['projects', "projects:filters"],
@@ -131,7 +131,7 @@ export const getProjectByIdCached = cache(async (id: number) => {
 
             return combinePortfolioCaseStudy([project.data], {includeFeatured: false})[0];
         },
-        [`project:${id}`],
+        [`project-recruiter-v1:${id}`],
         {
             revalidate: 86400,
             tags: ['projects', `project:${id}`],

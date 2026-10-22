@@ -3,8 +3,8 @@ import type {Metadata} from "next";
 import {buildPageMetadata} from '@/utils/siteMetadata';
 
 export const metadata: Metadata = buildPageMetadata({
-    title: 'Contact Maksym Aksamitnyi | Full-Stack Developer',
-    description: 'Contact full-stack TypeScript developer Maksym Aksamitnyi about software engineering roles, freelance work or product collaboration.',
+    title: 'Contact Maksym Aksamitnyi | Software Developer in Warsaw',
+    description: 'Contact Warsaw-based software developer Maksym Aksamitnyi about full-time React, TypeScript, NestJS or SwiftUI roles in Poland.',
     path: '/contact',
 });
 

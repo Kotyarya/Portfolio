@@ -1,11 +1,11 @@
 import type {Metadata} from 'next';
 
-const SITE_NAME = 'Maksym Aksamitnyi — Full-Stack Developer';
+const SITE_NAME = 'Maksym Aksamitnyi — Software Developer';
 const SOCIAL_IMAGE = {
     url: '/opengraph-image',
     width: 1200,
     height: 630,
-    alt: 'Maksym Aksamitnyi — Full-Stack TypeScript Developer',
+    alt: 'Maksym Aksamitnyi — SwiftUI, React and TypeScript Developer',
 };
 
 interface PageMetadataOptions {

@@ -9,12 +9,12 @@ import {buildPageMetadata} from '@/utils/siteMetadata';
 
 
 interface SkillsSearchParams {
-    skillId?: number;
+    skillId?: string;
 }
 
 const pageMetadata: Metadata = buildPageMetadata({
-    title: 'TypeScript, React & NestJS Skills | Maksym Aksamitnyi',
-    description: 'Review Maksym Aksamitnyi’s frontend, backend, database and software development skills, linked to practical project evidence.',
+    title: 'SwiftUI, React & TypeScript Skills | Maksym Aksamitnyi',
+    description: 'Review Maksym Aksamitnyi’s primary SwiftUI, React, TypeScript, NestJS, PostgreSQL and testing skills with project evidence.',
     path: '/skills',
 });
 
@@ -32,7 +32,9 @@ export default async function Page({searchParams}: { searchParams: Promise<Skill
     const {skills, skillsPreview, contactMe} = await getSkillsPage();
     const params = await searchParams;
 
-    const {skillId} = params;
+    const rawSkillId = params.skillId;
+    const parsedSkillId = rawSkillId ? Number(rawSkillId) : undefined;
+    const skillId = Number.isFinite(parsedSkillId) ? parsedSkillId : undefined;
 
     let skill;
 

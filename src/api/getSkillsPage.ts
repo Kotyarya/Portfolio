@@ -2,6 +2,7 @@ import 'server-only';
 import {unstable_cache} from 'next/cache';
 import {baseAPI, type IApiResponse} from '@/api/http';
 import type {IBlock, ISkill} from '@/types/blocksDataTypes';
+import {curateRecruiterSkills, RECRUITER_CONTACT} from '@/content/recruiterProfile';
 
 
 export const getSkillsPage = unstable_cache(
@@ -13,11 +14,11 @@ export const getSkillsPage = unstable_cache(
         ]);
 
         return {
-            skills: skills.data,
+            skills: curateRecruiterSkills(skills.data),
             skillsPreview: skillsPreview.data,
-            contactMe: contactMe.data,
+            contactMe: {...contactMe.data, ...RECRUITER_CONTACT},
         }
     },
-    ['skills-page'],
+    ['skills-page-recruiter-v1'],
     {revalidate: 86400, tags: ['skills-page']}
 );
