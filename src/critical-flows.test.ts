@@ -77,9 +77,10 @@ describe('recruiter-facing critical flows', () => {
         expect(projects[0]?.status.name).toBe('Completed');
         expect(projects.find(item => item.id === 12)?.githubLink).toBe('');
         expect(projects.find(item => item.id === 11)?.externalLinks?.[0]?.label).toBe('View Windows Build');
-        expect(projects.find(item => item.id === 8)?.githubLink).toContain('Drawing-and-Presentation');
-        expect(projects.find(item => item.id === 7)?.githubLink).toContain('Hermetization--Inheritance');
-        expect(projects.find(item => item.id === 6)?.availabilityNote).toContain('public on GitHub');
+        expect(projects.find(item => item.id === 8)?.githubLink).toBe('');
+        expect(projects.find(item => item.id === 7)?.githubLink).toBe('');
+        expect(projects.find(item => item.id === 6)?.githubLink).toBe('');
+        expect(projects.find(item => item.id === 6)?.availabilityNote).toContain('private');
     });
 
     it('keeps recruiter positioning concise and removes outdated iOS plans', () => {
