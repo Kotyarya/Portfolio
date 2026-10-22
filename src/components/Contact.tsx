@@ -71,7 +71,7 @@ const Contact = () => {
                                 aria-invalid={errors.name ? "true" : "false"}
                                 aria-describedby={errors.name ? "name-error" : undefined}
                                 {...register("name", {validate: value => validateContactField('name', value)})}
-                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-gold-500 " + (errors.name ? " border-red-900 placeholder:text-red-400" : "")}
                             />
                             {errors.name && <p id="name-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.name.message}</p>}
                         </div>
@@ -87,7 +87,7 @@ const Contact = () => {
                                 aria-invalid={errors.email ? "true" : "false"}
                                 aria-describedby={errors.email ? "email-error" : undefined}
                                 {...register("email", {validate: value => validateContactField('email', value)})}
-                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.email ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-gold-500 " + (errors.email ? " border-red-900 placeholder:text-red-400" : "")}
                             />
                             {errors.email && <p id="email-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.email.message}</p>}
                         </div>
@@ -101,7 +101,7 @@ const Contact = () => {
                                 aria-invalid={errors.message ? "true" : "false"}
                                 aria-describedby={errors.message ? "message-error" : undefined}
                                 {...register("message", {validate: value => validateContactField('message', value)})}
-                                className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.message ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-gold-500 " + (errors.message ? " border-red-900 placeholder:text-red-400" : "")}
                                 rows={4}
                             />
                             {errors.message && <p id="message-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.message.message}</p>}

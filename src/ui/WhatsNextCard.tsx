@@ -24,7 +24,7 @@ const WhatsNextCard = ({whatsNextElement}: WhatsNextCardProps) => {
                             <div className="bg-gold-primary w-fit rounded-full p-1">
                                 <Check size={20}/>
                             </div>
-                            <p className="text-3xs font-lora text-gold-700">{subtask}</p>
+                            <p className="text-3xs font-lora text-gold-500">{subtask}</p>
                         </div>
                     ))
                 }
