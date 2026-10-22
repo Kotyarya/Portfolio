@@ -150,9 +150,6 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
                                                 style={{animationDelay: `${(index + categoryIndex) * 0.15}s`}}
                                             >
                                                 <SkillBlock skill={skill}/>
-                                                <span className="mt-3 max-w-[204px] font-cinzel text-4xs text-gold-200 transition-colors group-hover:text-gold-primary group-focus-visible:text-gold-primary">
-                                                    {skill.name}
-                                                </span>
                                             </button>
                                         </li>
                                     ))}
