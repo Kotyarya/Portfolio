@@ -136,7 +136,7 @@ const Contact = () => {
                     className="bg-black-primary flex flex-col items-center py-10 px-19 gap-2 rounded-3xl w-fit h-fit">
                     <h2 className="text-3xl text-gold-primary font-cinzel font-bold">My vCard</h2>
                     <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + "vCard.svg"} alt="QR code with Maksym Aksamitnyi contact details" width={315}
-                           height={315}/>
+                           height={315} sizes="315px"/>
                 </div>
             </div>
         </div>

@@ -115,7 +115,8 @@ export default function Carousel({
                                 <SwiperSlide className={styles.slide} key={index}>
                                     <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + p} alt={`Certificate awarded to Maksym Aksamitnyi, image ${index + 1}`}
                                            width={600}
-                                           height={464}/>
+                                           height={464}
+                                           sizes="(max-width: 833px) 90vw, 600px"/>
                                 </SwiperSlide>
                             ))
                     }

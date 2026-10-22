@@ -11,6 +11,8 @@ interface HeroProps {
     hero: IBlock;
 }
 
+const TRANSPARENT_PIXEL = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
 const Hero = ({hero}: HeroProps) => {
     const {text, title, subtitle} = hero;
 
@@ -67,24 +69,32 @@ const Hero = ({hero}: HeroProps) => {
                                 <Image src={Ellipse} alt="" aria-hidden="true" sizes="(max-width: 833px) 760px, (min-width: 1536px) 1040px, 760px" className="w-full h-full"/>
                                 </div>
 
-                                <Image
-                                    src={MyPhoto}
-                                    alt="Portrait of Maksym Aksamitnyi"
-                                    width={600}
-                                    priority
-                                    sizes="(min-width: 1536px) 936px, (min-width: 834px) 480px, 0px"
-                                    className="z-10 animate-fade wide:w-234 max-ipad:hidden max-laptop:w-120"
-                                />
+                                <picture>
+                                    <source media="(max-width: 833px)" srcSet={TRANSPARENT_PIXEL}/>
+                                    <Image
+                                        src={MyPhoto}
+                                        alt="Portrait of Maksym Aksamitnyi"
+                                        width={600}
+                                        loading="eager"
+                                        fetchPriority="high"
+                                        sizes="(min-width: 1536px) 936px, (min-width: 834px) 480px, 1px"
+                                        className="z-10 animate-fade wide:w-234 max-ipad:hidden max-laptop:w-120"
+                                    />
+                                </picture>
 
                                 <div className="relative w-[634.95px] h-[669.03px] ipad:hidden">
-                                    <Image
-                                        src={MyPhotoMobile}
-                                        alt="Portrait of Maksym Aksamitnyi"
-                                        priority
-                                        fill
-                                        sizes="(max-width: 833px) 635px, 0px"
-                                        className="z-10 animate-fade object-contain"
-                                    />
+                                    <picture>
+                                        <source media="(min-width: 834px)" srcSet={TRANSPARENT_PIXEL}/>
+                                        <Image
+                                            src={MyPhotoMobile}
+                                            alt="Portrait of Maksym Aksamitnyi"
+                                            loading="eager"
+                                            fetchPriority="high"
+                                            fill
+                                            sizes="(max-width: 833px) 635px, 1px"
+                                            className="z-10 animate-fade object-contain"
+                                        />
+                                    </picture>
                                 </div>
                             </div>
 

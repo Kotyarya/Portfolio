@@ -32,7 +32,7 @@ const Header = () => {
                     <div className="relative laptop:rounded-[26px] laptop:bg-[rgba(0,0,0,0)] laptop:p-2 laptop:backdrop-blur-[8px]">
                         <div className="relative z-50 flex w-full items-center justify-between px-6 py-2 laptop:w-fit laptop:gap-11 laptop:px-15 laptop:py-3">
                             <Link href="/" aria-label="Maksym Aksamitnyi — home" className="shrink-0 rounded laptop:mr-12">
-                                <Image src={logo} alt="Maksym Aksamitnyi home" width={46} priority/>
+                                <Image src={logo} alt="Maksym Aksamitnyi home" width={46}/>
                             </Link>
 
                             <button
