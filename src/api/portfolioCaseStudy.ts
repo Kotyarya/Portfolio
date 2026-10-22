@@ -57,6 +57,7 @@ export const featuredPortfolioProjects: IProject[] = [
             {label: 'Frontend', url: 'https://github.com/Kotyarya/CreateX'},
             {label: 'Backend', url: 'https://github.com/Kotyarya/CreateX-API'},
         ],
+        externalLinks: [{label: 'View Documentation', url: 'https://github.com/Kotyarya/CreateX#readme'}],
         link: 'https://createx-maksym-aksamitnyi.vercel.app',
         availabilityNote: 'The live demo and both source repositories are public. The API may need a brief first-request warm-up on the free hosting tier.',
         text: 'A responsive online-school platform with catalogues, detail pages, account access, registration flows and database-backed content.',
@@ -77,7 +78,7 @@ export const featuredPortfolioProjects: IProject[] = [
             {name: 'Express', importance: 8},
         ],
         category: {name: 'Full-stack'},
-        status: {name: 'Finished', img: ''},
+        status: {name: 'Completed', img: ''},
         caseStudy: {
             role: 'Solo full-stack developer — responsive frontend, API integration, authentication, content model, deployment and production hardening.',
             challenge: 'Turn a large multi-page education design into a working product with reusable catalogue flows, forms and safely hosted demo data.',
@@ -87,7 +88,7 @@ export const featuredPortfolioProjects: IProject[] = [
                 'Protected content mutations with JWT roles while keeping public browsing read-only.',
                 'Added validation, explicit CORS, rate limits and fail-closed environment checks before deployment.',
             ],
-            result: 'A deployed full-stack demo with public frontend/backend repositories, CI checks, seeded content and working recruiter-facing flows.',
+            result: 'A deployed full-stack portfolio demo with public frontend/backend repositories, CI checks, seeded content and working recruiter-facing flows.',
         },
     },
 ];
@@ -236,7 +237,12 @@ export const combinePortfolioCaseStudy = (
                 {label: 'Frontend', url: 'https://github.com/Kotyarya/Portfolio'},
                 {label: 'Backend', url: 'https://github.com/Kotyarya/Portfolio-Server'},
             ],
+            externalLinks: [
+                {label: 'Frontend README', url: 'https://github.com/Kotyarya/Portfolio#readme'},
+                {label: 'Backend README', url: 'https://github.com/Kotyarya/Portfolio-Server#readme'},
+            ],
             category: {name: 'Full-stack'},
+            status: {name: 'Completed', img: ''},
             skills: mergeSkills([frontend, backend]),
             img: [...new Set([...frontend.img, backend.preview, ...backend.img])],
             caseStudy: {
@@ -249,7 +255,7 @@ export const combinePortfolioCaseStudy = (
                     'Rate-limited contact flow with safe user feedback.',
                     'Independent frontend and backend deployments for focused releases.',
                 ],
-                result: 'A live full-stack product at aksamitny.com with one content source, responsive recruiter flows, and focused security controls.',
+                result: 'A live full-stack portfolio at aksamitny.com with one content source, responsive recruiter flows and focused security controls.',
             },
         } satisfies IProject,
         ...projects.filter(project => project.id !== PORTFOLIO_FRONTEND_ID && project.id !== PORTFOLIO_BACKEND_ID)]
@@ -259,7 +265,14 @@ export const combinePortfolioCaseStudy = (
         ? []
         : featuredPortfolioProjects.filter(project => matchesFeaturedProject(project, options));
 
+    const primaryRank = (project: IProject) => {
+        if (project.id === PORTFOLIO_FRONTEND_ID) return 0;
+        if (project.id === GAMESPOT_PROJECT_ID) return 1;
+        if (project.id === CREATEX_PROJECT_ID) return 2;
+        return 3;
+    };
+
     return [...featured, ...preparedProjects]
         .map(addEvidenceCaseStudy)
-        .sort((a, b) => b.importance - a.importance);
+        .sort((a, b) => primaryRank(a) - primaryRank(b) || b.importance - a.importance);
 };

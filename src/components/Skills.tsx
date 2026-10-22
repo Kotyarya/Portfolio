@@ -8,6 +8,7 @@ import SkillBlock from '@/ui/SkillBlock';
 import SkillModal from '@/components/SkillModal';
 import {useInView} from '@/hooks/useInView';
 import {getAnimation} from '@/utils/getAnimation';
+import {isPrimarySkill} from '@/content/recruiterProfile';
 
 interface SkillsProps {
     skillsPreview: IBlock;
@@ -18,24 +19,12 @@ interface SkillsProps {
 
 const categories = [
     {
-        name: 'Frontend',
-        description: 'Interfaces, rendering, responsive behavior and technical SEO.',
-        matches: ['react', 'next', 'typescript', 'javascript', 'html', 'css', 'tailwind', 'sass', 'seo', 'ux', 'ui'],
+        name: 'Primary',
+        description: 'The technologies I can discuss through completed mobile and full-stack project evidence.',
     },
     {
-        name: 'Backend & Data',
-        description: 'APIs, application logic, persistence and data access.',
-        matches: ['nest', 'node', 'postgres', 'mongo', 'prisma', 'rest', 'sql', 'postman'],
-    },
-    {
-        name: 'Software & Game Development',
-        description: 'Object-oriented desktop software and interactive game systems.',
-        matches: ['swift', 'swiftui', 'ios', 'java', 'c#', 'windows forms', 'unreal', 'algorithm'],
-    },
-    {
-        name: 'Delivery & Collaboration',
-        description: 'Source control, automation, design handoff and project delivery tools.',
-        matches: ['git', 'github', 'ci/cd', 'figma', 'jira', 'trello', 'notion', 'scrum'],
+        name: 'Secondary',
+        description: 'Supporting tools and technologies used in focused project work.',
     },
 ] as const;
 
@@ -48,9 +37,7 @@ const FLOAT_OFFSETS = [
 ] as const;
 
 const categoryFor = (skill: ISkill) => {
-    const normalizedName = skill.name.toLowerCase();
-    return categories.find(category => category.matches.some(match => normalizedName.includes(match)))?.name
-        ?? 'Additional Skills';
+    return isPrimarySkill(skill.name) ? 'Primary' : 'Secondary';
 };
 
 const categoryId = (name: string) => `skills-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
@@ -75,12 +62,6 @@ const Skills = ({skillsPreview, skills, activeSkill, skillId}: SkillsProps) => {
                 ...category,
                 skills: groups.get(category.name) ?? [],
             })).filter(category => category.skills.length > 0),
-            ...(groups.has('Additional Skills') ? [{
-                name: 'Additional Skills',
-                description: 'Supporting technologies used across academic and personal projects.',
-                matches: [],
-                skills: groups.get('Additional Skills') ?? [],
-            }] : []),
         ];
     }, [skills]);
 

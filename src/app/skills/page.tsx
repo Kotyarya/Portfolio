@@ -13,8 +13,8 @@ interface SkillsSearchParams {
 }
 
 const pageMetadata: Metadata = buildPageMetadata({
-    title: 'TypeScript, React & NestJS Skills | Maksym Aksamitnyi',
-    description: 'Review Maksym Aksamitnyi’s frontend, backend, database and software development skills, linked to practical project evidence.',
+    title: 'SwiftUI, React & TypeScript Skills | Maksym Aksamitnyi',
+    description: 'Review Maksym Aksamitnyi’s primary SwiftUI, React, TypeScript, NestJS, PostgreSQL and testing skills with project evidence.',
     path: '/skills',
 });
 

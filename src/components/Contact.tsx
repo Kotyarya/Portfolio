@@ -9,6 +9,7 @@ import {useInView} from "@/hooks/useInView";
 import {getAnimation} from "@/utils/getAnimation";
 import Link from "next/link";
 import {CONTACT_LIMITS, validateContactField} from '@/validation/contact';
+import {CONTACT_EMAIL} from '@/config/site';
 
 
 const Contact = () => {
@@ -39,15 +40,18 @@ const Contact = () => {
                 <div
                     className={"flex flex-col w-153 max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-left")}>
                     <h1 className="text-gold-primary text-6xl max-ipad:text-4xl max-mobile:!text-xl font-cinzel font-bold mb-8 max-laptop:text-center">
-                        Get in <span className="text-white">Touch</span> for Collaboration
+                        Let’s discuss a <span className="text-white">full-time</span> role
                     </h1>
                     <p className="text-white text-sm font-lora mb-16 max-laptop:hidden">
-                        I’m open to freelance opportunities, long-term collaboration, or project-based work. Feel free
-                        to send a message — I’ll get back to you as soon as possible.
+                        I’m available in around two weeks for developer positions in Warsaw (office or hybrid) and
+                        remote roles across Poland.
                     </p>
-                    <div className="">
-
-                    </div>
+                    <a
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="mb-10 w-fit font-lato text-base text-gold-primary underline decoration-gold-500 underline-offset-4 transition hover:text-gold-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-primary max-laptop:self-center max-mobile:text-xs"
+                    >
+                        {CONTACT_EMAIL}
+                    </a>
                 </div>
                 <div
                     className={"w-107 bg-black-200 px-8 py-13 rounded-[11px] max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-right")}>
