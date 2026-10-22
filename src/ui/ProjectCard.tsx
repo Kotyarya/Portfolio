@@ -4,6 +4,7 @@ import Image from "next/image"
 import ProjectTagBlock from "@/ui/ProjectTagBlock";
 import Button from "@/ui/Button";
 import ProjectStatusLabel from "@/ui/ProjectStatusLabel";
+import {getProjectImageSource} from '@/utils/projectImage';
 
 interface ProjectCardProps {
     project: IProject;
@@ -21,10 +22,10 @@ const ProjectCard = ({project, onClick, headingLevel = 3}: ProjectCardProps) => 
                 <div className="absolute top-2 right-2">
                     <ProjectStatusLabel status={project.status.name}/>
                 </div>
-                <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + project.preview} alt={`${project.name} project preview`}
+                <Image src={getProjectImageSource(project.preview)} alt={`${project.name} project preview`}
                        width={334}
                        height={194}
-                       className="w-[100%] h-[220px] object-cover"/>
+                       className={`h-[220px] w-full bg-black-primary ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}/>
                 <div className="p-5">
                     <p className="font-lato text-gold-primary text-4xs mb-1">{project.category.name}</p>
                     <Heading className="relative block w-[300px] h-[33px] overflow-hidden font-lora text-gold-primary text-sm mb-7 before:content-[''] before:absolute before:inset-0 before:shadow-[inset_-7px_0_7.5px_0px_rgba(20,20,20,1)] before:pointer-events-none before:z-10">{project.name}</Heading>

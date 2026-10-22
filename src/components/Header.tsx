@@ -7,8 +7,6 @@ import {usePathname} from "next/navigation";
 import {X} from "lucide-react";
 
 import logo from "../assets/shared/logo.svg";
-import Button from "@/ui/Button";
-import {CV_URL} from "@/config/site";
 
 const Header = () => {
     const [open, setOpen] = useState(false);
@@ -71,14 +69,6 @@ const Header = () => {
                                     <li><Link href="/projects">Projects</Link></li>
                                     <li><Link href="/contact">Contact</Link></li>
                                 </ul>
-                                <div className="mt-10 laptop:mt-0">
-                                    <Button
-                                        text="Download CV (PDF)"
-                                        size="medium"
-                                        href={CV_URL}
-                                        target="_blank"
-                                    />
-                                </div>
                             </nav>
                         </div>
                     </div>
