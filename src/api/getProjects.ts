@@ -3,7 +3,11 @@ import {unstable_cache} from 'next/cache';
 import {baseAPI, type IApiResponse} from "@/api/http";
 import type {IProject} from "@/types/blocksDataTypes";
 import {cache} from "react";
-import {combinePortfolioCaseStudy} from '@/api/portfolioCaseStudy';
+import {
+    combinePortfolioCaseStudy,
+    featuredPortfolioProjects,
+    getFeaturedPortfolioProject,
+} from '@/api/portfolioCaseStudy';
 
 type ProjectSkill = { name: string; importance: number };
 type ProjectCategory = { name: string };
@@ -23,7 +27,7 @@ const getProjectCached = unstable_cache(
             )
             .then(r => r.data);
 
-        return combinePortfolioCaseStudy(projects.data);
+        return combinePortfolioCaseStudy(projects.data, {category, skills, status, search});
     },
     ['projects-list'],
     {
@@ -52,7 +56,7 @@ export const getProject = async (
             )
             .then(r => r.data);
 
-        return combinePortfolioCaseStudy(projects.data);
+        return combinePortfolioCaseStudy(projects.data, {category, skills, status, search});
     }
 
 
@@ -74,10 +78,23 @@ const getProjectsFilterParamCached = unstable_cache(
                 .then(r => r.data),
         ]);
 
+        const mergeByName = <T extends {name: string}>(items: T[]) => [
+            ...new Map(items.map(item => [item.name.toLowerCase(), item])).values(),
+        ];
+
         return {
-            projectSkills: projectSkill.data,
-            projectCategories: projectCategories.data,
-            projectStatuses: projectStatuses.data,
+            projectSkills: mergeByName([
+                ...projectSkill.data,
+                ...featuredPortfolioProjects.flatMap(project => project.skills),
+            ]).sort((a, b) => b.importance - a.importance),
+            projectCategories: mergeByName([
+                ...projectCategories.data,
+                ...featuredPortfolioProjects.map(project => project.category),
+            ]),
+            projectStatuses: mergeByName([
+                ...projectStatuses.data,
+                ...featuredPortfolioProjects.map(project => project.status),
+            ]),
         };
     },
     ['projects-filters'],
@@ -95,6 +112,9 @@ export const getProjectsFilterParam = async () => {
 export const getProjectByIdCached = cache(async (id: number) => {
     return unstable_cache(
         async () => {
+            const featuredProject = getFeaturedPortfolioProject(id);
+            if (featuredProject) return featuredProject;
+
             if (id === 13 || id === 14) {
                 const projects = await Promise.all([13, 14].map(projectId =>
                     baseAPI
@@ -102,14 +122,14 @@ export const getProjectByIdCached = cache(async (id: number) => {
                         .then(response => response.data.data)
                 ));
 
-                return combinePortfolioCaseStudy(projects)[0];
+                return combinePortfolioCaseStudy(projects, {includeFeatured: false})[0];
             }
 
             const project = await baseAPI
                 .get<IApiResponse<IProject>>(`projects/${id}`)
                 .then(r => r.data);
 
-            return combinePortfolioCaseStudy([project.data])[0];
+            return combinePortfolioCaseStudy([project.data], {includeFeatured: false})[0];
         },
         [`project:${id}`],
         {

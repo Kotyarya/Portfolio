@@ -2,6 +2,99 @@ import type {IProject} from '@/types/blocksDataTypes';
 
 const PORTFOLIO_FRONTEND_ID = 13;
 const PORTFOLIO_BACKEND_ID = 14;
+export const GAMESPOT_PROJECT_ID = 1001;
+export const CREATEX_PROJECT_ID = 1002;
+
+export const featuredPortfolioProjects: IProject[] = [
+    {
+        id: GAMESPOT_PROJECT_ID,
+        name: 'GameSpot — iOS Sports Community',
+        githubLink: 'https://github.com/Kotyarya/GameSpot',
+        externalLinks: [{
+            label: 'View Documentation',
+            url: 'https://github.com/Kotyarya/GameSpot#readme',
+        }],
+        link: '',
+        availabilityNote: 'The complete source, architecture documentation and test evidence are public. App Store distribution is intentionally outside the current portfolio scope.',
+        text: 'A native SwiftUI app for discovering outdoor courts, organizing games, managing teams, voting for MVPs and tracking sport-specific ratings.',
+        importance: 99,
+        preview: '/projects/gamespot/games.png',
+        img: [
+            '/projects/gamespot/game.png',
+            '/projects/gamespot/profile.png',
+            '/projects/gamespot/settings.png',
+        ],
+        imageFit: 'contain',
+        skills: [
+            {name: 'Swift', importance: 10},
+            {name: 'SwiftUI', importance: 10},
+            {name: 'iOS', importance: 10},
+            {name: 'Supabase', importance: 9},
+            {name: 'PostgreSQL', importance: 9},
+            {name: 'MapKit', importance: 8},
+            {name: 'REST API', importance: 7},
+            {name: 'Git', importance: 6},
+        ],
+        category: {name: 'Mobile'},
+        status: {name: 'Finished', img: ''},
+        caseStudy: {
+            role: 'Solo iOS and backend developer — product flows, SwiftUI architecture, Supabase data model, security rules and verification.',
+            challenge: 'Coordinate real-world games and player state while keeping permissions, team capacity, voting and account cleanup reliable across multiple users.',
+            architecture: 'SwiftUI views → @MainActor view models → protocol-based services → Supabase Auth, Postgres, RPC, RLS, Realtime, Storage and Edge Functions.',
+            decisions: [
+                'Kept ownership and match lifecycle rules in PostgreSQL functions instead of trusting client state.',
+                'Treated Realtime messages as invalidation signals and reloaded authoritative data after events.',
+                'Built deterministic previews, XCTest coverage, XCUITest journeys and SQL regression checks around critical flows.',
+            ],
+            result: 'A finished portfolio application with public source, reproducible backend migrations, documented architecture and verified release builds.',
+        },
+    },
+    {
+        id: CREATEX_PROJECT_ID,
+        name: 'CreateX — Full-Stack Online School',
+        githubLink: 'https://github.com/Kotyarya/CreateX',
+        githubLinks: [
+            {label: 'Frontend', url: 'https://github.com/Kotyarya/CreateX'},
+            {label: 'Backend', url: 'https://github.com/Kotyarya/CreateX-SERVER'},
+        ],
+        link: 'https://createx-maksym-aksamitnyi.vercel.app',
+        availabilityNote: 'The live demo and both source repositories are public. The API may need a brief first-request warm-up on the free hosting tier.',
+        text: 'A responsive online-school platform with catalogues, detail pages, account access, registration flows and database-backed content.',
+        importance: 98,
+        preview: '/projects/createx/home-cover.jpg',
+        img: [
+            '/projects/createx/courses-cover.jpg',
+            '/projects/createx/blog-cover.jpg',
+        ],
+        skills: [
+            {name: 'React', importance: 10},
+            {name: 'TypeScript', importance: 10},
+            {name: 'Node.js', importance: 9},
+            {name: 'PostgreSQL', importance: 9},
+            {name: 'REST API', importance: 9},
+            {name: 'SCSS', importance: 8},
+            {name: 'Redux', importance: 8},
+            {name: 'Express', importance: 8},
+        ],
+        category: {name: 'Full-stack'},
+        status: {name: 'Finished', img: ''},
+        caseStudy: {
+            role: 'Solo full-stack developer — responsive frontend, API integration, authentication, content model, deployment and production hardening.',
+            challenge: 'Turn a large multi-page education design into a working product with reusable catalogue flows, forms and safely hosted demo data.',
+            architecture: 'React and Redux SPA on Vercel → Express REST API on Render → PostgreSQL through Sequelize, with static media served by the API.',
+            decisions: [
+                'Used shared catalogue and detail flows for courses, events and blog content.',
+                'Protected content mutations with JWT roles while keeping public browsing read-only.',
+                'Added validation, explicit CORS, rate limits and fail-closed environment checks before deployment.',
+            ],
+            result: 'A deployed full-stack demo with public frontend/backend repositories, CI checks, seeded content and working recruiter-facing flows.',
+        },
+    },
+];
+
+export const getFeaturedPortfolioProject = (id: number) => (
+    featuredPortfolioProjects.find(project => project.id === id)
+);
 
 const evidenceCaseStudies: Record<number, Partial<IProject>> = {
     12: {
@@ -94,42 +187,79 @@ const mergeSkills = (projects: IProject[]) => {
     return [...skills.values()].sort((a, b) => b.importance - a.importance);
 };
 
-export const combinePortfolioCaseStudy = (projects: IProject[]): IProject[] => {
+interface ProjectPresentationOptions {
+    category?: string;
+    skills?: string[];
+    status?: string;
+    search?: string;
+    includeFeatured?: boolean;
+}
+
+const matchesFeaturedProject = (
+    project: IProject,
+    {category = '', skills = [], status = '', search = ''}: ProjectPresentationOptions,
+) => {
+    const normalizedSearch = search.trim().toLowerCase();
+    const projectSkills = new Set(project.skills.map(skill => skill.name.toLowerCase()));
+    const searchableText = [
+        project.name,
+        project.text,
+        project.category.name,
+        ...project.skills.map(skill => skill.name),
+        project.caseStudy?.role,
+        project.caseStudy?.challenge,
+        project.caseStudy?.architecture,
+        project.caseStudy?.result,
+    ].filter(Boolean).join(' ').toLowerCase();
+
+    return (!category || project.category.name.toLowerCase() === category.toLowerCase())
+        && (!status || project.status.name.toLowerCase() === status.toLowerCase())
+        && skills.every(skill => projectSkills.has(skill.toLowerCase()))
+        && (!normalizedSearch || searchableText.includes(normalizedSearch));
+};
+
+export const combinePortfolioCaseStudy = (
+    projects: IProject[],
+    options: ProjectPresentationOptions = {},
+): IProject[] => {
     const frontend = projects.find(project => project.id === PORTFOLIO_FRONTEND_ID);
     const backend = projects.find(project => project.id === PORTFOLIO_BACKEND_ID);
-
-    if (!frontend || !backend) return projects.map(addEvidenceCaseStudy);
-
-    const caseStudy: IProject = {
-        ...frontend,
-        name: 'Portfolio Website — Full-Stack Case Study',
-        text: 'Designed and built an end-to-end portfolio platform with an accessible Next.js interface, a secured NestJS API, PostgreSQL content storage, and automated Vercel and Render deployments.',
-        importance: 100,
-        link: 'https://aksamitny.com',
-        githubLink: 'https://github.com/Kotyarya/Portfolio',
-        githubLinks: [
-            {label: 'Frontend', url: 'https://github.com/Kotyarya/Portfolio'},
-            {label: 'Backend', url: 'https://github.com/Kotyarya/Portfolio-Server'},
-        ],
-        category: {name: 'Full-stack'},
-        skills: mergeSkills([frontend, backend]),
-        img: [...new Set([...frontend.img, backend.preview, ...backend.img])],
-        caseStudy: {
-            role: 'Solo full-stack developer — product structure, UI, API, data model, security and deployment.',
-            challenge: 'Turn editable portfolio content into a fast recruiter-facing experience without exposing private API access or weakening the contact channel.',
-            architecture: 'Next.js App Router on Vercel → server-only NestJS REST API on Render → PostgreSQL through Prisma.',
-            decisions: [
-                'Server-rendered content with optimized responsive images.',
-                'Fail-closed API key protection and strict DTO validation.',
-                'Rate-limited contact flow with safe user feedback.',
-                'Independent frontend and backend deployments for focused releases.',
+    const preparedProjects = frontend && backend
+        ? [{
+            ...frontend,
+            name: 'Portfolio Website — Full-Stack Case Study',
+            text: 'Designed and built an end-to-end portfolio platform with an accessible Next.js interface, a secured NestJS API, PostgreSQL content storage, and automated Vercel and Render deployments.',
+            importance: 100,
+            link: 'https://aksamitny.com',
+            githubLink: 'https://github.com/Kotyarya/Portfolio',
+            githubLinks: [
+                {label: 'Frontend', url: 'https://github.com/Kotyarya/Portfolio'},
+                {label: 'Backend', url: 'https://github.com/Kotyarya/Portfolio-Server'},
             ],
-            result: 'A live full-stack product at aksamitny.com with one content source, responsive recruiter flows, and focused security controls.',
-        },
-    };
+            category: {name: 'Full-stack'},
+            skills: mergeSkills([frontend, backend]),
+            img: [...new Set([...frontend.img, backend.preview, ...backend.img])],
+            caseStudy: {
+                role: 'Solo full-stack developer — product structure, UI, API, data model, security and deployment.',
+                challenge: 'Turn editable portfolio content into a fast recruiter-facing experience without exposing private API access or weakening the contact channel.',
+                architecture: 'Next.js App Router on Vercel → server-only NestJS REST API on Render → PostgreSQL through Prisma.',
+                decisions: [
+                    'Server-rendered content with optimized responsive images.',
+                    'Fail-closed API key protection and strict DTO validation.',
+                    'Rate-limited contact flow with safe user feedback.',
+                    'Independent frontend and backend deployments for focused releases.',
+                ],
+                result: 'A live full-stack product at aksamitny.com with one content source, responsive recruiter flows, and focused security controls.',
+            },
+        } satisfies IProject,
+        ...projects.filter(project => project.id !== PORTFOLIO_FRONTEND_ID && project.id !== PORTFOLIO_BACKEND_ID)]
+        : projects;
 
-    return [
-        caseStudy,
-        ...projects.filter(project => project.id !== PORTFOLIO_FRONTEND_ID && project.id !== PORTFOLIO_BACKEND_ID),
-    ].map(addEvidenceCaseStudy).sort((a, b) => b.importance - a.importance);
+    const featured = options.includeFeatured === false
+        ? []
+        : featuredPortfolioProjects.filter(project => matchesFeaturedProject(project, options));
+
+    return [...featured, ...preparedProjects]
+        .map(addEvidenceCaseStudy)
+        .sort((a, b) => b.importance - a.importance);
 };
