@@ -55,7 +55,7 @@ export const featuredPortfolioProjects: IProject[] = [
         githubLink: 'https://github.com/Kotyarya/CreateX',
         githubLinks: [
             {label: 'Frontend', url: 'https://github.com/Kotyarya/CreateX'},
-            {label: 'Backend', url: 'https://github.com/Kotyarya/CreateX-SERVER'},
+            {label: 'Backend', url: 'https://github.com/Kotyarya/CreateX-API'},
         ],
         link: 'https://createx-maksym-aksamitnyi.vercel.app',
         availabilityNote: 'The live demo and both source repositories are public. The API may need a brief first-request warm-up on the free hosting tier.',
