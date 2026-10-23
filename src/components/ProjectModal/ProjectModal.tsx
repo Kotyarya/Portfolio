@@ -158,7 +158,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                 <div className="flex flex-wrap gap-4">
                                     {link?.startsWith('http') && (
                                         <Button text="View Live" size="large" href={link} target="_blank">
-                                            <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25}/>
+                                            <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25} className="h-[25px] w-[25px]"/>
                                         </Button>
                                     )}
                                     {sourceLinks.map(source => (
@@ -169,7 +169,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                             href={source.url}
                                             target="_blank"
                                         >
-                                            <Image src={gitHubIcon} alt="" aria-hidden="true" width={25} height={25}/>
+                                            <Image src={gitHubIcon} alt="" aria-hidden="true" width={25} height={25} className="h-[25px] w-[25px]"/>
                                         </Button>
                                     ))}
                                     {externalLinks.filter(item => item.url.startsWith('http')).map(item => (
@@ -180,7 +180,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
                                             href={item.url}
                                             target="_blank"
                                         >
-                                            <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25}/>
+                                            <Image src={internetIcon} alt="" aria-hidden="true" width={25} height={25} className="h-[25px] w-[25px]"/>
                                         </Button>
                                     ))}
                                 </div>

@@ -31,7 +31,7 @@ const Footer = () => {
             <div
                 className={"flex flex-col items-center gap-10 max-laptop:items-start max-mobile:!items-center " + getAnimation(isVisible, 'animate-slide-in-top')}>
                 <Link href="/" className="w-25 h-25">
-                    <Image src={logo} alt="Maksym Aksamitnyi home" priority/>
+                    <Image src={logo} alt="Maksym Aksamitnyi home"/>
                 </Link>
                 <p className='text-gold-primary text-2xs max-mobile:!text-4xs max-desk:text-3xs font-cinzel text-center max-laptop:w-[300px] max-laptop:text-start max-mobile:!text-center'>
                     © {year} Maksym Aksamitnyi <br/>
