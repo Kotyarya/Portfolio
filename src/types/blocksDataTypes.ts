@@ -25,7 +25,7 @@ interface IBlockWhatsNext extends IBlock {
 
 
 interface IBlockCertificates extends IBlock {
-    certificatesImgList: [string];
+    certificatesImgList: string[];
 }
 
 interface ISkill {
