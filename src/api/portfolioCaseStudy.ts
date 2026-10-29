@@ -18,12 +18,8 @@ export const featuredPortfolioProjects: IProject[] = [
         availabilityNote: 'The complete source, architecture documentation and test evidence are public. App Store distribution is intentionally outside the current portfolio scope.',
         text: 'A native SwiftUI app for discovering outdoor courts, organizing games, managing teams, voting for MVPs and tracking sport-specific ratings.',
         importance: 99,
-        preview: '/projects/gamespot/games.png',
-        img: [
-            '/projects/gamespot/game.png',
-            '/projects/gamespot/profile.png',
-            '/projects/gamespot/settings.png',
-        ],
+        preview: '/projects/gamespot/gamespot-cover.webp',
+        img: [],
         imageFit: 'contain',
         skills: [
             {name: 'Swift', importance: 10},
@@ -62,11 +58,14 @@ export const featuredPortfolioProjects: IProject[] = [
         availabilityNote: 'The live demo and both source repositories are public. The API may need a brief first-request warm-up on the free hosting tier.',
         text: 'A responsive online-school platform with catalogues, detail pages, account access, registration flows and database-backed content.',
         importance: 98,
-        preview: '/projects/createx/home-cover.jpg',
+        preview: '/projects/createx/createx-home.webp',
         img: [
-            '/projects/createx/courses-cover.jpg',
-            '/projects/createx/blog-cover.jpg',
+            '/projects/createx/createx-courses.webp',
+            '/projects/createx/createx-events-home.webp',
+            '/projects/createx/createx-events.webp',
+            '/projects/createx/createx-blog.webp',
         ],
+        imageFit: 'contain',
         skills: [
             {name: 'React', importance: 10},
             {name: 'TypeScript', importance: 10},
