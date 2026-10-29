@@ -31,6 +31,6 @@ export const getAboutMePage = unstable_cache(
             whatsNext: withRecruiterWhatsNext(whatsNext.data),
         }
     },
-    ['about-me-page-recruiter-v1'],
+    ['about-me-page-recruiter-v2'],
     {revalidate: 86400, tags: ['about-me-page']}
 );

@@ -32,6 +32,6 @@ export const getHomePage = unstable_cache(
             contactMe: {...contactMe, ...RECRUITER_CONTACT},
         }
     },
-    ['home-page-recruiter-v1'],
+    ['home-page-recruiter-v2'],
     {revalidate: 86400, tags: ['home-page']}
 );
