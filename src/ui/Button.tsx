@@ -24,7 +24,7 @@ const Button = ({size, onClick, text, children, href, target}: ButtonProps) => {
 
     const className = `cursor-pointer ${buttonPadding} rounded-[3px]` +
         ' transition easy-in-out duration-500 flex items-center justify-center gap-3 ' +
-        'bg-black-primary group-hover:bg-[rgba(0,0,0,0)] ';
+        'bg-black-primary group-hover:bg-[rgba(0,0,0,0)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-primary ';
 
     const content = (
         <>
@@ -51,7 +51,7 @@ const Button = ({size, onClick, text, children, href, target}: ButtonProps) => {
                     {content}
                 </Link>
             ) : (
-                <button className={className} onClick={onClick}>
+                <button type="button" className={className} onClick={onClick}>
                     {content}
                 </button>
             )}

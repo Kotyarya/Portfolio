@@ -11,6 +11,8 @@ interface HeroProps {
     hero: IBlock;
 }
 
+const TRANSPARENT_PIXEL = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
 const Hero = ({hero}: HeroProps) => {
     const {text, title, subtitle} = hero;
 
@@ -56,41 +58,50 @@ const Hero = ({hero}: HeroProps) => {
                     <div className="w-full max-ipad:flex max-ipad:flex-col max-ipad:items-center">
                         <div
                             className="flex justify-between w-full items-center px-14 relative h-150 max-ipad:h-[1172px] wide:h-250 overflow-hidden wide:px-65">
-                            <h2 className="text-7xl max-desk:text-5xl font-bold font-cinzel text-gold-primary w-[510px] max-desk:w-[400px] max-laptop:pb-25 animate-slide-in-left max-ipad:!text-[102px] max-ipad:!leading-[134px] max-ipad:!w-[619px]">
+                            <h1 className="text-7xl max-desk:text-5xl font-bold font-cinzel text-gold-primary w-[510px] max-desk:w-[400px] max-laptop:pb-25 animate-slide-in-left max-ipad:!text-[102px] max-ipad:!leading-[134px] max-ipad:!w-[619px]">
                                 Greetings, I am Max
-                            </h2>
-                            <h1 className="sr-only">Maksym Aksamitnyi Максім Аксамітний Максим Аксамитный</h1>
+                            </h1>
 
                             <div
                                 className="absolute bottom-[-50px] left-1/2 -translate-x-1/2 max-ipad:bottom-[347px] max-ipad:pl-[227px]">
                                 <div
                                     className="w-190 h-170 wide:w-260 wide:h-260 absolute bottom-0 left-1/2 -translate-x-1/2 z-[-1] max-ipad:bottom-56 max-ipad:pl-40">
-                                    <Image src={Ellipse} alt="ellipse" className="w-full h-full"/>
+                                <Image src={Ellipse} alt="" aria-hidden="true" sizes="(max-width: 833px) 760px, (min-width: 1536px) 1040px, 760px" className="w-full h-full"/>
                                 </div>
 
-                                <Image
-                                    src={MyPhoto}
-                                    alt="my photo"
-                                    width={600}
-                                    priority
-                                    className="z-10 animate-fade wide:w-234 max-ipad:hidden max-laptop:w-120"
-                                />
+                                <picture>
+                                    <source media="(max-width: 833px)" srcSet={TRANSPARENT_PIXEL}/>
+                                    <Image
+                                        src={MyPhoto}
+                                        alt="Portrait of Maksym Aksamitnyi"
+                                        width={600}
+                                        loading="eager"
+                                        fetchPriority="high"
+                                        sizes="(min-width: 1536px) 936px, (min-width: 834px) 480px, 1px"
+                                        className="z-10 animate-fade wide:w-234 max-ipad:hidden max-laptop:w-120"
+                                    />
+                                </picture>
 
                                 <div className="relative w-[634.95px] h-[669.03px] ipad:hidden">
-                                    <Image
-                                        src={MyPhotoMobile}
-                                        alt="my photo"
-                                        priority
-                                        fill
-                                        className="z-10 animate-fade object-contain"
-                                    />
+                                    <picture>
+                                        <source media="(min-width: 834px)" srcSet={TRANSPARENT_PIXEL}/>
+                                        <Image
+                                            src={MyPhotoMobile}
+                                            alt="Portrait of Maksym Aksamitnyi"
+                                            loading="eager"
+                                            fetchPriority="high"
+                                            fill
+                                            sizes="(max-width: 833px) 635px, 1px"
+                                            className="z-10 animate-fade object-contain"
+                                        />
+                                    </picture>
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-end max-ipad:hidden max-laptop:pt-40">
-                                <h3 className="text-lg font-cinzel text-right mb-7 animate-slide-in-right">
+                                <p className="text-lg font-cinzel text-right mb-7 animate-slide-in-right">
                                     {subtitle}
-                                </h3>
+                                </p>
                                 <h2 className="text-2xl max-desk:text-xl font-cinzel font-bold w-[457px] max-desk:w-[366px] max-laptop:!w-[346px] text-right m-0 animate-slide-in-right">
                                     {title}
                                 </h2>
@@ -106,9 +117,9 @@ const Hero = ({hero}: HeroProps) => {
             {/* ============== НЕ МАСШТАБИРУЕТСЯ ============== */}
             <div
                 className="flex flex-col items-center w-full px-10 max-mobile:px-4 -mt-55 max-mobile:-mt-35 ipad:hidden">
-                <h3 className="text-base max-mobile:text-xs font-cinzel text-center mb-4 animate-slide-in-right">
+                <p className="text-base max-mobile:text-xs font-cinzel text-center mb-4 animate-slide-in-right">
                     {subtitle}
-                </h3>
+                </p>
                 <h2 className="text-lg max-mobile:text-sm text-center font-cinzel font-bold animate-slide-in-right">
                     {title}
                 </h2>

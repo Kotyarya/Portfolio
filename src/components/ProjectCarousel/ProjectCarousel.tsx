@@ -113,9 +113,14 @@ export default function Carousel({
                             ))
                             : (items as string[]).map((p, index) => (
                                 <SwiperSlide className={styles.slide} key={index}>
-                                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + p} alt={`Certificate awarded to Maksym Aksamitnyi, image ${index + 1}`}
+                                    <Image src={p.startsWith('/') ? p : process.env.NEXT_PUBLIC_API_URL + "/media/" + p}
+                                           alt={p === '/maksym-aksamitnyi-diploma.webp'
+                                               ? 'Bachelor of Engineering diploma with distinction awarded to Maksym Aksamitnyi by Vistula University'
+                                               : `Certificate awarded to Maksym Aksamitnyi, image ${index + 1}`}
                                            width={600}
-                                           height={464}/>
+                                           height={464}
+                                           unoptimized={p.startsWith('/')}
+                                           sizes="(max-width: 833px) 90vw, 600px"/>
                                 </SwiperSlide>
                             ))
                     }

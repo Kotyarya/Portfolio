@@ -3,6 +3,8 @@ import {unstable_cache} from 'next/cache';
 import {baseAPI, type IApiResponse} from '@/api/http';
 import type {IBlock, IBlockCertificates, IBlockImg, IBlockWhatsNext, IProject, ISkill} from '@/types/blocksDataTypes';
 import {withCurrentAboutMe} from '@/content/aboutMe';
+import {combinePortfolioCaseStudy} from '@/api/portfolioCaseStudy';
+import {curateRecruiterSkills, RECRUITER_CONTACT, withRecruiterWhatsNext} from '@/content/recruiterProfile';
 
 
 export const getAboutMePage = unstable_cache(
@@ -20,15 +22,15 @@ export const getAboutMePage = unstable_cache(
 
         return {
             aboutMe: withCurrentAboutMe(aboutMe.data),
-            skills: skills.data,
+            skills: curateRecruiterSkills(skills.data),
             skillsPreview: skillsPreview.data,
-            projects: projects.data,
+            projects: combinePortfolioCaseStudy(projects.data),
             projectsPreview: projectsPreview.data,
-            contactMe: contactMe.data,
+            contactMe: {...contactMe.data, ...RECRUITER_CONTACT},
             certificates: certificates.data,
-            whatsNext: whatsNext.data,
+            whatsNext: withRecruiterWhatsNext(whatsNext.data),
         }
     },
-    ['about-me-page'],
+    ['about-me-page-recruiter-v2'],
     {revalidate: 86400, tags: ['about-me-page']}
 );

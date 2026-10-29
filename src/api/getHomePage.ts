@@ -4,6 +4,7 @@ import {baseAPI, type IApiResponse} from '@/api/http';
 import type {IBlock, IBlockImg, IProject, ISkill} from '@/types/blocksDataTypes';
 import {combinePortfolioCaseStudy} from '@/api/portfolioCaseStudy';
 import {withCurrentAboutMe} from '@/content/aboutMe';
+import {curateRecruiterSkills, RECRUITER_CONTACT, RECRUITER_HERO} from '@/content/recruiterProfile';
 
 interface HomePagePayload {
     hero: IBlock;
@@ -22,15 +23,15 @@ export const getHomePage = unstable_cache(
         const {hero, contactMe, projects, projectsPreview, skillsPreview, skills, aboutMe} = response.data;
 
         return {
-            hero,
+            hero: {...hero, ...RECRUITER_HERO},
             aboutMe: withCurrentAboutMe(aboutMe),
-            skills,
+            skills: curateRecruiterSkills(skills),
             skillsPreview,
             projects: combinePortfolioCaseStudy(projects),
             projectsPreview,
-            contactMe,
+            contactMe: {...contactMe, ...RECRUITER_CONTACT},
         }
     },
-    ['home-page'],
+    ['home-page-recruiter-v2'],
     {revalidate: 86400, tags: ['home-page']}
 );

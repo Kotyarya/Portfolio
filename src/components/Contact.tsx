@@ -9,6 +9,7 @@ import {useInView} from "@/hooks/useInView";
 import {getAnimation} from "@/utils/getAnimation";
 import Link from "next/link";
 import {CONTACT_LIMITS, validateContactField} from '@/validation/contact';
+import {CONTACT_EMAIL} from '@/config/site';
 
 
 const Contact = () => {
@@ -39,15 +40,18 @@ const Contact = () => {
                 <div
                     className={"flex flex-col w-153 max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-left")}>
                     <h1 className="text-gold-primary text-6xl max-ipad:text-4xl max-mobile:!text-xl font-cinzel font-bold mb-8 max-laptop:text-center">
-                        Get in <span className="text-white">Touch</span> for Collaboration
+                        Let’s discuss a <span className="text-white">full-time</span> role
                     </h1>
                     <p className="text-white text-sm font-lora mb-16 max-laptop:hidden">
-                        I’m open to freelance opportunities, long-term collaboration, or project-based work. Feel free
-                        to send a message — I’ll get back to you as soon as possible.
+                        I’m available in around two weeks for developer positions in Warsaw (office or hybrid) and
+                        remote roles across Poland.
                     </p>
-                    <div className="">
-
-                    </div>
+                    <a
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="mb-10 w-fit font-lato text-base text-gold-primary underline decoration-gold-500 underline-offset-4 transition hover:text-gold-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-primary max-laptop:self-center max-mobile:text-xs"
+                    >
+                        {CONTACT_EMAIL}
+                    </a>
                 </div>
                 <div
                     className={"w-107 bg-black-200 px-8 py-13 rounded-[11px] max-mobile:w-[90vw] " + getAnimation(isVisible, "animate-slide-in-right")}>
@@ -67,7 +71,7 @@ const Contact = () => {
                                 aria-invalid={errors.name ? "true" : "false"}
                                 aria-describedby={errors.name ? "name-error" : undefined}
                                 {...register("name", {validate: value => validateContactField('name', value)})}
-                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.name ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-gold-500 " + (errors.name ? " border-red-900 placeholder:text-red-400" : "")}
                             />
                             {errors.name && <p id="name-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.name.message}</p>}
                         </div>
@@ -83,7 +87,7 @@ const Contact = () => {
                                 aria-invalid={errors.email ? "true" : "false"}
                                 aria-describedby={errors.email ? "email-error" : undefined}
                                 {...register("email", {validate: value => validateContactField('email', value)})}
-                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.email ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"w-full bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-gold-500 " + (errors.email ? " border-red-900 placeholder:text-red-400" : "")}
                             />
                             {errors.email && <p id="email-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.email.message}</p>}
                         </div>
@@ -97,7 +101,7 @@ const Contact = () => {
                                 aria-invalid={errors.message ? "true" : "false"}
                                 aria-describedby={errors.message ? "message-error" : undefined}
                                 {...register("message", {validate: value => validateContactField('message', value)})}
-                                className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-black-100 " + (errors.message ? " border-red-900 placeholder:text-red-900" : "")}
+                                className={"resize-none w-full h-30 bg-black-primary border border-black-100 px-3 py-2 rounded text-white text-3xs font-lato placeholder:text-gold-500 " + (errors.message ? " border-red-900 placeholder:text-red-400" : "")}
                                 rows={4}
                             />
                             {errors.message && <p id="message-error" role="alert" className="ml-3 text-4xs text-red-400">{errors.message.message}</p>}
@@ -132,7 +136,7 @@ const Contact = () => {
                     className="bg-black-primary flex flex-col items-center py-10 px-19 gap-2 rounded-3xl w-fit h-fit">
                     <h2 className="text-3xl text-gold-primary font-cinzel font-bold">My vCard</h2>
                     <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + "vCard.svg"} alt="QR code with Maksym Aksamitnyi contact details" width={315}
-                           height={315}/>
+                           height={315} sizes="315px"/>
                 </div>
             </div>
         </div>

@@ -34,8 +34,8 @@ const cinzel = Cinzel({
 export const metadata: Metadata = {
     metadataBase: new URL('https://aksamitny.com'),
     ...buildPageMetadata({
-        title: 'Maksym Aksamitnyi | Full-Stack TypeScript Developer',
-        description: 'Full-stack developer portfolio featuring production work with Next.js, React, NestJS and PostgreSQL, plus software and iOS learning projects.',
+        title: 'Maksym Aksamitnyi | SwiftUI, React & TypeScript Developer',
+        description: 'Software developer portfolio featuring SwiftUI, React, Next.js, TypeScript, NestJS and PostgreSQL projects, including the completed GameSpot iOS application and a deployed full-stack portfolio.',
         path: '/',
     }),
     robots: {index: true, follow: true},
@@ -62,7 +62,13 @@ export default function RootLayout({
                             "Maksym Aksamitnyy"
                         ],
                         url: "https://aksamitny.com",
-                        jobTitle: "Full-Stack TypeScript Developer",
+                        jobTitle: "Software Developer",
+                        email: "mailto:aksamitnyi@icloud.com",
+                        address: {
+                            "@type": "PostalAddress",
+                            addressLocality: "Warsaw",
+                            addressCountry: "PL"
+                        },
                         sameAs: [
                             "https://github.com/Kotyarya",
                             "https://www.linkedin.com/in/maksym-aksamitnyi-0b0967330/",
@@ -73,7 +79,11 @@ export default function RootLayout({
                             "Next.js",
                             "React",
                             "NestJS",
-                            "PostgreSQL"
+                            "PostgreSQL",
+                            "Swift",
+                            "SwiftUI",
+                            "Supabase",
+                            "Software Testing"
                         ],
                     }),
                 }}

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ISkill} from "@/types/blocksDataTypes";
-import Image from "next/image";
+import SkillVisual from '@/ui/SkillVisual';
 
 interface SkillBlockProps {
     skill: ISkill;
@@ -11,9 +11,7 @@ const SkillBlock = ({skill}: SkillBlockProps) => {
     return (
         <div className="bg-gold-gradient flex items-center justify-center p-1 w-fit">
             <div className="w-[204px] h-[204px] bg-black-400 flex items-center justify-center">
-                <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + skill.img} alt={skill.name} height={116}
-                       width={116}
-                       className='h-auto w-auto !max-w-31.5'/>
+                <SkillVisual skill={skill}/>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import {ImageResponse} from 'next/og';
 
-export const alt = 'Maksym Aksamitnyi — Full-Stack TypeScript Developer';
+export const alt = 'Maksym Aksamitnyi — SwiftUI, React and TypeScript Developer';
 export const size = {width: 1200, height: 630};
 export const contentType = 'image/png';
 
@@ -41,7 +41,7 @@ export default function OpenGraphImage() {
 
                 <div style={{display: 'flex', flexDirection: 'column', gap: 22}}>
                     <div style={{fontSize: 72, fontWeight: 700, lineHeight: 1.05}}>Maksym Aksamitnyi</div>
-                    <div style={{fontSize: 38, color: '#ffffff'}}>Full-Stack TypeScript Developer</div>
+                    <div style={{fontSize: 38, color: '#ffffff'}}>SwiftUI, React &amp; TypeScript Developer</div>
                     <div style={{fontSize: 25, color: '#c9b879'}}>Next.js · React · NestJS · PostgreSQL</div>
                 </div>
 
