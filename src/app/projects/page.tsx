@@ -18,8 +18,8 @@ interface ProjectsSearchParams {
 
 
 const pageMetadata: Metadata = buildPageMetadata({
-    title: 'Full-Stack Projects | Maksym Aksamitnyi',
-    description: 'Explore evidence-based case studies by Maksym Aksamitnyi covering Next.js, React, NestJS, PostgreSQL, C# and product delivery decisions.',
+    title: 'SwiftUI & Full-Stack Projects | Maksym Aksamitnyi',
+    description: 'Explore completed GameSpot, Portfolio and CreateX case studies covering SwiftUI, React, TypeScript, NestJS, PostgreSQL and testing.',
     path: '/projects',
 });
 

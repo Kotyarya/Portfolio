@@ -9,8 +9,8 @@ import type {Metadata} from "next";
 import {buildPageMetadata} from '@/utils/siteMetadata';
 
 export const metadata: Metadata = buildPageMetadata({
-    title: 'About Maksym Aksamitnyi | Full-Stack Developer',
-    description: 'Meet Maksym Aksamitnyi, a full-stack TypeScript developer working with Next.js, NestJS and PostgreSQL, with C# experience and growing iOS skills.',
+    title: 'About Maksym Aksamitnyi | Software Developer in Warsaw',
+    description: 'Meet Maksym Aksamitnyi, a Warsaw-based software developer working with SwiftUI, React, TypeScript, NestJS, PostgreSQL and Supabase.',
     path: '/about-me',
 });
 

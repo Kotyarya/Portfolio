@@ -1,10 +1,10 @@
 "use client";
 import React, {useEffect} from 'react';
 import type {ISkill} from "@/types/blocksDataTypes";
-import Image from "next/image";
 import {X} from "lucide-react";
 import Button from "@/ui/Button";
 import {useRouter} from "next/navigation";
+import SkillVisual from '@/ui/SkillVisual';
 
 interface SkillModalProps {
     activeSkill?: ISkill,
@@ -38,9 +38,7 @@ const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
                     aria-modal="true"
                     aria-labelledby="skill-modal-title"
                     className="bg-black flex flex-col items-center w-163 max-ipad:w-100 max-ipad:h-[80vh] max-mobile:!w-[90vw] max-ipad:overflow-y-scroll no-scrollbar p-16 gap-5">
-                    <Image src={process.env.NEXT_PUBLIC_API_URL + "/media/" + img} alt={`${name} technology logo`} width={128}
-                           height={128}
-                           className="w-32 h-32"/>
+                    {activeSkill && <SkillVisual skill={{...activeSkill, img: img ?? ''}} size="modal"/>}
                     <h2 id="skill-modal-title" className="text-xl font-cinzel text-center text-gold-primary font-bold">{name}</h2>
                     <p className="font-lora text-3xs text-white text-center">{text}</p>
                     <p className="font-lora text-base text-gold-primary text-center">See where I used it.</p>
