@@ -47,6 +47,7 @@ const ProjectModal = ({activeProject, closeModal}: ProjectModalProps) => {
             alt={alt}
             width={677}
             height={508}
+            unoptimized={image.startsWith('/')}
             sizes="(max-width: 833px) 100vw, 58vw"
             className={`h-full w-full bg-black-primary ${activeProject.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
         />

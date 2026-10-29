@@ -25,6 +25,7 @@ const ProjectCard = ({project, onClick, headingLevel = 3}: ProjectCardProps) => 
                 <div className="relative h-[220px] w-full bg-black-primary">
                     <Image src={getProjectImageSource(project.preview)} alt={`${project.name} project preview`}
                            fill
+                           unoptimized={project.preview.startsWith('/')}
                            sizes="(max-width: 833px) 90vw, 344px"
                            className={project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}/>
                 </div>
