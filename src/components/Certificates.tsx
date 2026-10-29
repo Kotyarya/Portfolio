@@ -13,6 +13,7 @@ interface CertificatesProps {
 const Certificates = ({certificates}: CertificatesProps) => {
 
     const {ref, isVisible} = useInView<HTMLDivElement>()
+    const certificateItems = [...certificates.certificatesImgList, '/maksym-aksamitnyi-diploma.webp'];
 
     return (
         <div className="flex flex-col items-center justify-center w-full max-mobile:hidden" ref={ref}>
@@ -22,7 +23,7 @@ const Certificates = ({certificates}: CertificatesProps) => {
                 <p className="w-[90vw] text-2xs mobile:w-[530px] ipad:w-[693px] laptop:w-[840px] laptop:text-sm text-white font-lora text-center mb-14">{certificates.text}</p>
             </div>
             <div className={getAnimation(isVisible, "animate-fade")}>
-                <Carousel items={certificates.certificatesImgList} type={"certificates"}/>
+                <Carousel items={certificateItems} type={"certificates"}/>
             </div>
         </div>
     );
