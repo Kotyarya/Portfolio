@@ -31,7 +31,7 @@ const Header = () => {
                 <div className="relative w-full bg-black-primary laptop:w-auto laptop:bg-[url('../assets/header/boldBorderHeader.svg')] laptop:bg-contain laptop:bg-center laptop:bg-no-repeat laptop:bg-transparent laptop:p-5">
                     <div className="relative laptop:rounded-[26px] laptop:bg-[rgba(0,0,0,0)] laptop:p-2 laptop:backdrop-blur-[8px]">
                         <div className="relative z-50 flex w-full items-center justify-between px-6 py-2 laptop:w-fit laptop:gap-11 laptop:px-15 laptop:py-3">
-                            <Link href="/" className="shrink-0 laptop:mr-12">
+                            <Link href="/" aria-label="Maksym Aksamitnyi — home" className="shrink-0 rounded laptop:mr-12">
                                 <Image src={logo} alt="Maksym Aksamitnyi home" width={46} priority/>
                             </Link>
 
@@ -64,10 +64,10 @@ const Header = () => {
                                     <X size={36}/>
                                 </button>
                                 <ul className="mt-10 flex flex-col gap-6 font-lato text-base text-gold-200 laptop:mt-0 laptop:flex-row laptop:gap-11">
-                                    <li><Link href="/about-me">About Me</Link></li>
-                                    <li><Link href="/skills">Tech Stacks</Link></li>
-                                    <li><Link href="/projects">Projects</Link></li>
-                                    <li><Link href="/contact">Contact</Link></li>
+                                    <li><Link href="/about-me" aria-current={pathname === '/about-me' ? 'page' : undefined}>About Me</Link></li>
+                                    <li><Link href="/skills" aria-current={pathname === '/skills' ? 'page' : undefined}>Tech Stacks</Link></li>
+                                    <li><Link href="/projects" aria-current={pathname === '/projects' ? 'page' : undefined}>Projects</Link></li>
+                                    <li><Link href="/contact" aria-current={pathname === '/contact' ? 'page' : undefined}>Contact</Link></li>
                                 </ul>
                             </nav>
                         </div>

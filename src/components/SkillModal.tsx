@@ -1,5 +1,6 @@
 "use client";
 import React, {useEffect} from 'react';
+import {Dialog, DialogBackdrop, DialogPanel, DialogTitle} from '@headlessui/react';
 import type {ISkill} from "@/types/blocksDataTypes";
 import {X} from "lucide-react";
 import Button from "@/ui/Button";
@@ -15,8 +16,11 @@ const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
 
     const {name, img, text} = activeSkill || {};
     const [innerWidth, setInnerWidth] = React.useState<number>(0);
+    const [mounted, setMounted] = React.useState(false);
 
     useEffect(() => {
+        setMounted(true);
+
         function handleResize() {
             setInnerWidth(window.innerWidth);
         }
@@ -28,32 +32,32 @@ const SkillModal = ({activeSkill, closeModal}: SkillModalProps) => {
 
     const router = useRouter();
 
+    if (!mounted) return null;
+
     return (
-        <div>
-            <div className="absolute w-full h-full bg-black opacity-80 z-1000 top-0 left-0" onClick={closeModal}>
-            </div>
-            <div className="w-fit bg-gold-gradient p-1 z-1001 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <div
-                    role="dialog"
-                    aria-modal="true"
-                    aria-labelledby="skill-modal-title"
-                    className="bg-black flex flex-col items-center w-163 max-ipad:w-100 max-ipad:h-[80vh] max-mobile:!w-[90vw] max-ipad:overflow-y-scroll no-scrollbar p-16 gap-5">
+        <Dialog open={true} onClose={closeModal} className="relative z-[1000]">
+            <DialogBackdrop className="fixed inset-0 bg-black/80 backdrop-blur-sm"/>
+            <div className="pointer-events-none fixed inset-0 flex items-center justify-center p-4">
+                <DialogPanel className="pointer-events-auto max-h-[calc(100dvh-2rem)] w-fit overflow-y-auto bg-gold-gradient p-1 shadow-gold-regular">
+                    <div className="relative flex w-163 flex-col items-center gap-5 bg-black p-16 max-ipad:w-100 max-mobile:!w-[90vw] max-mobile:px-6 max-mobile:py-12">
                     {activeSkill && <SkillVisual skill={{...activeSkill, img: img ?? ''}} size="modal"/>}
-                    <h2 id="skill-modal-title" className="text-xl font-cinzel text-center text-gold-primary font-bold">{name}</h2>
+                    <DialogTitle as="h2" className="text-center font-cinzel text-xl font-bold text-gold-primary">{name}</DialogTitle>
                     <p className="font-lora text-3xs text-white text-center">{text}</p>
                     <p className="font-lora text-base text-gold-primary text-center">See where I used it.</p>
                     <Button text={"View Projects"} size={innerWidth < 575 ? 'medium' : 'large'}
                             onClick={() => router.push((innerWidth >= 848 ? `/projects?stacks=${encodeURIComponent(activeSkill?.name || "")}` : "/projects"))}/>
                     <button
                         type="button"
+                        data-autofocus
                         aria-label="Close skill details"
-                        className='w-fit h-fit flex items-center justify-center text-gold-primary cursor-pointer absolute top-4.5 right-4.5'
+                        className='absolute right-4.5 top-4.5 flex h-10 w-10 cursor-pointer items-center justify-center rounded text-gold-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-primary'
                         onClick={closeModal}>
                         <X size={30}/>
                     </button>
-                </div>
+                    </div>
+                </DialogPanel>
             </div>
-        </div>
+        </Dialog>
     );
 };
 
