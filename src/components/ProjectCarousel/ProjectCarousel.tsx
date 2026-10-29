@@ -119,6 +119,7 @@ export default function Carousel({
                                                : `Certificate awarded to Maksym Aksamitnyi, image ${index + 1}`}
                                            width={600}
                                            height={464}
+                                           unoptimized={p.startsWith('/')}
                                            sizes="(max-width: 833px) 90vw, 600px"/>
                                 </SwiperSlide>
                             ))
